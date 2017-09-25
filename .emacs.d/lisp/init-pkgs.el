@@ -494,45 +494,39 @@
 
 (load-theme 'monokai t)
 
-;(use-package telephone-line
-;             :ensure t
-;             :config
-;             (telephone-line-mode 1))
-
-
-;; Requirement of Spaceline
+;; ======================== mode bar ==============================================
 ;; Icon package
-(use-package all-the-icons
-             :ensure t
-             :config
-             (use-package all-the-icons-dired
-                          :ensure t
-                          :init (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)))
+(use-package all-the-icons :ensure t)
+(use-package all-the-icons-dired
+             :after all-the-icons
+             :ensure t)
 
 ;; Requirement of Spaceline
 (use-package powerline :ensure t)
-;; Spaceline - A mode line
-;(use-package spaceline
-;             :ensure t
-;             :init
-;             (require 'spaceline-config)
-;             (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-;             :config
-;             (spaceline-spacemacs-theme))
-
-; Configure spaceline
-(use-package spaceline-config
-             :ensure spaceline
+(use-package spaceline
+             :ensure t
+             :after powerline
+             :init
+             (progn
+               ;; slant (requires srbg support)
+               (setq powerline-default-separator 'slant)
+               ;(setq powerline-default-separator 'wave)
+               (setq spaceline-workspace-numbers-unicode t)
+               (setq spaceline-separator-dir-left '(right . right))
+               (setq spaceline-separator-dir-right '(right . right))
+               (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+               (setq powerline-height 20))
              :config
-             (setq powerline-height (+ (frame-char-height) 10)
-                   powerline-default-separator 'slant
-                   spaceline-window-numbers-unicode t
-                   spaceline-workspace-numbers-unicode t
-                   spaceline-minor-modes-separator " ")
+             (require 'spaceline-config)
+             (spaceline-toggle-major-mode-on)
              (spaceline-spacemacs-theme)
              (spaceline-helm-mode)
-             (spaceline-info-mode)
-             (set-face-attribute 'mode-line nil :box nil)
-             (set-face-attribute 'mode-line-inactive nil :box nil))
+             (spaceline-compile)
+             (setq spaceline-buffer-encoding-abbrev-p nil
+                   spaceline-window-numbers-unicode t
+                   spaceline-line-column-p nil
+                   spaceline-buffer-id-p nil
+                   spaceline-minor-modes-separator nil)
+             (powerline-reset))
 
 (provide 'init-pkgs)

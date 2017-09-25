@@ -64,9 +64,7 @@
 
 ; Set default font
 (set-face-attribute 'default nil
-;                    :family "Source Code Pro"
-
-                    :family "Menlo"
+                    :family "Source Code Pro"
                     :height 140
                     :weight 'normal
                     :width 'normal)
