@@ -519,6 +519,8 @@
              :config
              (require 'spaceline-config)
              (spaceline-toggle-major-mode-on)
+             (spaceline-toggle-minor-modes-off)
+             (spaceline-toggle-buffer-modified-on)
              (spaceline-spacemacs-theme)
              (spaceline-helm-mode)
              (spaceline-compile)
