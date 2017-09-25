@@ -1,0 +1,16 @@
+/*
+ * Copyright (C) Xuehao Zhou (robertzhouxh)
+ *
+ *   CreatedAt: `(format-time-string "%c")`
+ *      Author:  `user-full-name`
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int argc, char *argv[])
+{
+    $0
+    return 0;
+}

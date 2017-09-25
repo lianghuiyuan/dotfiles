@@ -1,0 +1,12 @@
+/*
+ * Copyright (C) Xuehao Zhou (robertzhouxh)
+ *
+ *   CreatedAt: `(format-time-string "%c")`
+ *      Author:  `user-full-name`
+ */
+
+
+#ifndef `(upcase (file-name-nondirectory (file-name-sans-extension (or (buffer-file-name) (buffer-name)))))`_H_
+#define `(upcase (file-name-nondirectory (file-name-sans-extension (or (buffer-file-name) (buffer-name)))))`_H_
+    $0
+#endif /* `(upcase (file-name-nondirectory (file-name-sans-extension (or (buffer-file-name) (buffer-name)))))`_H_ */
