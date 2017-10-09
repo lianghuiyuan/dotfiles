@@ -171,7 +171,7 @@
         (car (split-string (shell-command-to-string "hostname"))))))
 
 ;; now
-;        C-c C-z for starting the node
+;        C-c C-z for starting the node ===> code:add_path(ebin/)
 ;        M-. when the cursor is on a function to show its definition
 ;        M-TAB to autocomplete
 
