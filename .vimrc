@@ -1,7 +1,7 @@
 call plug#begin('~/.vim/plugged')
-"let mapleader = ','
-"let g:mapleader = ','
-let mapleader = "\<Space>"
+let mapleader = ','
+let g:mapleader = ','
+"let mapleader = "\<Space>"
 let g:plug_timeout = 100
 
 " ================================ Plugins to be installed =======================================
