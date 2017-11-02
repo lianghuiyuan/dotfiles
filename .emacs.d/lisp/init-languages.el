@@ -145,21 +145,6 @@
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode)) ;; User customizations file
 (add-to-list 'auto-mode-alist '("\\.hrl" . erlang-mode)) ;; User customizations file
 
-(use-package edts
-             :diminish edts-mode
-             :disabled t
-             :init
-             (setq edts-doc-style 'buffer
-                   edts-inhibit-package-check t
-                   edts-man-root "~/.emacs.d/edts/doc/18.2.1")
-             (add-hook 'after-init-hook
-                       (defun j/edts-setup ()
-                         (require 'edts-start)
-                         (use-package eproject-extras
-                                      :demand t
-                                      :diminish eproject-mode
-                                      :bind (:map eproject-mode-map ("C-c b" . bury-buffer))))))
-
 ;;;----------------------------------------------------------------------------
 ;;; lua
 ;;;----------------------------------------------------------------------------

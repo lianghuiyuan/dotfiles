@@ -167,9 +167,7 @@
              (flycheck-add-mode 'javascript-eslint 'js2-mode)
              (flycheck-add-mode 'javascript-eslint 'js-mode)
              ;; To verify just do C-h v flycheck-eslintrc
-             (setq flycheck-eslintrc "~/.eslintrc")
-             (setq flycheck-erlang-include-path (list "../include/" "../../include/"))
-             (setq flycheck-erlang-lib-path (list "./ebin")))
+             (setq flycheck-eslintrc "~/.eslintrc"))
 
 (use-package ediff
              :config
