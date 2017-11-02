@@ -145,40 +145,20 @@
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode)) ;; User customizations file
 (add-to-list 'auto-mode-alist '("\\.hrl" . erlang-mode)) ;; User customizations file
 
-;; ;; DISTEL
-;; (push "~/.emacs.d/vendor/distel/elisp/" load-path)
-;; (require 'distel)
-;; (distel-setup)
-;;
-;; (add-hook 'erlang-mode-hook
-;;           (lambda ()
-;;             ;; when starting an Erlang shell in Emacs, default in the node name
-;;             (setq inferior-erlang-machine-options '("-sname" "emacs"))
-;;             ;; add Erlang functions to an imenu menu
-;;             (imenu-add-to-menubar "imenu")))
-;; ;; prevent annoying hang-on-compile
-;; (defvar inferior-erlang-prompt-timeout t)
-;; ;; default node name to emacs@localhost
-;; ;;(setq inferior-erlang-machine-options '("-sname" "emacs"))
-;; ;; tell distel to default to that node
-;; (setq erl-nodename-cache
-;;       (make-symbol
-;;        (concat
-;;         "emacs@"
-;;         ;; Mac OS X uses "name.local" instead of "name", this should work
-;;         ;; pretty much anywhere without having to muck with NetInfo
-;;         ;; ... but I only tested it on Mac OS X.
-;;         (car (split-string (shell-command-to-string "hostname"))))))
-;;
-;; ;; now
-;; ;        C-c C-z for starting the node ===> code:add_pathz("项目 ebin 目录")
-;; ;        M-. when the cursor is on a function to show its definition
-;; ;        M-TAB to autocomplete
-;;
-;; (push "~/.emacs.d/vendor/distel-completion/" load-path)
-;; (require 'company-distel)
-;; (with-eval-after-load 'company
-;;   (add-to-list 'company-backends 'company-distel))
+(use-package edts
+             :diminish edts-mode
+             :disabled t
+             :init
+             (setq edts-doc-style 'buffer
+                   edts-inhibit-package-check t
+                   edts-man-root "~/.emacs.d/edts/doc/18.2.1")
+             (add-hook 'after-init-hook
+                       (defun j/edts-setup ()
+                         (require 'edts-start)
+                         (use-package eproject-extras
+                                      :demand t
+                                      :diminish eproject-mode
+                                      :bind (:map eproject-mode-map ("C-c b" . bury-buffer))))))
 
 ;;;----------------------------------------------------------------------------
 ;;; lua
