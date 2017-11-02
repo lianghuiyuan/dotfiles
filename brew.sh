@@ -201,6 +201,9 @@ brew install cmatrix
 # brew install privoxy
 brew install polipo
 brew install pdf-tools
+
+# for shadowsocks
+brew install libsodium
 # Remove outdated versions from the cellar.
 cecho "Removing outdated versions from the brew cellar." $yellow
 brew cleanup
