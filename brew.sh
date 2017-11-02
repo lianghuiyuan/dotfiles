@@ -255,7 +255,8 @@ done
 
 read -p "do you want to deploy your own G-F-W vps and use shadowsocks client of python version ? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sudo -H pip install shadowsocks
+  #sudo -H pip install shadowsocks
+  pip install --upgrade git+https://github.com/shadowsocks/shadowsocks.git@master
   echo -e "\033[40;32m deploy the proxy server on your remote vps: server[1,2,3] \033[0m"
   SS_CFG="/etc/shadowsocks.json"
   if [ ! -f "$SS_CFG" ]; then
