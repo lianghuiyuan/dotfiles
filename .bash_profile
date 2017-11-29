@@ -60,5 +60,3 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 [[ `uname -s` == "Linux" ]] && . ~/z/z.sh
 [[ `uname -s` == "Darwin" ]] && . /usr/local/share/liquidprompt
 [[ `uname -s` == "Darwin" ]] && . `brew --prefix`/etc/profile.d/z.sh
-
-ulimit -n 1048576
