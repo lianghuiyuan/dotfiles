@@ -9,19 +9,19 @@
   (setq mac-command-modifier 'meta)
   (setq ns-use-native-fullscreen nil)
 
-  ;; -----------------------------------------------------------------------------  
-  ;; setting font for mac system  
-  ;; -----------------------------------------------------------------------------  
-  ;; Setting English Font   
-  (set-face-attribute  
-    'default nil :font "Monaco 12")  
-  ;; Chinese Font 配制中文字体  
-  (dolist (charset '(kana han symbol cjk-misc bopomofo))  
-    (set-fontset-font (frame-parameter nil 'font)  
-                      charset  
-                      (font-spec :family "Kaiti SC" :size 14)))  
+  ;; -----------------------------------------------------------------------------
+  ;; setting font for mac system
+  ;; -----------------------------------------------------------------------------
+  ;; Setting English Font
+  (set-face-attribute
+    'default nil :font "Monaco 12")
+  ;; Chinese Font 配制中文字体
+  ;(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  ;  (set-fontset-font (frame-parameter nil 'font)
+  ;                    charset
+  ;                    (font-spec :family "Kaiti SC" :size 14)))
 
-  ;; Note: you can chang "Kaiti SC" to "Microsoft YaHei" or other fonts  
+  ;; Note: you can chang "Kaiti SC" to "Microsoft YaHei" or other fonts
   ;; On OSX, I use the pbpaste and pbcopy methods to interact with the system clipboard.
   ;; brew install coreutils
   (if (executable-find "gls")
