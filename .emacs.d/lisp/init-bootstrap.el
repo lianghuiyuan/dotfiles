@@ -80,6 +80,7 @@
 (use-package git      :ensure t :defer t)
 (use-package dash     :ensure t :defer t)
 (use-package mustache :ensure t :defer t)
+(use-package popup    :ensure t :defer t)
 
 ;(require 's)
 ;(require 'cl)

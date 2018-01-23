@@ -17,7 +17,8 @@
     "d"  'kill-this-buffer
     "D"  'delete-window
     ;"D"  'open-current-line-in-codebase-search
-    "e"  (lambda () (interactive) (get-erl-man))
+    ;"e"  (lambda () (interactive) (get-erl-man))
+    "e"  'eval-buffer
     "E"  'sudo-edit-current-file
     "f"  'helm-imenu            ;; Jump to function in buffer
     "g"  'magit-status

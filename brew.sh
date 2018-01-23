@@ -115,6 +115,9 @@ brew install wget --with-iri
 # brew install macvim --HEAD --with-cscope --with-lua --with-override-system-vim --with-luajit --with-python
 # brew cask install emacs
 
+# 安装一款切换app的软件， 很酷
+brew cask install apptivate
+
 sudo -H pip install pygments
 brew install global --with-exuberant-ctags --with-pygments
 brew install homebrew/dupes/grep

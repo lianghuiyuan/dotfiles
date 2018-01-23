@@ -531,7 +531,7 @@
              (setq spaceline-buffer-encoding-abbrev-p nil
                    spaceline-window-numbers-unicode t
                    spaceline-line-column-p nil
-                   spaceline-buffer-id-p nil
+                   ;;spaceline-buffer-id-p nil
                    spaceline-minor-modes-separator nil)
              (powerline-reset))
 
