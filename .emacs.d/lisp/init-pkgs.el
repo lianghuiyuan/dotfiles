@@ -291,57 +291,57 @@
              (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 ;; reffer to http://jwintz.me/blog/2014/02/16/helm-dash-makes-you-efficient/
-(use-package helm-dash
-             :ensure t
-             :defines (helm-dash-docsets)
-             :functions (esk-helm-dash-install
-                          helm-dash-web
-                          helm-dash-go
-                          helm-dash-installed-docsets)
-             :commands (helm-dash-at-point esk-helm-dash-install)
-             :preface
-             (progn
-               (defvar esk-dash-docsets
-                 '("Bash" "C" "C++" "Go" "Redis" "Ansible" "UnderscoreJS" "JavaScript" "React"))
-
-               (defun esk-helm-dash-install (docset-name)
-                 (message (format "Installing helm-dash docset '%s'" docset-name))
-                 (unless (file-exists-p (concat (concat helm-dash-docsets-path docset-name) ".docset"))
-                   (helm-dash-install-docset docset-name)))
-
-               (defun esk-dash-limit (docsets-names)
-                 (set (make-local-variable 'helm-dash-docsets) docsets-names))
-
-               (defun helm-dash-bash () (esk-dash-limit '("Bash")))
-               (defun helm-dash-go () (esk-dash-limit '("Go" "Redis")))
-               (defun helm-dash-yaml () (esk-dash-limit '("Ansible")))
-               (defun helm-dash-c () (esk-dash-limit '("c")))
-               (defun helm-dash-web () (esk-dash-limit '("UnderscoreJS" "JavaScript" "React")))
-
-               :init
-               (progn
-                 (setq helm-dash-docsets-path "~/.emacs.d/docsets/")
-                 (after sh-script (add-hook 'sh-mode-hook 'helm-dash-bash))
-                 (after go-mode (add-hook 'go-mode-hook 'helm-dash-go))
-                 (after yaml-mode (add-hook 'yaml-mode-hook 'helm-dash-yaml))
-                 (after c-mode (add-hook 'c-mode-hook 'helm-dash-c))
-                 (after web-mode (add-hook 'web-mode-hook 'helm-dash-web))
-                 )
-               :config
-               (progn
-                 (defun eww-split (url)
-                   (interactive)
-                   (select-window (split-window-right))
-                   (eww url))
-                 (setq helm-dash-browser-func 'eww-split)
-                 ;(setq helm-dash-browser-func 'eww)
-                 (add-hook 'prog-mode-hook
-                           (lambda ()
-                             (interactive)
-                             (setq helm-current-buffer (current-buffer))))
-                 (dolist (docset esk-dash-docsets)
-                   (esk-helm-dash-install docset))
-                 )))
+;(use-package helm-dash
+;             :ensure t
+;             :defines (helm-dash-docsets)
+;             :functions (esk-helm-dash-install
+;                          helm-dash-web
+;                          helm-dash-go
+;                          helm-dash-installed-docsets)
+;             :commands (helm-dash-at-point esk-helm-dash-install)
+;             :preface
+;             (progn
+;               (defvar esk-dash-docsets
+;                 '("Bash" "C" "C++" "Go" "Redis" "Ansible" "UnderscoreJS" "JavaScript" "React"))
+;
+;               (defun esk-helm-dash-install (docset-name)
+;                 (message (format "Installing helm-dash docset '%s'" docset-name))
+;                 (unless (file-exists-p (concat (concat helm-dash-docsets-path docset-name) ".docset"))
+;                   (helm-dash-install-docset docset-name)))
+;
+;               (defun esk-dash-limit (docsets-names)
+;                 (set (make-local-variable 'helm-dash-docsets) docsets-names))
+;
+;               (defun helm-dash-bash () (esk-dash-limit '("Bash")))
+;               (defun helm-dash-go () (esk-dash-limit '("Go" "Redis")))
+;               (defun helm-dash-yaml () (esk-dash-limit '("Ansible")))
+;               (defun helm-dash-c () (esk-dash-limit '("c")))
+;               (defun helm-dash-web () (esk-dash-limit '("UnderscoreJS" "JavaScript" "React")))
+;
+;               :init
+;               (progn
+;                 (setq helm-dash-docsets-path "~/.emacs.d/docsets/")
+;                 (after sh-script (add-hook 'sh-mode-hook 'helm-dash-bash))
+;                 (after go-mode (add-hook 'go-mode-hook 'helm-dash-go))
+;                 (after yaml-mode (add-hook 'yaml-mode-hook 'helm-dash-yaml))
+;                 (after c-mode (add-hook 'c-mode-hook 'helm-dash-c))
+;                 (after web-mode (add-hook 'web-mode-hook 'helm-dash-web))
+;                 )
+;               :config
+;               (progn
+;                 (defun eww-split (url)
+;                   (interactive)
+;                   (select-window (split-window-right))
+;                   (eww url))
+;                 (setq helm-dash-browser-func 'eww-split)
+;                 ;(setq helm-dash-browser-func 'eww)
+;                 (add-hook 'prog-mode-hook
+;                           (lambda ()
+;                             (interactive)
+;                             (setq helm-current-buffer (current-buffer))))
+;                 (dolist (docset esk-dash-docsets)
+;                   (esk-helm-dash-install docset))
+;                 )))
 
 (use-package yaml-mode
              :ensure t
