@@ -39,11 +39,11 @@
 
 
 ;; proxy
-(setq url-proxy-services '(
-        ("no_proxy" . "^\\(localhost\\|10.*\\)")
-        ("http" . "127.0.0.1:8118")
-        ("https" . "127.0.0.1:8118")
-))
+;;(setq url-proxy-services '(
+;;        ("no_proxy" . "^\\(localhost\\|10.*\\)")
+;;        ("http" . "127.0.0.1:8123")
+;;        ("https" . "127.0.0.1:8123")
+;;))
 
 ;;; auto install use-package
 (unless (package-installed-p 'use-package)
