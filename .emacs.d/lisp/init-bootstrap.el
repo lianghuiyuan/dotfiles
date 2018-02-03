@@ -3,6 +3,9 @@
 ;;; Code:
 ;; Essential settings.
 
+(setq user-full-name "robert zhou")
+(setq user-mail-address "robertzhouxh@gmail.com")
+
 ;; Use utf8
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)

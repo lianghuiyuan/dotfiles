@@ -4,9 +4,11 @@
 
 
 (when (system-is-mac)
+  ;; refer to: http://azaleasays.com/2013/07/05/setting-up-mac-os-x-and-iterm2-for-emacs/
   ;; Switch the Cmd and Meta keys
   (setq mac-command-key-is-meta t)
   (setq mac-command-modifier 'meta)
+  (setq mac-option-modifier 'super)
   (setq ns-use-native-fullscreen nil)
 
   ;; -----------------------------------------------------------------------------
