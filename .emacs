@@ -96,13 +96,6 @@
              :ensure t
              :config (smex-initialize))
 
-(use-package dumb-jump
-             :ensure t
-             :diminish dumb-jump-mode
-             :bind (("C-M-g" . dumb-jump-go)
-                    ("C-M-p" . dumb-jump-back)
-                    ("C-M-q" . dumb-jump-quick-look)))
-
 (use-package magit
              :ensure t
              :bind ("C-x g" . magit-status))
@@ -135,5 +128,22 @@
                                  ("C-x j" . helm-projectile-switch-project)))
              :config
              (projectile-global-mode))
+
+(use-package ag
+             :ensure t
+             :defer t
+             :config
+             (progn
+               (setq ag-highlight-search t)
+               (bind-key "n" 'compilation-next-error ag-mode-map)
+               (bind-key "p" 'compilation-previous-error ag-mode-map)
+               (bind-key "N" 'compilation-next-file ag-mode-map)
+               (bind-key "P" 'compilation-previous-file ag-mode-map)))
+(use-package helm-ag
+             :ensure helm-ag
+             :bind ("M-p" . helm-projectile-ag)
+             :commands (helm-ag helm-projectile-ag)
+             :init (setq helm-ag-insert-at-point 'symbol
+                         helm-ag-command-option "--path-to-ignore ~/.agignore"))
 
 (provide 'init)
