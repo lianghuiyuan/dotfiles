@@ -146,4 +146,6 @@
              :init (setq helm-ag-insert-at-point 'symbol
                          helm-ag-command-option "--path-to-ignore ~/.agignore"))
 
+(load-theme 'monokai t)
+
 (provide 'init)
