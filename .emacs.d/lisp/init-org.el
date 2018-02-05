@@ -51,10 +51,10 @@
 ;; reffer to https://thraxys.wordpress.com/2016/01/14/pimp-up-your-org-agenda/
 (use-package org-evil :ensure t)
 (use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  (setq org-bullets-bullet-list '("•")))
+    :init
+    (setq org-bullets-bullet-list
+          '("✡" "✽" "✲" "✱" "✻" "✼" "✽" "✾" "✿" "❀" "❁" "❂" "❃" "❄" "❅" "❆" "❇"))
+    (add-hook 'org-mode-hook #'org-bullets-mode))
 
 (add-to-list 'ispell-skip-region-alist '(":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:"))
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
