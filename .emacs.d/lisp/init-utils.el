@@ -152,6 +152,109 @@
     `(eval-after-load ,(symbol-name mode)
        (quote (progn ,@body)))))
 
+(defun scan-code-tags ()
+     "Scan code tags: @TODO: , @FIXME:, @BUG:, @NOTE:."
+     (interactive)
+     (split-window-horizontally)
+     (occur "@FIXME:\\|@TODO:\\|@BUG:\\|@NOTE:"))
+
+(defun python/scan-functions ()
+  (interactive)
+  (split-window-horizontally)
+  (occur "def"))
+
+;; Usage: M-x reload-init-file
+;;
+(defun reload-init-file ()
+  "Reload init.el file."
+  (interactive)
+  (load user-init-file)
+  (message "Reloaded init.el OK."))
+
+;; Usage: M-x open-init-file
+;;
+(defun open-init-file ()
+    (interactive)
+    (find-file user-init-file))
+
+(defun dired-touch ()
+  "Creates empty file at current directory."
+  (interactive)
+  (append-to-file "" nil (read-string "New file: "))
+  (if (equal major-mode 'dired-mode)
+      (revert-buffer)))
+
+;; Edit File as Root   utils edit
+(defun open-as-root (filename)
+  (interactive)
+  (find-file (concat "/sudo:root@localhost:"  filename)))
+
+(defun open-buffer-as-root ()
+ (interactive)
+ (let
+     (
+      ;; Get the current buffer file name
+      (filename (buffer-file-name (current-buffer)))
+      ;; Get the current file name
+      (bufname  (buffer-name (current-buffer)))
+     )
+   (progn
+  (kill-buffer bufname)         ;; Kill current buffer
+  (open-as-root filename))))    ;; Open File as root
+
+
+;This comamnd can be bound to a keybiding with the code bellow that bidns the key combination SUPER (Windows Key) + 8.
+(defun shell-launch ()
+  "Launch a process without creating a buffer. It is useful to launch apps from Emacs."
+  (interactive)
+  (let* ((cmd-raw  (read-shell-command "Launch command: "))
+         (cmd-args (split-string-and-unquote cmd-raw))
+         (cmd      (car cmd-args))       ;; program that will run
+         (args     (cdr cmd-args)))     ;; command arguments
+    (apply #'start-process `(,cmd
+                             nil
+                             ,cmd ,@args
+                             ))))
+
+;;Read a command in launch in terminal
+;; This command uses xfce4-terminal but it can be changed to any other terminal emulator.
+(defun run-terminal ()
+  "Launch application in a terminal emulator."
+  (interactive)
+  (start-process
+   "iTerm"
+   nil
+   ;; Change this for your terminal.
+   "iTerm" "-e" (read-shell-command "Shell: ")))
+
+;;Launch specific commands
+(defun shell-command-in-terminal (command)
+  (start-process
+   "iTerm"
+   nil
+   ;; Change this for your terminal.
+   "iTerm" "-e" command))
+
+(defun sh/scratch ()
+  (interactive)
+    (let ( (buf (get-buffer-create "*sh-scratch*")))
+      ;; Executes functions that would change the current buffer at
+      ;; buffer buf
+     (with-current-buffer buf
+       ;;; Set the new buffer to scratch mode
+       (sh-mode)
+       ;;; Pop to scratch buffer
+       (pop-to-buffer buf))))
+
+(defun select-current-word ()
+  "Select the word under cursor.
+  “word” here is considered any alphanumeric sequence with “_” or “-”."
+  (interactive)
+  (let (pt)
+    (skip-chars-backward "-_A-Za-z0-9")
+    (setq pt (point))
+    (skip-chars-forward "-_A-Za-z0-9")
+    (set-mark pt)))
 
 ;;----------------------------------------------------------------------------
 ;; manage window
