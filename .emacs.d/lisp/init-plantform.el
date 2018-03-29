@@ -15,8 +15,9 @@
   ;; setting font for mac system
   ;; -----------------------------------------------------------------------------
   ;; Setting English Font
-  (set-face-attribute
-    'default nil :font "Monaco 12")
+  ;(set-face-attribute
+  ;  'default nil :font "Monaco 12")
+
   ;; Chinese Font 配制中文字体
   ;(dolist (charset '(kana han symbol cjk-misc bopomofo))
   ;  (set-fontset-font (frame-parameter nil 'font)
@@ -26,6 +27,15 @@
   ;; Note: you can chang "Kaiti SC" to "Microsoft YaHei" or other fonts
   ;; On OSX, I use the pbpaste and pbcopy methods to interact with the system clipboard.
   ;; brew install coreutils
+
+(set-frame-font "Monaco:pixelsize=15")
+(dolist (charset '(han kana symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset
+                    (font-spec :family "Hiragino Sans GB" :size 18)
+                    ))
+
+
   (if (executable-find "gls")
     (progn
       (setq insert-directory-program "gls")

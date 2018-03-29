@@ -122,7 +122,7 @@
 ;;---------------------------------------------------------------
 ;; Erlang
 ;;---------------------------------------------------------------
-(let* ((emacs-version "2.9")
+(let* ((emacs-version "2.10.1")
        (tools-path
          (concat "/usr/local/lib/erlang/lib/tools-" emacs-version "/emacs")))
   (when (file-exists-p tools-path)
