@@ -63,7 +63,6 @@
 (require 'init-pkgs)
 (require 'init-evil)
 (require 'init-org)
-(require 'init-latex)
 (require 'init-languages)
 (require 'init-maps)
 
