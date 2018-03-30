@@ -51,7 +51,7 @@
     "Toggle magit-blame-mode on and off interactively."
     (interactive)
     (if (and (boundp 'magit-blame-mode) magit-blame-mode)
-        (magit-blame-quit)
+      (magit-blame-quit)
       (call-interactively 'magit-blame))))
 
 (defun air--config-evil ()
@@ -59,34 +59,34 @@
 
   ;; Use Emacs state in these additional modes.
   (dolist (mode '(ag-mode
-                  flycheck-error-list-mode
-                  git-rebase-mode
-                  octopress-mode
-                  octopress-server-mode
-                  octopress-process-mode
-                  sunshine-mode
-                  term-mode))
+                   flycheck-error-list-mode
+                   git-rebase-mode
+                   octopress-mode
+                   octopress-server-mode
+                   octopress-process-mode
+                   sunshine-mode
+                   term-mode))
     (add-to-list 'evil-emacs-state-modes mode))
 
   (delete 'term-mode evil-insert-state-modes)
 
   ;; Use insert state in these additional modes.
   (dolist (mode '(twittering-edit-mode
-                  magit-log-edit-mode))
+                   magit-log-edit-mode))
     (add-to-list 'evil-insert-state-modes mode))
 
   (add-to-list 'evil-buffer-regexps '("\\*Flycheck"))
 
   (evil-add-hjkl-bindings occur-mode-map 'emacs
-    (kbd "/")       'evil-search-forward
-    (kbd "n")       'evil-search-next
-    (kbd "N")       'evil-search-previous
-    (kbd "C-d")     'evil-scroll-down
-    (kbd "C-u")     'evil-scroll-up
-    (kbd "C-w C-w") 'other-window)
+                          (kbd "/")       'evil-search-forward
+                          (kbd "n")       'evil-search-next
+                          (kbd "N")       'evil-search-previous
+                          (kbd "C-d")     'evil-scroll-down
+                          (kbd "C-u")     'evil-scroll-up
+                          (kbd "C-w C-w") 'other-window)
 
-(when evil-want-C-u-scroll
-  (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up))
+  (when evil-want-C-u-scroll
+    (define-key evil-motion-state-map (kbd "C-u") 'evil-scroll-up))
 
   ;; Global bindings.
   (define-key evil-normal-state-map (kbd "<down>")  'evil-next-visual-line)
@@ -120,25 +120,25 @@
 
   (defun minibuffer-keyboard-quit ()
     "Abort recursive edit.
-In Delete Selection mode, if the mark is active, just deactivate it;
-then it takes a second \\[keyboard-quit] to abort the minibuffer."
+    In Delete Selection mode, if the mark is active, just deactivate it;
+    then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (interactive)
     (if (and delete-selection-mode transient-mark-mode mark-active)
-        (setq deactivate-mark  t)
+      (setq deactivate-mark  t)
       (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
       (abort-recursive-edit)))
 
-  ;; Make escape quit everything, whenever possible.
-  (define-key evil-normal-state-map [escape] 'keyboard-quit)
-  (define-key evil-visual-state-map [escape] 'keyboard-quit)
-  (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-  (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+    ;; Make escape quit everything, whenever possible.
+    (define-key evil-normal-state-map [escape] 'keyboard-quit)
+    (define-key evil-visual-state-map [escape] 'keyboard-quit)
+    (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
-  ;; My own Ex commands.
-  (evil-ex-define-cmd "om" 'octopress-status))
+    ;; My own Ex commands.
+    (evil-ex-define-cmd "om" 'octopress-status))
 
 (defun air--apply-evil-other-package-configs ()
   "Apply evil-dependent settings specific to other packages."
@@ -147,7 +147,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (interactive)
     (evil-next-visual-line)
     (if (not (search-forward-regexp "\\(>>>>\\|====\\|<<<<\\)" (point-max) t))
-        (evil-previous-visual-line))
+      (evil-previous-visual-line))
     (move-beginning-of-line nil))
 
   (defun previous-conflict-marker ()
@@ -166,45 +166,45 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (defmacro define-evil-or-global-key (key def &optional state)
   "Define a key KEY with DEF in an Evil map, or in the global map.
-If the Evil map for STATE is defined (or `normal' if STATE is not
-provided) the key will be defined in that map.  Failing that, it will
-be defined globally.
-Note that STATE should be provided as an unquoted symbol.
-This macro provides a way to override Evil mappings in the appropriate
-Evil map in a manner that is compatible with environments where Evil
-is not used."
+  If the Evil map for STATE is defined (or `normal' if STATE is not
+                                           provided) the key will be defined in that map.  Failing that, it will
+  be defined globally.
+  Note that STATE should be provided as an unquoted symbol.
+  This macro provides a way to override Evil mappings in the appropriate
+  Evil map in a manner that is compatible with environments where Evil
+  is not used."
   (let* ((evil-map-name (if state
-                            (concat "evil-" (symbol-name state) "-state-map")
+                          (concat "evil-" (symbol-name state) "-state-map")
                           "evil-normal-state-map"))
          (map (if (boundp (intern evil-map-name))
-                  (intern evil-map-name)
+                (intern evil-map-name)
                 global-map)))
     `(define-key ,map ,key ,def)))
 
 (use-package evil
-  :ensure t
-  :init
-  (setq evil-want-C-u-scroll t)
-  :commands (evil-mode evil-define-key)
-  :config
-  (add-hook 'evil-mode-hook 'air--config-evil)
-  (evil-mode 1)
+             :ensure t
+             :init
+             (setq evil-want-C-u-scroll t)
+             :commands (evil-mode evil-define-key)
+             :config
+             (add-hook 'evil-mode-hook 'air--config-evil)
+             (evil-mode 1)
 
-  (use-package evil-leader
-    :ensure t
-    :config
-    (global-evil-leader-mode)
-    (air--config-evil-leader))
+             (use-package evil-leader
+                          :ensure t
+                          :config
+                          (global-evil-leader-mode)
+                          (air--config-evil-leader))
 
-  (use-package evil-surround
-    :ensure t
-    :config
-    (global-evil-surround-mode))
+             (use-package evil-surround
+                          :ensure t
+                          :config
+                          (global-evil-surround-mode))
 
-  (use-package evil-indent-textobject
-    :ensure t)
+             (use-package evil-indent-textobject
+                          :ensure t)
 
-  (air--apply-evil-other-package-configs))
+             (air--apply-evil-other-package-configs))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here

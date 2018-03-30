@@ -24,9 +24,9 @@
   (let ((my-file-name) ; fill this with the file to open
         (position))    ; if the file is already open save position
     (if (equal major-mode 'dired-mode) ; test if we are in dired-mode
-        (progn
-          (setq my-file-name (dired-get-file-for-visit))
-          (find-alternate-file (prepare-tramp-sudo-string my-file-name)))
+      (progn
+        (setq my-file-name (dired-get-file-for-visit))
+        (find-alternate-file (prepare-tramp-sudo-string my-file-name)))
       (setq my-file-name (buffer-file-name); hopefully anything else is an already opened file
             position (point))
       (find-alternate-file (prepare-tramp-sudo-string my-file-name))
@@ -51,7 +51,7 @@
         (buffer (current-buffer))
         (name (buffer-name)))
     (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
+      (error "Buffer '%s' is not visiting a file!" name)
       (when (yes-or-no-p "Are you sure you want to remove this file? ")
         (delete-file filename)
         (kill-buffer buffer)
@@ -74,10 +74,10 @@
     (unless filename
       (error "Buffer '%s' is not visiting a file!" name))
     (if (get-buffer new-name)
-        (message "A buffer named '%s' already exists!" new-name)
+      (message "A buffer named '%s' already exists!" new-name)
       (progn
         (when (file-exists-p filename)
-         (rename-file filename new-name 1))
+          (rename-file filename new-name 1))
         (rename-buffer new-name)
         (set-visited-file-name new-name)))))
 
@@ -86,7 +86,7 @@
   (interactive)
   (let ((file-name (buffer-file-name)))
     (if (tramp-tramp-file-p file-name)
-        (error "Cannot open tramp file")
+      (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
 (defun switch-to-previous-buffer ()
@@ -99,8 +99,8 @@
   "Align on the first single equal sign."
   (interactive)
   (align-regexp
-   (region-beginning) (region-end)
-   "\\(\\s-*\\)=" 1 1 nil))
+    (region-beginning) (region-end)
+    "\\(\\s-*\\)=" 1 1 nil))
 
 
 ;;----------------------------------------------------------------------------
@@ -110,7 +110,7 @@
   ;; (let ((file (s-concat (f-expand filename user-emacs-directory) ".el")))
   (let ((file (s-concat (f-expand filename robertzhouxh/config-dir) ".el")))
     (if (f-exists? file)
-        (load-file file))))
+      (load-file file))))
 
 (defun my/insert-lod ()
   "Well. This is disappointing."
@@ -147,16 +147,16 @@
   "`eval-after-load' `MODE', wrapping `BODY' in `progn'."
   (declare (indent defun))
   (let ((s (if (symbolp mode)
-               (symbol-name mode)
+             (symbol-name mode)
              mode)))
     `(eval-after-load ,(symbol-name mode)
-       (quote (progn ,@body)))))
+                      (quote (progn ,@body)))))
 
 (defun scan-code-tags ()
-     "Scan code tags: @TODO: , @FIXME:, @BUG:, @NOTE:."
-     (interactive)
-     (split-window-horizontally)
-     (occur "@FIXME:\\|@TODO:\\|@BUG:\\|@NOTE:"))
+  "Scan code tags: @TODO: , @FIXME:, @BUG:, @NOTE:."
+  (interactive)
+  (split-window-horizontally)
+  (occur "@FIXME:\\|@TODO:\\|@BUG:\\|@NOTE:"))
 
 (defun python/scan-functions ()
   (interactive)
@@ -174,15 +174,15 @@
 ;; Usage: M-x open-init-file
 ;;
 (defun open-init-file ()
-    (interactive)
-    (find-file user-init-file))
+  (interactive)
+  (find-file user-init-file))
 
 (defun dired-touch ()
   "Creates empty file at current directory."
   (interactive)
   (append-to-file "" nil (read-string "New file: "))
   (if (equal major-mode 'dired-mode)
-      (revert-buffer)))
+    (revert-buffer)))
 
 ;; Edit File as Root   utils edit
 (defun open-as-root (filename)
@@ -190,17 +190,17 @@
   (find-file (concat "/sudo:root@localhost:"  filename)))
 
 (defun open-buffer-as-root ()
- (interactive)
- (let
-     (
-      ;; Get the current buffer file name
-      (filename (buffer-file-name (current-buffer)))
-      ;; Get the current file name
-      (bufname  (buffer-name (current-buffer)))
+  (interactive)
+  (let
+    (
+     ;; Get the current buffer file name
+     (filename (buffer-file-name (current-buffer)))
+     ;; Get the current file name
+     (bufname  (buffer-name (current-buffer)))
      )
-   (progn
-  (kill-buffer bufname)         ;; Kill current buffer
-  (open-as-root filename))))    ;; Open File as root
+    (progn
+      (kill-buffer bufname)         ;; Kill current buffer
+      (open-as-root filename))))    ;; Open File as root
 
 
 ;This comamnd can be bound to a keybiding with the code bellow that bidns the key combination SUPER (Windows Key) + 8.
@@ -212,9 +212,9 @@
          (cmd      (car cmd-args))       ;; program that will run
          (args     (cdr cmd-args)))     ;; command arguments
     (apply #'start-process `(,cmd
-                             nil
-                             ,cmd ,@args
-                             ))))
+                              nil
+                              ,cmd ,@args
+                              ))))
 
 ;;Read a command in launch in terminal
 ;; This command uses xfce4-terminal but it can be changed to any other terminal emulator.
@@ -222,29 +222,29 @@
   "Launch application in a terminal emulator."
   (interactive)
   (start-process
-   "iTerm"
-   nil
-   ;; Change this for your terminal.
-   "iTerm" "-e" (read-shell-command "Shell: ")))
+    "iTerm"
+    nil
+    ;; Change this for your terminal.
+    "iTerm" "-e" (read-shell-command "Shell: ")))
 
 ;;Launch specific commands
 (defun shell-command-in-terminal (command)
   (start-process
-   "iTerm"
-   nil
-   ;; Change this for your terminal.
-   "iTerm" "-e" command))
+    "iTerm"
+    nil
+    ;; Change this for your terminal.
+    "iTerm" "-e" command))
 
 (defun sh/scratch ()
   (interactive)
-    (let ( (buf (get-buffer-create "*sh-scratch*")))
-      ;; Executes functions that would change the current buffer at
-      ;; buffer buf
-     (with-current-buffer buf
-       ;;; Set the new buffer to scratch mode
-       (sh-mode)
-       ;;; Pop to scratch buffer
-       (pop-to-buffer buf))))
+  (let ( (buf (get-buffer-create "*sh-scratch*")))
+    ;; Executes functions that would change the current buffer at
+    ;; buffer buf
+    (with-current-buffer buf
+                         ;;; Set the new buffer to scratch mode
+                         (sh-mode)
+                         ;;; Pop to scratch buffer
+                         (pop-to-buffer buf))))
 
 (defun select-current-word ()
   "Select the word under cursor.
@@ -275,8 +275,8 @@
   (interactive)
   (dolist (buf (buffer-list))
     (with-current-buffer buf
-      (when (buffer-file-name)
-        (revert-buffer t t t)))))
+                         (when (buffer-file-name)
+                           (revert-buffer t t t)))))
 
 (defun vsplit-last-buffer ()
   (interactive)

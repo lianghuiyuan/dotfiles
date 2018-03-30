@@ -17,17 +17,13 @@
                ;; for emacs 26+
                (which-key-setup-side-window-right)
                (which-key-mode 1)))
-(use-package helm-descbinds             ; Describe key bindings with Helm
+(use-package helm-descbinds
              :ensure t
              :init (helm-descbinds-mode))
 (use-package json-reformat
              :ensure t
              :defer t
              :bind (("C-x i" . json-reformat-region)))
-(use-package restclient
-             :ensure t
-             :defer t
-             :mode ("\\.http\\'" . restclient-mode))
 (use-package rainbow-mode
              :ensure t
              :defer t
@@ -37,39 +33,11 @@
              :ensure t
              :init
              (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-(use-package anzu
-             :ensure    anzu
-             :defer t
-             :config    (global-anzu-mode t)
-             :diminish  anzu-mode)
-
-;;  Emacs isearch with an overview. Oh, man!
-;; https://github.com/abo-abo/swiper
-;;(use-package swiper :ensure t)
-
-;; I strongly dislike systemd...
-;; but this mode is pretty handy when you need it.
-(use-package systemd :defer t :ensure t)
-
 (use-package comment-dwim-2
              :defer t
              :ensure t
              :bind ("M-;" . comment-dwim-2))
 
-(use-package avy
-             :ensure t
-             :init
-             :defer t
-             :bind ("C-c SPC" . avy-goto-char))
-
-;; (use-package multiple-cursors
-;;              :ensure t
-;;              :bind (("C-c n" . mc/mark-next-like-this)
-;;                     ("C-c l" . mc/edit-lines)
-;;                     ("C-c *" . mc/mark-all-like-this)
-;;                     ("C-c r" . set-rectangular-region-anchor)
-;;                     ("C-c e" . mc/edit-ends-of-lines)
-;;                     ("C-c a" . mc/edit-beginnings-of-lines)))
 (use-package multiple-cursors
              :ensure t
              :bind (("C-c C-. *"   . mc/mark-all-dwim)
@@ -95,7 +63,6 @@
              :bind
              ("C-x C-f" . helm-find-files)
              ("C-x b" . helm-mini)
-             ;("C-h i" . helm-info-emacs)
              :commands helm-mode
              :init (progn
                      ;; for os-x add the line
@@ -124,15 +91,11 @@
                     ("C-\\" . hs-toggle-hiding)
                     ("M-\\" . hs-hide-all)
                     ("M-=" . hs-show-all))
-             ;("M-+" . hs-show-all))
              :init
              (progn
                (defun my/enable-hs-minor-mode ()
                  (interactive)
                  (hs-minor-mode t))
-               ;; (add-hook 'javascript-mode-hook 'my/enable-hs-minor-mode)
-               ;; (add-hook 'js-mode-hook 'my/enable-hs-minor-mode)
-               ;; (add-hook 'java-mode-hook 'my/enable-hs-minor-mode)
                (add-hook 'prog-mode-hook 'my/enable-hs-minor-mode))
              :config
              (progn
@@ -169,10 +132,6 @@
              ;; To verify just do C-h v flycheck-eslintrc
              (setq flycheck-eslintrc "~/.eslintrc"))
 
-(use-package ediff
-             :config
-             (setq ediff-split-window-function 'split-window-horizontally
-                   ediff-window-setup-function 'ediff-setup-windows-plain))
 (use-package ag
              :ensure t
              :defer t
@@ -282,8 +241,6 @@
              :init
              (global-company-mode)
              :config
-             ;(setq company-tooltip-common-selection ((t (:inherit company-tooltip-selection :background "yellow2" :foreground "#c82829"))))
-             ;(setq company-tooltip-selection ((t (:background "yellow2"))))
              (setq company-idle-delay 0.2)
              (setq company-selection-wrap-around t)
              (define-key company-active-map [tab] 'company-complete)
@@ -369,102 +326,11 @@
              (progn
                (add-hook 'dired-initial-position-hook 'dired-k)))
 
-
-;; Open ssh; or open in su(do).
-;; Normally: C-x C-f /path/to/file
-;; Through ssh: C-x C-f /ssh:username@myhost.univ:/path/to/file
-;; Using sudo: C-x C-f /su::/etc/hosts
-(use-package tramp
-             :ensure nil ;; package is bundled with emacs
-             :init
-             ;; use ssh as transfer method
-             (setq tramp-default-method "ssh")
-             (setq tramp-default-method "plink")
-             (setq tramp-default-user "myname")
-             ;; workaround for long ControlPath on darwin
-             ;; https://trac.macports.org/ticket/29794
-             (when (eq system-type 'darwin)
-               (setq tramp-ssh-controlmaster-options
-                     "-o ControlPath=/tmp/%%r@%%h:%%p -o ControlMaster=auto -o ControlPersist=no"))
-
-             ;; disable vc integration for remote files
-             (setq vc-ignore-dir-regexp
-                   (format "\\(%s\\)\\|\\(%s\\)"
-                           vc-ignore-dir-regexp
-                           tramp-file-name-regexp))
-             :bind
-             (("C-x +" . sudo-find-file)
-              ("C-x !" . sudo-current-file))
-             :config
-             ;; make sudo:remote-host work as expected
-             (add-to-list 'tramp-default-proxies-alist '(nil "\\`root\\'" "/ssh:%h:"))
-             (add-to-list 'tramp-default-proxies-alist
-                          '((regexp-quote (system-name)) nil nil))
-
-             (defun sudo-prefix-p (prefix)
-               "Return t if PREFIX is a sudo prefix."
-               (or (string-equal prefix "/sudo") (string-equal prefix "/sudo:")))
-
-             (defun ssh-prefix-p (prefix)
-               "Return t if PREFIX is a ssh prefix."
-               (string-equal prefix "/ssh"))
-
-             (defun sudo-file-name (filename)
-               "Return FILENAME with a sudo prefix.
-               If FILENAME already has a sudo prefix, do nothing. If FILENAME is
-               accessed over SSH, prefix it with \"/sudo:\". Otherwise, assume
-               FILENAME is a local path and prefix it with \"/sudo::\"."
-               (let* ((splitname (split-string filename ":"))
-                      (prefix (car splitname))
-                      (ssh-p (ssh-prefix-p prefix))
-                      (sudo-p (sudo-prefix-p prefix)))
-                 (if sudo-p
-                   filename
-                   (let ((sudo-prefix (if ssh-p "/sudo" "/sudo:"))
-                         (components (if ssh-p (cdr splitname) splitname)))
-                     (mapconcat 'identity (cons sudo-prefix components) ":")))))
-
-               (defun sudo-find-file (&optional arg)
-                 "Find file and open it with sudo.
-                 With a prefix ARG prompt edit currently visited file using sudo."
-                 (interactive "P")
-                 (if arg
-                   (find-alternate-file (sudo-file-name buffer-file-name))
-                   (find-file (sudo-file-name (ido-read-file-name "Find file with sudo: ")))))
-
-                 (defun sudo-current-file ()
-                   (interactive)
-                   (sudo-find-file t)))
-
-(use-package linum-off :ensure t)
-(use-package nlinum :ensure t :after linum-off
-             :config
-             (advice-add 'nlinum-mode :around
-                         (lambda (orig-f &rest args)
-                           (unless (or (minibufferp)
-                                       (or
-                                         (eq major-mode 'treemacs-mode)
-                                         (memq major-mode linum-disabled-modes-list))
-                                       (string-match "*" (buffer-name)))
-                             (apply orig-f args))))
-             (custom-set-faces '(linum ((t :height 0.9))))
-             (global-nlinum-mode))
-
 ;; UI
-;(use-package monokai-theme
-;             :ensure monokai-theme
-;             :config
-;             (progn (load-theme 'monokai t)))
 (use-package material-theme
              :ensure t
              :config
              (load-theme 'material 'no-confirm))
-
-(use-package zenburn-theme
-             :ensure t
-             :disabled t
-             :init
-             (load-theme 'zenburn 'no-confirm))
 
 (use-package solarized-theme
              :ensure t
@@ -472,30 +338,10 @@
              :init
              (load-theme 'solarized-light 'no-confirm))
 
-(use-package leuven-theme
-             :ensure t
-             :disabled t
-             :init (load-theme 'leuven 'no-confirm))
-
-(use-package faff-theme
-             :ensure t
-             :disabled t
-             :init (load-theme 'faff 'no-confirm))
-
-(use-package atom-one-dark-theme
-             :ensure t
-             :disabled t
-             :init (load-theme 'atom-one-dark 'no-confirm))
-
 (use-package monokai-theme
              :ensure t
              :disabled t
              :init (load-theme 'monokai 'no-confirm))
-
-(use-package atom-one-dark-theme
-             :ensure t
-             :disabled t
-             :init (load-theme 'atom-one-dark 'no-confirm))
 
 (load-theme 'monokai t)
 
@@ -535,5 +381,21 @@
                    ;;spaceline-buffer-id-p nil
                    spaceline-minor-modes-separator nil)
              (powerline-reset))
+
+;; ======================= depreciated ==========================
+;;(use-package restclient
+;;             :ensure t
+;;             :defer t
+;;             :mode ("\\.http\\'" . restclient-mode))
+;;(use-package anzu
+;;             :ensure    anzu
+;;             :defer t
+;;             :config    (global-anzu-mode t)
+;;             :diminish  anzu-mode)
+;;(use-package avy
+;;             :ensure t
+;;             :init
+;;             :defer t
+;;             :bind ("C-c SPC" . avy-goto-char))
 
 (provide 'init-pkgs)
