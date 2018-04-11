@@ -157,6 +157,35 @@
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode)) ;; User customizations file
 (add-to-list 'auto-mode-alist '("\\.hrl" . erlang-mode)) ;; User customizations file
 
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:background "black" :foreground "grey70"))))
+ '(font-lock-builtin-face ((t (:foreground "grey50"))))
+ '(font-lock-comment-face ((t (:foreground "darkgreen"))))
+ '(font-lock-constant-face ((t (:foreground "grey50"))))
+ '(font-lock-doc-face ((t (:foreground "grey50"))))
+ '(font-lock-doc-string-face ((t (:foreground "yellow2"))))
+ '(font-lock-function-name-face ((t (:foreground "SteelBlue"))))
+ '(font-lock-keyword-face ((t (:foreground "red"))))
+ '(font-lock-preprocessor-face ((t (:foreground "SteelBlue"))))
+ '(font-lock-reference-face ((t (:foreground "LightSkyBlue"))))
+ '(font-lock-string-face ((t (:foreground "yellow2"))))
+ '(font-lock-type-face ((t (:foreground "violet"))))
+ '(font-lock-variable-name-face ((t (:foreground "orange"))))
+ '(font-lock-warning-face ((t (:foreground "grey50"))))
+ '(isearch ((t (:background "yellow4" :foreground "black"))))
+ '(mode-line ((t (:background "grey90" :foreground "black"))))
+ '(zmacs-region ((t (:background "grey70" :foreground "black"))) t))
+
+(setq font-lock-mode t)
+(transient-mark-mode t)
+(set-cursor-color "pink")
+(put 'erase-buffer 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 ;;;----------------------------------------------------------------------------
 ;;; lua
 ;;;----------------------------------------------------------------------------
@@ -439,7 +468,9 @@
                 (("\\.erl$" . "erlang header")
                  nil
                  "%%%-------------------------------------------------------------------\n"
-                 "%%% Copyright (c) 2016-2017 MOLMC Enterprise, Inc. (http://intoyun.com)\n"
+                 "%%% @Copyright (c) 2016-2017 MOLMC Enterprise, Inc. (http://intoyun.com)\n"
+                 "%%% @Author: robertzhouxh <robertzhouxh@gmail.com>\n"
+                 "%%% @Date   Created: " (format-time-string "%Y-%m-%d %H:%M:%S")"\n"
                  "%%%-------------------------------------------------------------------\n"
                  _
                  ))

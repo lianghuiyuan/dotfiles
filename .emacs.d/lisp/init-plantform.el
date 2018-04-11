@@ -23,11 +23,11 @@
 ;                    :width 'normal)
 
 
-(set-frame-font "Monaco:pixelsize=15")
+(set-frame-font "Monaco:pixelsize=13")
 (dolist (charset '(han kana symbol cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font)
                     charset
-                    (font-spec :family "Hiragino Sans GB" :size 15)
+                    (font-spec :family "Hiragino Sans GB" :size 13)
                     ))
 
 
