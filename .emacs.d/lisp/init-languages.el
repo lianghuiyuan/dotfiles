@@ -254,8 +254,8 @@
 (use-package go-mode
  :config
  (bind-keys :map go-mode-map
-  ("M-." . godef-jump)
-  ("M-," . pop-tag-mark)
+  ("C-," . godef-jump)
+  ("C-;" . pop-tag-mark)
   )
  (add-hook 'go-mode-hook '(lambda () (setq tab-width 2)))
  (setq gofmt-command "goimports")
