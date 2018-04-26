@@ -74,13 +74,13 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("3629b62a41f2e5f84006ff14a2247e679745896b5eaa1d5bcfbc904a3441b0cd" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "a4c9e536d86666d4494ef7f43c84807162d9bd29b0dfd39bdf2c3d845dcc7b2e" default)))
+    ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "12ae26f3493216be1bc0bbd28732671e8672bc3c631f1cea042a1040b136058a" "a4c9e536d86666d4494ef7f43c84807162d9bd29b0dfd39bdf2c3d845dcc7b2e" "3629b62a41f2e5f84006ff14a2247e679745896b5eaa1d5bcfbc904a3441b0cd" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (highlight-indentation crontab-mode material-theme yasnippet yaml-mode wsd-mode which-key web-mode use-package uimage telephone-line systemd swiper spaceline-all-the-icons solarized-theme restclient rainbow-mode rainbow-delimiters racket-mode pdf-tools paredit ox-ioslide org-page org-evil org-bullets nlinum multiple-cursors monokai-theme markdown-mode magit lua-mode linum-off latex-preview-pane js2-mode hippie-exp-ext highlight-symbol helm-projectile helm-descbinds helm-dash helm-ag gotham-theme go-eldoc git-gutter geiser flycheck exec-path-from-shell evil-surround evil-leader evil-indent-textobject dockerfile-mode docker dired-k dired+ company-go comment-dwim-2 color-identifiers-mode bpr avy auctex atom-one-dark-theme anzu ansible all-the-icons-dired ag ac-slime))))
+    (highlight-indentation dockerfile-mode docker geiser racket-mode ansible markdown-mode web-mode js2-mode go-eldoc company-go paredit color-identifiers-mode ac-slime slime lua-mode bpr yasnippet yaml-mode wsd-mode which-key use-package uimage rainbow-mode rainbow-delimiters ox-ioslide org-page org-evil org-bullets multiple-cursors magit json-reformat hippie-exp-ext highlight-symbol helm-projectile helm-descbinds helm-ag git-gutter flycheck exec-path-from-shell evil-surround evil-leader evil-indent-textobject dired-k diminish company comment-dwim-2 ag))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(linum ((t :height 0.9))))
+ )

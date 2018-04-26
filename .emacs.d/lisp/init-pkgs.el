@@ -3,7 +3,8 @@
 ;;; Code:
 
 ;; Utilities
-(use-package diminish :ensure t)
+(use-package diminish
+             :ensure t)
 (use-package exec-path-from-shell
              :ensure t
              :config
@@ -55,6 +56,7 @@
 
 (use-package hl-line
              :ensure t
+             :diminish hl-line
              :init     (add-hook 'prog-mode-hook 'hl-line-mode))
 
 (use-package helm
@@ -86,7 +88,7 @@
                        (define-key helm-map (kbd "C-k") 'helm-previous-line)
                        ))
 (use-package hideshow
-             :ensure t
+             :ensure nil
              :bind (("C-c TAB" . hs-toggle-hiding)
                     ("C-\\" . hs-toggle-hiding)
                     ("M-\\" . hs-hide-all)
@@ -110,7 +112,7 @@
 (use-package highlight-symbol
              :defer t
              :ensure t
-             :diminish ""
+             :diminish highlight-symbol
              :config
              (setq-default highlight-symbol-idle-delay 1.5))
 
@@ -152,6 +154,7 @@
 
 (use-package yasnippet
              :ensure t
+             :diminish yasnippet
              :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
              :init
              (progn
@@ -209,6 +212,7 @@
 
 (use-package git-gutter
              :ensure t
+             :diminish git-gutter
              :defer t
              :init
              (global-git-gutter-mode t)
@@ -237,6 +241,7 @@
 
 (use-package company
              :ensure t
+             :diminish company
              :defer t
              :init
              (global-company-mode)
@@ -249,7 +254,7 @@
 
 ;; reffer to http://jwintz.me/blog/2014/02/16/helm-dash-makes-you-efficient/
 (use-package helm-dash
-             :ensure t
+             :ensure nil
              :defines (helm-dash-docsets)
              :functions (esk-helm-dash-install
                           helm-dash-web
@@ -315,33 +320,17 @@
                           (set-face-background 'highlight-indentation-face "#e3e3d3")
                           (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
                           ))
-(use-package dired+
-             :ensure t
-             :commands (dired-jump)
-             :bind (("C-x C-j" . dired-jump)))
-
-(use-package dired-k
-             :ensure t
-             :config
-             (progn
-               (add-hook 'dired-initial-position-hook 'dired-k)))
-
 ;; UI
-(use-package solarized-theme
-             :ensure t
-             :disabled t
-             :init
-             (load-theme 'solarized-light 'no-confirm))
-
-(use-package monokai-theme
-             :ensure t
-             :disabled t
-             :init (load-theme 'monokai 'no-confirm))
-(load-theme 'monokai t)
-(use-package moody                      ; Tabs and ribbons for the mode line
-             :ensure t
-             :config
-             (moody-replace-mode-line-buffer-identification)
-             (moody-replace-vc-mode))
+;(use-package solarized-theme
+;             :ensure t
+;             :disabled t
+;             :init
+;             (load-theme 'solarized-light 'no-confirm))
+;
+;(use-package monokai-theme
+;             :ensure t
+;             :disabled t
+;             :init (load-theme 'monokai 'no-confirm))
+(load-theme 'wombat t)
 
 (provide 'init-pkgs)
