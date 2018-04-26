@@ -327,11 +327,6 @@
                (add-hook 'dired-initial-position-hook 'dired-k)))
 
 ;; UI
-(use-package material-theme
-             :ensure t
-             :config
-             (load-theme 'material 'no-confirm))
-
 (use-package solarized-theme
              :ensure t
              :disabled t
@@ -342,60 +337,11 @@
              :ensure t
              :disabled t
              :init (load-theme 'monokai 'no-confirm))
-
 (load-theme 'monokai t)
-
-;; ======================== mode bar ==============================================
-;; Icon package
-(use-package all-the-icons :ensure t)
-(use-package all-the-icons-dired
-             :after all-the-icons
-             :ensure t)
-
-;; Requirement of Spaceline
-(use-package powerline :ensure t)
-(use-package spaceline
+(use-package moody                      ; Tabs and ribbons for the mode line
              :ensure t
-             :after powerline
-             :init
-             (progn
-               ;; slant (requires srbg support)
-               (setq powerline-default-separator 'slant)
-               ;(setq powerline-default-separator 'wave)
-               (setq spaceline-workspace-numbers-unicode t)
-               (setq spaceline-separator-dir-left '(right . right))
-               (setq spaceline-separator-dir-right '(right . right))
-               (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-               (setq powerline-height 20))
              :config
-             (require 'spaceline-config)
-             (spaceline-toggle-major-mode-on)
-             (spaceline-toggle-minor-modes-off)
-             (spaceline-toggle-buffer-modified-on)
-             (spaceline-spacemacs-theme)
-             (spaceline-helm-mode)
-             (spaceline-compile)
-             (setq spaceline-buffer-encoding-abbrev-p nil
-                   spaceline-window-numbers-unicode t
-                   spaceline-line-column-p nil
-                   ;;spaceline-buffer-id-p nil
-                   spaceline-minor-modes-separator nil)
-             (powerline-reset))
-
-;; ======================= depreciated ==========================
-;;(use-package restclient
-;;             :ensure t
-;;             :defer t
-;;             :mode ("\\.http\\'" . restclient-mode))
-;;(use-package anzu
-;;             :ensure    anzu
-;;             :defer t
-;;             :config    (global-anzu-mode t)
-;;             :diminish  anzu-mode)
-;;(use-package avy
-;;             :ensure t
-;;             :init
-;;             :defer t
-;;             :bind ("C-c SPC" . avy-goto-char))
+             (moody-replace-mode-line-buffer-identification)
+             (moody-replace-vc-mode))
 
 (provide 'init-pkgs)

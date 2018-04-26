@@ -30,8 +30,8 @@
 (global-set-key (kbd "M-]") 'dumb-jump-go)
 (global-set-key (kbd "M-t") 'dumb-jump-back)
 
-(global-set-key (kbd "M-p") 'scroll-other-window-down)
-(global-set-key (kbd "M-n") 'scroll-other-window)
+(global-set-key (kbd "M-p") 'hold-line-scroll-up )
+(global-set-key (kbd "M-n") 'hold-line-scroll-down )
 
 (provide 'init-maps)
 ;;; init-maps.el ends here
