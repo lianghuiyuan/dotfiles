@@ -17,19 +17,17 @@
   ;; -----------------------------------------------------------------------------
 
 ; Set default font
-;(set-face-attribute 'default nil
-;                    :family "Source Code Pro"
-;                    :height 140
-;                    :weight 'normal
-;                    :width 'normal)
-
-
-(set-frame-font "Monaco:pixelsize=13")
-(dolist (charset '(han kana symbol cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-                    charset
-                    (font-spec :family "Hiragino Sans GB" :size 13)
-                    ))
+(set-face-attribute 'default nil
+                    :family "Source Code Pro"
+                    :height 140
+                    :weight 'normal
+                    :width 'normal)
+;(set-frame-font "Monaco:pixelsize=13")
+;(dolist (charset '(han kana symbol cjk-misc bopomofo))
+;  (set-fontset-font (frame-parameter nil 'font)
+;                    charset
+;                    (font-spec :family "Hiragino Sans GB" :size 13)
+;                    ))
 
 
 (if (executable-find "gls")
