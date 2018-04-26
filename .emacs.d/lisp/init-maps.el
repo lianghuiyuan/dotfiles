@@ -33,5 +33,8 @@
 (global-set-key (kbd "M-p") 'hold-line-scroll-up )
 (global-set-key (kbd "M-n") 'hold-line-scroll-down )
 
+(global-set-key (kbd "C-!") 'eshell-here)
+(global-set-key (kbd "C-#") 'eshell-x)
+
 (provide 'init-maps)
 ;;; init-maps.el ends here
