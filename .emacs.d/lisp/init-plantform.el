@@ -17,11 +17,11 @@
   ;; -----------------------------------------------------------------------------
 
 ; Set default font
-(set-face-attribute 'default nil
-                    :family "Source Code Pro"
-                    :height 140
-                    :weight 'normal
-                    :width 'normal)
+;(set-face-attribute 'default nil
+;                    :family "Source Code Pro"
+;                    :height 140
+;                    :weight 'normal
+;                    :width 'normal)
 ;(set-frame-font "Monaco:pixelsize=13")
 ;(dolist (charset '(han kana symbol cjk-misc bopomofo))
 ;  (set-fontset-font (frame-parameter nil 'font)

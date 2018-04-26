@@ -56,7 +56,7 @@
 
 (use-package hl-line
              :ensure t
-             :diminish hl-line
+             :diminish 'hl-line-mode
              :init     (add-hook 'prog-mode-hook 'hl-line-mode))
 
 (use-package helm
@@ -112,7 +112,6 @@
 (use-package highlight-symbol
              :defer t
              :ensure t
-             :diminish highlight-symbol
              :config
              (setq-default highlight-symbol-idle-delay 1.5))
 
@@ -154,7 +153,7 @@
 
 (use-package yasnippet
              :ensure t
-             :diminish yasnippet
+             :diminish 'yas-minor-mode
              :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
              :init
              (progn
@@ -241,7 +240,7 @@
 
 (use-package company
              :ensure t
-             :diminish company
+             :diminish 'company-mod
              :defer t
              :init
              (global-company-mode)
