@@ -16,6 +16,9 @@
   ;; setting font for mac system
   ;; -----------------------------------------------------------------------------
 
+;; font size
+(set-face-attribute 'default nil :height 140)
+
 ; Set default font
 ;(set-face-attribute 'default nil
 ;                    :family "Source Code Pro"
