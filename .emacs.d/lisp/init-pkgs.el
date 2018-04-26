@@ -38,27 +38,20 @@
              :defer t
              :ensure t
              :bind ("M-;" . comment-dwim-2))
-
-(use-package multiple-cursors
-             :ensure t
-             :bind (("C-c C-. *"   . mc/mark-all-dwim)
-                    ("C-c C-. C-." . mc/mark-all-like-this-dwim)
-                    ("C-c C-. n"   . mc/mark-next-like-this)
-                    ("C-c C-. p"   . mc/mark-previous-like-this)
-                    ("C-c C-. a"   . mc/mark-all-like-this)
-                    ("C-c C-. N"   . mc/mark-next-symbol-like-this)
-                    ("C-c C-. P"   . mc/mark-previous-symbol-like-this)
-                    ("C-c C-. A"   . mc/mark-all-symbols-like-this)
-                    ("C-c C-. f"   . mc/mark-all-like-this-in-defun)
-                    ("C-c C-. l"   . mc/edit-lines)
-                    ("C-c C-. e"   . mc/edit-ends-of-lines)
-                    ("C-M-<mouse-1>" . mc/add-cursor-on-click)))
-
-(use-package hl-line
-             :ensure t
-             :diminish 'hl-line-mode
-             :init     (add-hook 'prog-mode-hook 'hl-line-mode))
-
+;(use-package multiple-cursors
+;             :ensure t
+;             :bind (("C-c C-. *"   . mc/mark-all-dwim)
+;                    ("C-c C-. C-." . mc/mark-all-like-this-dwim)
+;                    ("C-c C-. n"   . mc/mark-next-like-this)
+;                    ("C-c C-. p"   . mc/mark-previous-like-this)
+;                    ("C-c C-. a"   . mc/mark-all-like-this)
+;                    ("C-c C-. N"   . mc/mark-next-symbol-like-this)
+;                    ("C-c C-. P"   . mc/mark-previous-symbol-like-this)
+;                    ("C-c C-. A"   . mc/mark-all-symbols-like-this)
+;                    ("C-c C-. f"   . mc/mark-all-like-this-in-defun)
+;                    ("C-c C-. l"   . mc/edit-lines)
+;                    ("C-c C-. e"   . mc/edit-ends-of-lines)
+;                    ("C-M-<mouse-1>" . mc/add-cursor-on-click)))
 (use-package helm
              :ensure t
              :defer t
@@ -87,28 +80,6 @@
                        (define-key helm-map (kbd "C-j") 'helm-next-line)
                        (define-key helm-map (kbd "C-k") 'helm-previous-line)
                        ))
-(use-package hideshow
-             :ensure nil
-             :bind (("C-c TAB" . hs-toggle-hiding)
-                    ("C-\\" . hs-toggle-hiding)
-                    ("M-\\" . hs-hide-all)
-                    ("M-=" . hs-show-all))
-             :init
-             (progn
-               (defun my/enable-hs-minor-mode ()
-                 (interactive)
-                 (hs-minor-mode t))
-               (add-hook 'prog-mode-hook 'my/enable-hs-minor-mode))
-             :config
-             (progn
-               (defvar hs-special-modes-alist
-                 (mapcar 'purecopy
-                         '((c-mode "{" "}" "/[*/]" nil nil)
-                           (c++-mode "{" "}" "/[*/]" nil nil)
-                           (bibtex-mode ("@\\S(*\\(\\s(\\)" 1))
-                           (js-mode "{" "}" "/[*/]" nil)
-                           (javascript-mode  "{" "}" "/[*/]" nil))))))
-
 (use-package highlight-symbol
              :defer t
              :ensure t
@@ -252,73 +223,73 @@
              (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 ;; reffer to http://jwintz.me/blog/2014/02/16/helm-dash-makes-you-efficient/
-(use-package helm-dash
-             :ensure nil
-             :defines (helm-dash-docsets)
-             :functions (esk-helm-dash-install
-                          helm-dash-web
-                          helm-dash-go
-                          helm-dash-installed-docsets)
-             :commands (helm-dash-at-point esk-helm-dash-install)
-             :preface
-             (progn
-               (defvar esk-dash-docsets
-                 ;'("Bash" "C" "C++" "Go" "Redis" "Ansible" "UnderscoreJS" "JavaScript" "React"))
-                 '("Bash" "Go"))
+;(use-package helm-dash
+;             :ensure t
+;             :defines (helm-dash-docsets)
+;             :functions (esk-helm-dash-install
+;                          helm-dash-web
+;                          helm-dash-go
+;                          helm-dash-installed-docsets)
+;             :commands (helm-dash-at-point esk-helm-dash-install)
+;             :preface
+;             (progn
+;               (defvar esk-dash-docsets
+;                 ;'("Bash" "C" "C++" "Go" "Redis" "Ansible" "UnderscoreJS" "JavaScript" "React"))
+;                 '("Bash" "Go"))
+;
+;               (defun esk-helm-dash-install (docset-name)
+;                 (message (format "Installing helm-dash docset '%s'" docset-name))
+;                 (unless (file-exists-p (concat (concat helm-dash-docsets-path docset-name) ".docset"))
+;                   (helm-dash-install-docset docset-name)))
+;
+;               (defun esk-dash-limit (docsets-names)
+;                 (set (make-local-variable 'helm-dash-docsets) docsets-names))
+;
+;               (defun helm-dash-bash () (esk-dash-limit '("Bash")))
+;               (defun helm-dash-go () (esk-dash-limit '("Go" "Redis")))
+;               (defun helm-dash-yaml () (esk-dash-limit '("Ansible")))
+;               (defun helm-dash-c () (esk-dash-limit '("c")))
+;               (defun helm-dash-web () (esk-dash-limit '("UnderscoreJS" "JavaScript" "React")))
+;
+;               :init
+;               (progn
+;                 (setq helm-dash-docsets-path "~/.emacs.d/docsets/")
+;                 (after sh-script (add-hook 'sh-mode-hook 'helm-dash-bash))
+;                 (after go-mode (add-hook 'go-mode-hook 'helm-dash-go))
+;                 ;(after yaml-mode (add-hook 'yaml-mode-hook 'helm-dash-yaml))
+;                 ;(after c-mode (add-hook 'c-mode-hook 'helm-dash-c))
+;                 ;(after web-mode (add-hook 'web-mode-hook 'helm-dash-web))
+;                 )
+;               :config
+;               (progn
+;                 (defun eww-split (url)
+;                   (interactive)
+;                   (select-window (split-window-right))
+;                   (eww url))
+;                 (setq helm-dash-browser-func 'eww-split)
+;                 ;(setq helm-dash-browser-func 'eww)
+;                 (add-hook 'prog-mode-hook
+;                           (lambda ()
+;                             (interactive)
+;                             (setq helm-current-buffer (current-buffer))))
+;                 (dolist (docset esk-dash-docsets)
+;                   (esk-helm-dash-install docset))
+;                 )))
 
-               (defun esk-helm-dash-install (docset-name)
-                 (message (format "Installing helm-dash docset '%s'" docset-name))
-                 (unless (file-exists-p (concat (concat helm-dash-docsets-path docset-name) ".docset"))
-                   (helm-dash-install-docset docset-name)))
-
-               (defun esk-dash-limit (docsets-names)
-                 (set (make-local-variable 'helm-dash-docsets) docsets-names))
-
-               (defun helm-dash-bash () (esk-dash-limit '("Bash")))
-               (defun helm-dash-go () (esk-dash-limit '("Go" "Redis")))
-               (defun helm-dash-yaml () (esk-dash-limit '("Ansible")))
-               (defun helm-dash-c () (esk-dash-limit '("c")))
-               (defun helm-dash-web () (esk-dash-limit '("UnderscoreJS" "JavaScript" "React")))
-
-               :init
-               (progn
-                 (setq helm-dash-docsets-path "~/.emacs.d/docsets/")
-                 (after sh-script (add-hook 'sh-mode-hook 'helm-dash-bash))
-                 (after go-mode (add-hook 'go-mode-hook 'helm-dash-go))
-                 ;(after yaml-mode (add-hook 'yaml-mode-hook 'helm-dash-yaml))
-                 ;(after c-mode (add-hook 'c-mode-hook 'helm-dash-c))
-                 ;(after web-mode (add-hook 'web-mode-hook 'helm-dash-web))
-                 )
-               :config
-               (progn
-                 (defun eww-split (url)
-                   (interactive)
-                   (select-window (split-window-right))
-                   (eww url))
-                 (setq helm-dash-browser-func 'eww-split)
-                 ;(setq helm-dash-browser-func 'eww)
-                 (add-hook 'prog-mode-hook
-                           (lambda ()
-                             (interactive)
-                             (setq helm-current-buffer (current-buffer))))
-                 (dolist (docset esk-dash-docsets)
-                   (esk-helm-dash-install docset))
-                 )))
-
-(use-package yaml-mode
-             :ensure t
-             :mode ("\\.yml$" . yaml-mode)
-             :config
-             (use-package highlight-indentation
-                          ;:load-path "vendor/Highlight-Indentation-for-Emacs"
-                          :ensure t
-                          :init
-                          (setq highlight-indentation-offset 2)
-                          :config
-                          (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
-                          (set-face-background 'highlight-indentation-face "#e3e3d3")
-                          (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-                          ))
+;(use-package yaml-mode
+;             :ensure t
+;             :mode ("\\.yml$" . yaml-mode)
+;             :config
+;             (use-package highlight-indentation
+;                          ;:load-path "vendor/Highlight-Indentation-for-Emacs"
+;                          :ensure t
+;                          :init
+;                          (setq highlight-indentation-offset 2)
+;                          :config
+;                          (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+;                          (set-face-background 'highlight-indentation-face "#e3e3d3")
+;                          (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+;                          ))
 ;; UI
 ;(use-package solarized-theme
 ;             :ensure t
