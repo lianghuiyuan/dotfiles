@@ -24,8 +24,8 @@
 (global-set-key (kbd "s-k") 'windmove-up)
 (global-set-key (kbd "s-j") 'windmove-down)
 (global-set-key (kbd "s-h") 'windmove-left)
-(global-set-key (kbd "M-.") 'godef-jump)
-(global-set-key (kbd "M-,") 'pop-tag-mark)
+(global-set-key (kbd "M-,") 'godef-jump)
+(global-set-key (kbd "M-'") 'pop-tag-mark)
 
 (global-set-key (kbd "M-]") 'dumb-jump-go)
 (global-set-key (kbd "M-t") 'dumb-jump-back)

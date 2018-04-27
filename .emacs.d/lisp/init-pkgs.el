@@ -35,10 +35,7 @@
              :ensure t
              :init
              (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-(use-package comment-dwim-2
-             :defer t
-             :ensure t
-             :bind ("M-;" . comment-dwim-2))
+(use-package comment-dwim-2 :ensure t)
 ;(use-package multiple-cursors
 ;             :ensure t
 ;             :bind (("C-c C-. *"   . mc/mark-all-dwim)
