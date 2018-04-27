@@ -111,6 +111,7 @@ leader is ","
 
 leader is ","
 
+```
 1.  leader + 以下快捷键
     ","  'other-window                             // 切换窗口
     "a=" 'my-align-single-equals                   // 对其==
@@ -132,13 +133,40 @@ leader is ","
     "t"  'gtags-reindex                            // 建立tags
     "w"  'save-buffer                              // 保存buf
     "x"  'helm-M-x                                 // 进入emacs cmdline
+```
 
 2. 关于编程时的函数定义跳转， 提供了三种方式(M 代表Meta键， C 代表 Ctr 键)
 
+
+```
 2.1 常规的ggtags： ,t  生成 TAG 文件， 然后可以用 C-] 跳转到定义处， C-t 跳转回来
 2.2 引入了 dumb-jump, 用户不需要生成 TAG 文件， 直接可以用 M-] 跳转到函数定义处， M-t 跳转回来
 2.3 针对golang语言， 额外提供了精准跳转， 同样不需要生成TAG文件， M-, 跳转到函数定义处， M-t 跳转回来
+```
 
+3. 其他快捷键参考
+
+```
+3.1 分屏
+(global-set-key (kbd "C-x 2") 'vsplit-last-buffer)  
+(global-set-key (kbd "C-x 3") 'hsplit-last-buffer)
+
+3.2 调整分屏的大小
+(global-set-key [M-left] 'shrink-window-horizontally)
+(global-set-key [M-right] 'enlarge-window-horizontally)
+(global-set-key [M-up] 'shrink-window)
+(global-set-key [M-down] 'enlarge-window)
+(global-set-key (kbd "M-t") 'dumb-jump-back)
+
+3.3 光标行不动， 滚屏
+(global-set-key (kbd "M-p") 'hold-line-scroll-up )
+(global-set-key (kbd "M-n") 'hold-line-scroll-down )
+
+3.4 随时生成一个 eshell 来进入shell操作， 不用再去终端里了, 方便
+(global-set-key (kbd "C-!") 'eshell-here)
+(global-set-key (kbd "C-#") 'eshell-x)
+
+```
 ### 对不同语言的支持
 
 修改 lisp/init-languages.el

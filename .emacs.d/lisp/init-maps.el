@@ -10,20 +10,14 @@
 (define-key global-map (kbd "s-e")     'eval-buffer)
 (define-key global-map (kbd "C-}")     'jcf-split-window)
 
-;(define-key global-map (kbd "C-x 2")   'x-split-window-below)
-;(define-key global-map (kbd "C-x 3")   'x-split-window-right)
 (global-set-key (kbd "C-x 2") 'vsplit-last-buffer)
 (global-set-key (kbd "C-x 3") 'hsplit-last-buffer)
-(global-set-key [M-left] 'shrink-window-horizontally) ;C+← 横のWindowを狭める
-(global-set-key [M-right] 'enlarge-window-horizontally) ;C+→ 横のWindowを広げる
-(global-set-key [M-up] 'shrink-window) ;C+← 横のWindowを狭める
-(global-set-key [M-down] 'enlarge-window) ;C+→ 横のWindowを広げる
 
-(evil-define-key 'insert global-map (kbd "C-v") 'yank)
+(global-set-key [M-left] 'shrink-window-horizontally)
+(global-set-key [M-right] 'enlarge-window-horizontally)
+(global-set-key [M-up] 'shrink-window)
+(global-set-key [M-down] 'enlarge-window)
 
-(global-set-key (kbd "s-k") 'windmove-up)
-(global-set-key (kbd "s-j") 'windmove-down)
-(global-set-key (kbd "s-h") 'windmove-left)
 (global-set-key (kbd "M-,") 'godef-jump)
 (global-set-key (kbd "M-'") 'pop-tag-mark)
 
