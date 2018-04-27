@@ -299,52 +299,6 @@
              :defer t
              :init (add-hook 'yaml-mode-hook '(lambda () (ansible 1))))
 
-
-;;----------------------------------------------------------------------------
-;; racket
-;;----------------------------------------------------------------------------
-(use-package racket-mode
-             :mode ("\\.rkt\\'" . racket-mode)
-             :interpreter ("racket" . racket-mode)
-             :config
-             (define-abbrev-table 'racket-mode-abbrev-table
-                                  '(("lambda" "λ" nil 1)))
-             (setq default-abbrev-mode t)
-             :ensure t)
-
-(mapc (lambda (pr) (put (car pr) 'racket-indent-function (cdr pr)))
-      '((conde . 0)
-        (fresh . 1)
-        (run . 1)
-        (run* . 1)
-        (run . 2)))
-
-(use-package geiser
-             :config
-             (add-hook 'racket-mode-hook (lambda () (geiser-mode t)))
-             :ensure t)
-(setq geiser-active-implementations '(racket))
-(add-hook 'racket-mode-hook      #'racket-unicode-input-method-enable)
-(add-hook 'racket-repl-mode-hook #'racket-unicode-input-method-enable)
-
-
-;;----------------------------------------------------------------------------
-;; docker
-;;----------------------------------------------------------------------------
-;; docker-mode
-(use-package docker
-             :ensure t
-             :config (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode)))
-(use-package dockerfile-mode
-             :ensure t
-             :mode "Dockerfile.*\\'")
-
-(add-hook 'prog-common-hook
-          (lambda ()
-            (font-lock-add-keywords nil
-                                    '(("\\<\\(FIX\\|FIXME\\|TODO\\|BUG\\|HACK\\):" 1 font-lock-warning-face t)))))
-
-
 ;;----------------------------------------------------------------------------
 ;; auto insert
 ;;----------------------------------------------------------------------------
