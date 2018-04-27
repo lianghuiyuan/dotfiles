@@ -111,8 +111,7 @@ leader is ","
 
 leader is ","
 
-    leader +
-    "."  'avy-goto-char-2                          // 精确快速移动光标
+1.  leader + 以下快捷键
     ","  'other-window                             // 切换窗口
     "a=" 'my-align-single-equals                   // 对其==
     "b"   'projectile-switch-to-buffer             // 切换buffer
@@ -133,6 +132,12 @@ leader is ","
     "t"  'gtags-reindex                            // 建立tags
     "w"  'save-buffer                              // 保存buf
     "x"  'helm-M-x                                 // 进入emacs cmdline
+
+2. 关于编程时的函数定义跳转， 提供了三种方式(M 代表Meta键， C 代表 Ctr 键)
+
+2.1 常规的ggtags： ,t  生成 TAG 文件， 然后可以用 C-] 跳转到定义处， C-t 跳转回来
+2.2 引入了 dumb-jump, 用户不需要生成 TAG 文件， 直接可以用 M-] 跳转到函数定义处， M-t 跳转回来
+2.3 针对golang语言， 额外提供了精准跳转， 同样不需要生成TAG文件， M-, 跳转到函数定义处， M-t 跳转回来
 
 ### 对不同语言的支持
 
