@@ -12,6 +12,7 @@
              (exec-path-from-shell-copy-env "GOPATH"))
 (use-package which-key
              :ensure t
+             :diminish which-key-mode
              :defer 10
              :config
              (progn
@@ -54,6 +55,7 @@
 ;                    ("C-M-<mouse-1>" . mc/add-cursor-on-click)))
 (use-package helm
              :ensure t
+             :diminish helm-mode
              :defer t
              :bind
              ("C-x C-f" . helm-find-files)
@@ -182,7 +184,7 @@
 
 (use-package git-gutter
              :ensure t
-             :diminish git-gutter
+             :diminish git-gutter+-mode
              :defer t
              :init
              (global-git-gutter-mode t)
@@ -200,6 +202,7 @@
 (use-package projectile
              :defer t
              :ensure t
+             :diminish projectile-mode
              :config
              (projectile-global-mode)
              (setq projectile-enable-caching t))
@@ -211,7 +214,7 @@
 
 (use-package company
              :ensure t
-             :diminish 'company-mod
+             :diminish 'company-mode
              :defer t
              :init
              (global-company-mode)
@@ -221,6 +224,14 @@
              (define-key company-active-map [tab] 'company-complete)
              (define-key company-active-map (kbd "C-n") 'company-select-next)
              (define-key company-active-map (kbd "C-p") 'company-select-previous))
+
+(use-package paredit
+             :ensure t
+             :diminish paredit-mode
+             :init
+             (add-hook 'erlang-mode-hook 'paredit-mode)
+             (add-hook 'go-mode-hook 'paredit-mode)
+             (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
 
 ;; reffer to http://jwintz.me/blog/2014/02/16/helm-dash-makes-you-efficient/
 ;(use-package helm-dash

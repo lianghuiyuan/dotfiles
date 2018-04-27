@@ -213,25 +213,6 @@
              (add-hook 'emacs-lisp-mode-hook 'color-identifiers-mode)
              :diminish color-identifiers-mode)
 
-;(use-package lisp-mode
-;             :bind (:map emacs-lisp-mode-map ("C-c C-z" . ielm))
-;             :init
-;             (defconst lisp--prettify-symbols-alist
-;                       '(("lambda"  . ?λ)      ; Shrink this
-;                         ("."       . ?•)))    ; Enlarge this
-;             :config
-;             (add-hook 'emacs-lisp-mode-hook 'global-prettify-symbols-mode)
-;             (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-;             (add-hook 'emacs-lisp-mode-hook 'activate-aggressive-indent))
-
-;; refer https://www.emacswiki.org/emacs/PareditCheatsheet
-(use-package paredit
-             :ensure t
-             :init
-             (add-hook 'erlang-mode-hook 'paredit-mode)
-             (add-hook 'go-mode-hook 'paredit-mode)
-             (add-hook 'emacs-lisp-mode-hook 'paredit-mode))
-
 ;;----------------------------------------------------------------------------
 ;; Golang
 ;; go get github.com/rogpeppe/godef
