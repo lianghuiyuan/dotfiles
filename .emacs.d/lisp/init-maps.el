@@ -8,7 +8,6 @@
 (define-key global-map (kbd "C-c u")   'insert-char) ;; "u" for Unicode, get it?
 (define-key global-map (kbd "C-c s")   (lambda () (interactive) (ansi-term "zsh")))
 (define-key global-map (kbd "s-e")     'eval-buffer)
-(define-key global-map (kbd "C-}")     'jcf-split-window)
 
 (global-set-key (kbd "C-x 2") 'vsplit-last-buffer)
 (global-set-key (kbd "C-x 3") 'hsplit-last-buffer)
@@ -17,6 +16,11 @@
 (global-set-key [M-right] 'enlarge-window-horizontally)
 (global-set-key [M-up] 'shrink-window)
 (global-set-key [M-down] 'enlarge-window)
+
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
 
 (global-set-key (kbd "M-,") 'godef-jump)
 (global-set-key (kbd "M-'") 'pop-tag-mark)
