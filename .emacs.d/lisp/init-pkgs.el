@@ -123,12 +123,14 @@
 
 (use-package yasnippet
              :ensure t
-             :diminish 'yas-minor-mode
-             :mode ("/\\.emacs\\.d/snippets/" . snippet-mode)
+             :defer t
+             ;:diminish yas-minor-mode
              :init
+             (yas-global-mode)
+             :config
              (progn
-               (setq yas-verbosity 3)
-               (yas-global-mode 1)))
+               (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "snippets"))
+               ))
 
 ;(use-package hippie-expand
 (use-package hippie-exp-ext
