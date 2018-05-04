@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
 # name: date
-# contributor: rho
-# key: date
+# key: <da
 # --
-#+DATE: `(format-time-string "%A, %b %d %Y" (current-time))`
+#+DATE: ${1:Year}:${2:month}:${3:day}

@@ -130,6 +130,7 @@
              :config
              (progn
                (add-to-list 'yas-snippet-dirs (concat user-emacs-directory "snippets"))
+               ;; refer https://github.com/AndreaCrotti/yasnippet-snippets
                ))
 
 ;(use-package hippie-expand
