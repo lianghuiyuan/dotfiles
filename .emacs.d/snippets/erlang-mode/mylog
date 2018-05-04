@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# contributor : robert zhou <robertzhouxh@gmail.com>
+# name: mylog
+# key: mylog
+# --
+
+-define(ITY_DEBUG, $1).
+
+-ifdef(ITY_DEBUG).
+
+-define(ILOG_DBG(Arg), lager:debug("[~p:~p#~p] ~p -> ~p~n~n", [?MODULE, ?FUNCTION_NAME, ?LINE, ??Arg, Arg])).
+-define(ILOG_FMT(Fmt, Arg), lager:debug("[~p:~p#~p]" ++ Fmt ++ "~n~n", [?MODULE, ?FUNCTION_NAME, ?LINE, Arg])).
+-define(ASSIGN(Var, Exp), Var = Exp,
+         lager:debug("~s:~s -> ~p~n", [??Var, ??Exp, Var])).
+
+-else.
+
+-define(ASSIGN(Var, Exp), Var = Exp).
+-define(ILOG_DBG(Arg), void).
+-define(ILOG_FMT(Fmt, Arg), void).
+
+-endif.
+
+-define(ILOG_ERR(Arg), (fun(P) -> lager:error("[~p:~p#~p] ~p~n~n", [?MODULE, ?FUNCTION_NAME, ?LINE, P]), P end)(Arg)).
+
+$0
