@@ -276,7 +276,7 @@ cat > "$SS_CFG" <<EOF
   "local_port":1080,
   "password":"password",
   "timeout":300,
-  "method":"aes-256-cfb",
+  "method":"chacha20-ietf-poly1305",
   "fast_open": false
 }
 EOF

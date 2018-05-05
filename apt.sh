@@ -94,8 +94,34 @@ select yn in "Yes" "No"; do
   esac
 done
 
-echo -e "\033[40;32m install shadowsocks client \033[0m"
-sudo -H pip install shadowsocks
+read -p "do you want to deploy your own G-F-W vps and use shadowsocks client of python version ? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  #sudo -H pip install shadowsocks
+  pip install --upgrade git+https://github.com/shadowsocks/shadowsocks.git@master
+  echo -e "\033[40;32m deploy the proxy server on your remote vps: server[1,2,3] \033[0m"
+  SS_CFG="/etc/shadowsocks.json"
+  if [ ! -f "$SS_CFG" ]; then
+    echo "no found shadowsocks config file, touching file: /etc/shadowsocks.json";
+    sudo touch "$SS_CFG"
+  fi
+  sudo chmod a+w "$SS_CFG"
+
+cat > "$SS_CFG" <<EOF
+{
+  "server":["server1","server2"],
+  "server_port":8080,
+  "local_address":"127.0.0.1",
+  "local_port":1080,
+  "password":"password",
+  "timeout":300,
+  "method":"chacha20-ietf-poly1305",
+  "fast_open": false
+}
+EOF
+
+  echo -e "\033[40;32m you can start the shadowsocks server on remote vps: sudo ssserver -c /etc/shadowsocks.json -d start \033[0m"
+  echo -e "\033[40;32m you can start the shadowsocks client on your local laptop: sslocal -c /etc/shadowsocks.json \033[0m"
+fi;
 
 echo -e "\033[40;32m install the fzf \033[0m"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
