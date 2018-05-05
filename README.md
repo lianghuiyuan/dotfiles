@@ -107,6 +107,8 @@ leader is ","
 
 ./emacs.sh
 
+注意： 第一次打开emacs 之后需要等待几分钟， emacs 会自动安装好所有的插件！！！
+
 ### 常用emacs 快捷键
 
 leader is ","
