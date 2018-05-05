@@ -42,7 +42,8 @@ fi
 #PATH="/usr/local/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 # use Unix Style cmd for mac-osx
-if brew list | grep coreutils > /dev/null; then
+
+if which brew &> /dev/null && brew list | grep coreutils > /dev/null; then
   PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 fi
 [ -d "/usr/texbin" ]               && PATH="/usr/texbin:$PATH"
