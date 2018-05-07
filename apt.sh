@@ -76,6 +76,7 @@ apps=(
     m4
     wget
     curl
+    openssh-server
 
     # proxychains
     # privoxy
@@ -85,35 +86,36 @@ apps=(
     python-pip
     python-dev
 
-    ## for erlang
-    # ./configure --without-wx
-    wx-common
-    libwxgtk3.0-dev
-    libwxbase3.0
+    ## for erlang: refer:
+    #####$ wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
+    #####$ sudo dpkg -i erlang-solutions_1.0_all.deb
+    #####$ sudo apt-get update
+    #####$ sudo apt-get upgrade -y
+    #####$ sudo apt-get install -y erlang
+    #### instead of follows: ######
+    #wx-common
+    #libwxgtk3.0-dev
+    #libwxbase3.0
 
-    unixodbc-dev
-    g++
-    fop
-    xsltproc
-    xmllint
-    libxml2-utils
+    #unixodbc-dev
+    #g++
+    #fop
+    #xsltproc
+    #xmllint
+    #libxml2-utils
 
-    # java
-    #sudo add-apt-repository ppa:webupd8team/java
-    #sudo apt-get update
-    #sudo apt-get install oracle-java8-installer
-    #sudo apt-get install oracle-java8-set-default
-    openjdk-8-jdk
+    ## java
+    ##sudo add-apt-repository ppa:webupd8team/java
+    ##sudo apt-get update
+    ##sudo apt-get install oracle-java8-installer
+    ##sudo apt-get install oracle-java8-set-default
+    #openjdk-8-jdk
 
-    # gui
-    libqt5opengl5
-    libqt5opengl5-dev
-    libgtk3.0-cil
-    libgtk3.0-cil-dev
-    #make -j 4 &&  make install
-
-    ## Dev tools
-    openssh-server
+    ## gui
+    #libqt5opengl5
+    #libqt5opengl5-dev
+    #libgtk3.0-cil
+    #libgtk3.0-cil-dev
 )
 
 for item in ${apps[@]}; do
