@@ -86,23 +86,19 @@ apps=(
     python-pip
     python-dev
 
-    ## for erlang: refer:
+    ## for erlang: refer: https://packages.erlang-solutions.com/erlang/
     #####$ wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
     #####$ sudo dpkg -i erlang-solutions_1.0_all.deb
     #####$ sudo apt-get update
     #####$ sudo apt-get upgrade -y
     #####$ sudo apt-get install -y erlang
-    #### instead of follows: ######
-    #wx-common
-    #libwxgtk3.0-dev
-    #libwxbase3.0
+    libwxbase3.0-0
+    libwxbase3.0-0v5
 
-    #unixodbc-dev
-    #g++
-    #fop
-    #xsltproc
-    #xmllint
-    #libxml2-utils
+    libwxgtk3.0-0
+    libwxgtk3.0-0-v5
+
+    libsctp1
 
     ## java
     ##sudo add-apt-repository ppa:webupd8team/java
@@ -110,12 +106,6 @@ apps=(
     ##sudo apt-get install oracle-java8-installer
     ##sudo apt-get install oracle-java8-set-default
     #openjdk-8-jdk
-
-    ## gui
-    #libqt5opengl5
-    #libqt5opengl5-dev
-    #libgtk3.0-cil
-    #libgtk3.0-cil-dev
 )
 
 for item in ${apps[@]}; do
