@@ -60,9 +60,10 @@ apt-get -y install
 
 apps=(
     # Utilities
+    libncurses5-dev
     libreadline-dev
     libpcre3-dev
-    libncurses5-dev
+    zlib1g-dev
     libssl-dev
     libssh-dev
     openssl
@@ -73,6 +74,8 @@ apps=(
     g++
     autoconf
     m4
+    wget
+    curl
 
     # proxychains
     # privoxy
@@ -82,26 +85,34 @@ apps=(
     python-pip
     python-dev
 
-    # for erlang
+    ## for erlang
+    # ./configure --without-wx
+    wx-common
+    libwxgtk3.0-dev
+    libwxbase3.0
+
+    unixodbc-dev
+    g++
     fop
     xsltproc
-    openjdk-8-jdk
-    unixodbc-dev
+    xmllint
     libxml2-utils
-    libgl1-mesa-dev
-    libglu1-mesa-dev
-    libpng3
 
-    # for wxwidgets used in erlang
-    #libwxbase3.0
-    libwxbase3.0-dev
-    libwxgtk3.0-dev
-    libqt4-opengl-dev
-    libgtk2.0-dev
+    # java
+    #sudo add-apt-repository ppa:webupd8team/java
+    #sudo apt-get update
+    #sudo apt-get install oracle-java8-installer
+    #sudo apt-get install oracle-java8-set-default
+    openjdk-8-jdk
+
+    # gui
+    libqt5opengl5
+    libqt5opengl5-dev
+    libgtk3.0-cil
+    libgtk3.0-cil-dev
+    #make -j 4 &&  make install
 
     ## Dev tools
-    wget
-    curl
     openssh-server
 )
 
