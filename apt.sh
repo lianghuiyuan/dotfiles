@@ -53,11 +53,16 @@ cecho "Now time to install my favorate tools ..." $yellow
 sudo apt-add-repository ppa:ubuntu-elisp/ppa
 sudo apt-get update
 
+     
+
+
+
 apps=(
     # Utilities
     libreadline-dev
     libncurses5-dev
     libpcre3-dev
+    openssl 
     libssl-dev
     build-essential
     perl
@@ -71,6 +76,18 @@ apps=(
     ## for python
     python-pip
     python-dev
+
+    # for erlang
+    fop 
+    openjdk-8-jdk
+    unixodbc-dev
+    g++
+
+    # for wxwidgets used in erlang
+    libwxbase3.0
+    libwxgtk3.0-dev
+    libqt4-opengl-dev
+    libgtk2.0-dev
 
     ## Dev tools
     wget
