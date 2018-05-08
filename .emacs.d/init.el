@@ -4,7 +4,7 @@
 
 ;; === SETUP ===
 (require 'package) ;; You might already have this line
-(package-initialize)
+;;(package-initialize)
 
 (defvar vendor-dir (expand-file-name "vendor" user-emacs-directory))
 (defvar backup-dir "~/.emacs.d/backups/")
