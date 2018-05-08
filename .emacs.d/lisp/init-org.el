@@ -98,7 +98,8 @@
  '(
    (emacs-lisp . t)
    (org . t)
-   (sh . t)
+   ;(sh . t)
+   (shell . t)
    (C . t)
    (python . t)
    (awk . t)
