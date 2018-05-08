@@ -217,7 +217,7 @@ fi;
 
 echo ""
 echo ""
-read -p "install the awesome theme: nana-4/materia-theme, are you sure? (y/n) " -n 1;
+read -p "install the awesome theme: nana-4/materia-theme and Flat-Plat-Blue, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo apt-get install -y libxml2-utils libglib2.0-dev gtk2-engines-murrine gnome-themes-standard
 sudo apt install -y gnome-tweak-tool gnome-shell-extensions
@@ -225,6 +225,12 @@ sudo apt install -y gnome-tweak-tool gnome-shell-extensions
 sudo add-apt-repository ppa:dyatlov-igor/materia-theme
 sudo apt update
 sudo apt install materia-gtk-theme
+
+wget https://github.com/peterychuang/Flat-Plat-Blue/archive/3.26.0-2.tar.gz
+tar zxvf 3.26.0-2
+cd Flat-Plat-Blue-3.26.0-2/
+sudo ./install.sh
+cd ..
 fi;
 
 echo ""
