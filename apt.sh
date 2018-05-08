@@ -195,6 +195,34 @@ EOF
   fi
 fi
 
+
+read -p "install the awesome albert just like dash alfred in maxosx, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sudo add-apt-repository ppa:nilarimogard/webupd8
+  sudo apt update
+  sudo apt install albert
+fi;
+
+read -p "install the awesome theme: Flat-Plat-Blue, icon: flat-remix, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+sudo apt-get install -y libxml2-utils libglib2.0-dev gtk2-engines-murrine gnome-themes-standard
+sudo apt install -y gnome-tweak-tool gnome-shell-extensions
+wget https://github.com/peterychuang/Flat-Plat-Blue/archive/3.26.0-2.tar.gz
+tar zxvf 3.26.0-2
+cd Flat-Plat-Blue-3.26.0-2/
+sudo sh install.sh
+cd ..
+
+sudo add-apt-repository ppa:daniruiz/flat-remix
+sudo apt-get update
+sudo apt-get install flat-remix
+
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo "!!! now, you can run ===> gnome-tweak-tool & in the terminal to change the theme and icon :-)"
+echo "Appearance > Themes > Applications ---> select ..."
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+fi;
+
 echo -e "\033[40;32m change the default shell into: /bin/bash\033[0m"
 sudo chsh -s /bin/bash
 
