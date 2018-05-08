@@ -239,8 +239,8 @@ fi;
 echo ""
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-echo "!!! now, you can run ===> gnome-tweak-tool & in the terminal to change the theme and icon :-)"
-echo "Appearance > Themes > Applications ---> select ..."
+cecho "!!! now, you can run ===> gnome-tweak-tool & in the terminal to change the theme and icon :-)" $green
+cecho "Appearance > Themes > Applications ---> select ..." $green
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo ""
 echo ""
