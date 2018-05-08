@@ -225,8 +225,6 @@ sudo apt install -y gnome-tweak-tool gnome-shell-extensions
 sudo add-apt-repository ppa:dyatlov-igor/materia-theme
 sudo apt update
 sudo apt install materia-gtk-theme
-
-
 fi;
 
 echo ""
@@ -236,6 +234,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo apt-get update
 sudo apt-get install flat-remix
+fi;
 
 echo ""
 echo ""
@@ -245,8 +244,6 @@ echo "Appearance > Themes > Applications ---> select ..."
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo ""
 echo ""
-fi;
-
 echo -e "\033[40;32m change the default shell into: /bin/bash\033[0m"
 sudo chsh -s /bin/bash
 
@@ -256,7 +253,6 @@ echo ""
 echo "cleanning ..."
 echo ""
 echo ""
-#rm -rf 3.26.0-2
-#rm -rf Flat-Plat-Blue-3.26.0-2
-
 cecho "Done, Happy Hacking At the Speed Of The Thought" $green
+echo ""
+echo ""
