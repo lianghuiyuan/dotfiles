@@ -50,8 +50,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 echo ""
 cecho "Now time to install my favorate tools ..." $yellow
 
-sudo apt-add-repository ppa:ubuntu-elisp/ppa
-sudo apt-get update
+#sudo apt-add-repository ppa:ubuntu-elisp/ppa
+#sudo apt-get update
 
 
 
