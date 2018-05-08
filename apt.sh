@@ -213,6 +213,9 @@ cd Flat-Plat-Blue-3.26.0-2/
 sudo sh install.sh
 cd ..
 
+rm -rf 3.26.0-2
+rm -rf Flat-Plat-Blue-3.26.0-2
+
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo apt-get update
 sudo apt-get install flat-remix
