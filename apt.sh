@@ -118,6 +118,8 @@ select yn in "Yes" "No"; do
   esac
 done
 
+echo ""
+echo ""
 read -p "do you want to deploy your own G-F-W vps and use shadowsocks client of python version ? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   #apt-get install build-essential
@@ -159,18 +161,26 @@ EOF
   echo -e "\033[40;32m you can start the shadowsocks client on your local laptop: sslocal -c /etc/shadowsocks.json \033[0m"
 fi;
 
+echo ""
+echo ""
 echo -e "\033[40;32m install the fzf \033[0m"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+echo ""
+echo ""
 echo -e "\033[40;32m install the z, refer: https://github.com/rupa/z/blob/master/z.sh \033[0m"
 git clone https://github.com/rupa/z ~/z
 . ~/z/z.sh
 
+echo ""
+echo ""
 echo -e "\033[40;32m install liquidprompt \033[0m"
 git clone https://github.com/nojhan/liquidprompt.git ~/.liquidprompt
 source ~/.liquidprompt/liquidprompt
 
+echo ""
+echo ""
 read -p "install the awesome tool htop2.0, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "install htop2.0";
@@ -179,8 +189,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd -
 fi;
 
-
-echo "相当于架了一个http代理链接到socks"
+echo ""
+echo ""
 read -p "polipo privoxy (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   if [ -f "/etc/polipo/config" ]; then
@@ -196,6 +206,8 @@ EOF
 fi
 
 
+echo ""
+echo ""
 read -p "install the awesome albert just like dash alfred in maxosx, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo add-apt-repository ppa:nilarimogard/webupd8
@@ -203,30 +215,48 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo apt install albert
 fi;
 
-read -p "install the awesome theme: Flat-Plat-Blue, icon: flat-remix, are you sure? (y/n) " -n 1;
+echo ""
+echo ""
+read -p "install the awesome theme: nana-4/materia-theme, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo apt-get install -y libxml2-utils libglib2.0-dev gtk2-engines-murrine gnome-themes-standard
 sudo apt install -y gnome-tweak-tool gnome-shell-extensions
-wget https://github.com/peterychuang/Flat-Plat-Blue/archive/3.26.0-2.tar.gz
-tar zxvf 3.26.0-2
-cd Flat-Plat-Blue-3.26.0-2/
-sudo sh install.sh
-cd ..
 
-rm -rf 3.26.0-2
-rm -rf Flat-Plat-Blue-3.26.0-2
+sudo add-apt-repository ppa:dyatlov-igor/materia-theme
+sudo apt update
+sudo apt install materia-gtk-theme
 
+
+fi;
+
+echo ""
+echo ""
+read -p "install the awesome icon: flat-remix, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo apt-get update
 sudo apt-get install flat-remix
 
+echo ""
+echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo "!!! now, you can run ===> gnome-tweak-tool & in the terminal to change the theme and icon :-)"
 echo "Appearance > Themes > Applications ---> select ..."
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+echo ""
+echo ""
 fi;
 
 echo -e "\033[40;32m change the default shell into: /bin/bash\033[0m"
 sudo chsh -s /bin/bash
+
+
+echo ""
+echo ""
+echo "cleanning ..."
+echo ""
+echo ""
+#rm -rf 3.26.0-2
+#rm -rf Flat-Plat-Blue-3.26.0-2
 
 cecho "Done, Happy Hacking At the Speed Of The Thought" $green
