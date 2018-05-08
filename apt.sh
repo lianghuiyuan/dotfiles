@@ -83,18 +83,16 @@ apps=(
     python-dev
 
     ## for erlang: refer: https://packages.erlang-solutions.com/erlang/
+    #libwxbase3.0-0
+    #libwxbase3.0-0v5
+    #libwxgtk3.0-0
+    #libwxgtk3.0-0-v5
+    #libsctp1
     #####$ wget https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb
     #####$ sudo dpkg -i erlang-solutions_1.0_all.deb
     #####$ sudo apt-get update
     #####$ sudo apt-get upgrade -y
     #####$ sudo apt-get install -y erlang
-    libwxbase3.0-0
-    libwxbase3.0-0v5
-
-    libwxgtk3.0-0
-    libwxgtk3.0-0-v5
-
-    libsctp1
 
     ## java
     ##sudo add-apt-repository ppa:webupd8team/java
