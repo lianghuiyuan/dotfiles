@@ -198,7 +198,7 @@ read -p "install the awesome uget to get rid of the netpan, are you sure? (y/n) 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:plushuang-tw/uget-stable
 sudo apt-get update
-sudo apt-get install uget
+sudo apt-get install -y uget
 fi;
 
 echo ""
@@ -234,7 +234,7 @@ read -p "install the awesome albert just like dash alfred in maxosx, are you sur
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo add-apt-repository ppa:nilarimogard/webupd8
   sudo apt update
-  sudo apt install albert
+  sudo apt install -y albert
 fi;
 
 echo ""
@@ -246,11 +246,11 @@ sudo apt install -y gnome-tweak-tool gnome-shell-extensions
 
 sudo add-apt-repository ppa:dyatlov-igor/materia-theme
 sudo apt update
-sudo apt install materia-gtk-theme
+sudo apt install -y materia-gtk-theme
 
 sudo add-apt-repository ppa:noobslab/themes
 sudo apt-get update
-sudo apt-get install flatabulous-theme
+sudo apt-get install -y flatabulous-theme
 
 wget https://github.com/peterychuang/Flat-Plat-Blue/archive/3.26.0-2.tar.gz
 tar zxvf 3.26.0-2
@@ -265,11 +265,11 @@ read -p "install the awesome icon: [flat-remix, ultra-flat-icons], are you sure?
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo apt-get update
-sudo apt-get install flat-remix
+sudo apt-get install -y flat-remix
 
 sudo add-apt-repository ppa:noobslab/icons
 sudo apt-get update
-sudo apt-get install ultra-flat-icons
+sudo apt-get install -y ultra-flat-icons
 fi;
 
 
@@ -279,7 +279,7 @@ read -p "install the awesome bottom app start docky like macosx bottom Dock, are
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:ricotz/docky
 sudo apt-get update
-sudo apt-get install docky
+sudo apt-get install -y docky
 echo "now, the left sidebar can be adjust in the appreance system setting to set hide and resolation to 0"
 fi;
 
