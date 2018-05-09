@@ -288,6 +288,8 @@ echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 cecho "!!! now, you can run ===> [ gnome-tweak-tool or unity-tweak-tool ] ===> in the terminal to change the theme and icon :-)" $green
 cecho "!!! now, you can run ===> [ start ] gui app to setup the apps[guake, albert ...] that should run after the system bootstrap :-)" $green
+cecho "!!! [ System Settings -> Text Entry ] add rime :-)" $green
+
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo ""
 echo ""
