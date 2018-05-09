@@ -205,6 +205,10 @@ brew install cmatrix
 brew install polipo
 brew install pdf-tools
 
+# a cool media player
+brew install mpv --with-bundle
+brew linkapps mpv
+
 # for shadowsocks
 brew install libsodium
 # Remove outdated versions from the cellar.
