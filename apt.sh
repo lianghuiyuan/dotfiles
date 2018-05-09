@@ -298,8 +298,7 @@ cecho "!!! now, you can run ===> [ gnome-tweak-tool or unity-tweak-tool ] ===> i
 cecho "!!! now, you can run ===> [ startup ... ] gui app to setup the apps[guake, albert ...] that should run after the system bootstrap :-)" $green
 cecho "!!! [ System Settings -> Text Entry ] add rime and use [shift + command] to switch the input source:-)" $green
 cecho "!!! [ System Settings -> keyboard] adjust speed to fast :-)" $green
-cecho "!!! [ now, you can run ===> [customize ---> search option ---> in the third opt: set the left Option into Meta ] :-)" $green
-cecho "!!! [ now, you can run ===> [meta worked for me was to open the keyboard shortcuts menu in Parallels, view the Linux profile and add an additional mapping from Mac Alt to Alt.] :-)" $green
+cecho "!!! [ now, you can run ===> [ open the keyboard shortcuts menu in PD, add an additional mapping from Mac Alt to Alt, Shift to Shift.] :-)" $green
 
 
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
