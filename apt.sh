@@ -194,6 +194,14 @@ fi;
 
 echo ""
 echo ""
+read -p "install the chrome, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+fi;
+
+echo ""
+echo ""
 read -p "install the awesome uget to get rid of the netpan, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:plushuang-tw/uget-stable
