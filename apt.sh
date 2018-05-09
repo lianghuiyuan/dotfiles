@@ -293,6 +293,15 @@ fi;
 
 echo ""
 echo ""
+read -p "install the awesome mpv player, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+sudo add-apt-repository ppa:mc3man/mpv-tests
+sudo apt update
+sudo apt install mpv
+fi;
+
+echo ""
+echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 cecho "!!! now, you can run ===> [ gnome-tweak-tool or unity-tweak-tool ] ===> in the terminal to change the theme and icon :-)" $green
 cecho "!!! now, you can run ===> [ startup ... ] gui app to setup the apps[guake, albert ...] that should run after the system bootstrap :-)" $green
@@ -307,7 +316,6 @@ echo ""
 echo ""
 echo -e "\033[40;32m change the default shell into: /bin/bash\033[0m"
 sudo chsh -s /bin/bash
-
 
 echo ""
 echo ""
