@@ -74,6 +74,12 @@ apps=(
     curl
     openssh-server
 
+    # cool terminal util
+    guake
+
+    # cn input
+    ibus-rime
+
     # proxychains
     # privoxy
     polipo
@@ -117,7 +123,24 @@ select yn in "Yes" "No"; do
     No ) break;;
   esac
 done
+echo ""
+echo ""
+cecho "the ensential tools already installed just continue ===>" $green
+echo ""
+echo ""
+echo -e "\033[40;32m install the z, refer: https://github.com/rupa/z/blob/master/z.sh \033[0m"
+git clone https://github.com/rupa/z ~/z
+. ~/z/z.sh
 
+echo ""
+echo ""
+echo -e "\033[40;32m install liquidprompt \033[0m"
+git clone https://github.com/nojhan/liquidprompt.git ~/.liquidprompt
+source ~/.liquidprompt/liquidprompt
+
+echo ""
+echo ""
+cecho "Now, install my custom tools ===>" $green
 echo ""
 echo ""
 read -p "do you want to deploy your own G-F-W vps and use shadowsocks client of python version ? (y/n) " -n 1;
@@ -163,21 +186,20 @@ fi;
 
 echo ""
 echo ""
-echo -e "\033[40;32m install the fzf \033[0m"
+read -p "install the awesome fzf, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+fi;
 
 echo ""
 echo ""
-echo -e "\033[40;32m install the z, refer: https://github.com/rupa/z/blob/master/z.sh \033[0m"
-git clone https://github.com/rupa/z ~/z
-. ~/z/z.sh
-
-echo ""
-echo ""
-echo -e "\033[40;32m install liquidprompt \033[0m"
-git clone https://github.com/nojhan/liquidprompt.git ~/.liquidprompt
-source ~/.liquidprompt/liquidprompt
+read -p "install the awesome uget to get rid of the netpan, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+sudo add-apt-repository ppa:plushuang-tw/uget-stable
+sudo apt-get update
+sudo apt-get install uget
+fi;
 
 echo ""
 echo ""
@@ -217,7 +239,7 @@ fi;
 
 echo ""
 echo ""
-read -p "install the awesome theme: nana-4/materia-theme and Flat-Plat-Blue, are you sure? (y/n) " -n 1;
+read -p "install the awesome theme: [materia-theme, flatabulous-theme, Flat-Plat-Blue], are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo apt-get install -y libxml2-utils libglib2.0-dev gtk2-engines-murrine gnome-themes-standard
 sudo apt install -y gnome-tweak-tool gnome-shell-extensions
@@ -225,6 +247,10 @@ sudo apt install -y gnome-tweak-tool gnome-shell-extensions
 sudo add-apt-repository ppa:dyatlov-igor/materia-theme
 sudo apt update
 sudo apt install materia-gtk-theme
+
+sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get update
+sudo apt-get install flatabulous-theme
 
 wget https://github.com/peterychuang/Flat-Plat-Blue/archive/3.26.0-2.tar.gz
 tar zxvf 3.26.0-2
@@ -235,18 +261,33 @@ fi;
 
 echo ""
 echo ""
-read -p "install the awesome icon: flat-remix, are you sure? (y/n) " -n 1;
+read -p "install the awesome icon: [flat-remix, ultra-flat-icons], are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo add-apt-repository ppa:daniruiz/flat-remix
 sudo apt-get update
 sudo apt-get install flat-remix
+
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install ultra-flat-icons
+fi;
+
+
+echo ""
+echo ""
+read -p "install the awesome bottom app start docky like macosx bottom Dock, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+sudo add-apt-repository ppa:ricotz/docky
+sudo apt-get update
+sudo apt-get install docky
+echo "now, the left sidebar can be adjust in the appreance system setting to set hide and resolation to 0"
 fi;
 
 echo ""
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-cecho "!!! now, you can run ===> gnome-tweak-tool & in the terminal to change the theme and icon :-)" $green
-cecho "Appearance > Themes > Applications ---> select ..." $green
+cecho "!!! now, you can run ===> [ gnome-tweak-tool or unity-tweak-tool ] ===> in the terminal to change the theme and icon :-)" $green
+cecho "!!! now, you can run ===> [ start ] gui app to setup the apps[guake, albert ...] that should run after the system bootstrap :-)" $green
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo ""
 echo ""
@@ -259,6 +300,6 @@ echo ""
 echo "cleanning ..."
 echo ""
 echo ""
-cecho "Done, Happy Hacking At the Speed Of The Thought" $green
+cecho "Done, Happy Hacking At the Speed Of The Thought !!!" $green
 echo ""
 echo ""
