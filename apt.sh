@@ -73,6 +73,8 @@ apps=(
     wget
     curl
     openssh-server
+    libgtk-3-dev
+    libappindicator3-dev
 
     # cool terminal util
     guake
