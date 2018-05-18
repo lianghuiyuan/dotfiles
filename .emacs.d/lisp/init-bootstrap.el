@@ -3,8 +3,8 @@
 ;;; Code:
 ;; Essential settings.
 
-(setq user-full-name "robert zhou")
-(setq user-mail-address "robertzhouxh@gmail.com")
+(setq user-full-name "Creasy.L")
+(setq user-mail-address "lianghuiyuan@126.com")
 
 ;; start
 (setq inhibit-splash-screen t

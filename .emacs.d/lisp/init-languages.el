@@ -315,9 +315,9 @@
          (("\\\\.el\\\\'" . "Emacs Lisp header")
           "Short description: "
           ";;; " (file-name-nondirectory (buffer-file-name)) " --- " str "
-;; Copyright (C) " (substring (current-time-string) -4) " by robert zhou " "
-;; Author: robert zhou"
-'(end-of-line 1) " <" (user-login-name) ?@ "robertzhouxh@gmail.com>
+;; Copyright (C) " (substring (current-time-string) -4) " by Creasy.L " "
+;; Author: Creasy.L"
+'(end-of-line 1) " <" (user-login-name) ?@ "lianghuiyuan@126.com>
 (defconst "
 (substring (file-name-nondirectory (buffer-file-name)) 0 -3)
 "-version \\"$Id: "
@@ -375,7 +375,7 @@
                  nil
                  "%%%-------------------------------------------------------------------\n"
                  "%%% @Copyright (c) 2016-2017 MOLMC Enterprise, Inc. (http://intoyun.com)\n"
-                 "%%% @Author: robertzhouxh <robertzhouxh@gmail.com>\n"
+                 "%%% @Author: Creasy.L <creasy@molmc.com>\n"
                  "%%% @Date   Created: " (format-time-string "%Y-%m-%d %H:%M:%S")"\n"
                  "%%%-------------------------------------------------------------------\n"
                  _

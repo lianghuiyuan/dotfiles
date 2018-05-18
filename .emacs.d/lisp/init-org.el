@@ -146,13 +146,13 @@
              :defer t
              )
 (setq op/repository-directory "~/githubs/myblog")
-(setq op/site-domain "http://robertzhouxh.github.io")
-(setq op/personal-github-link "https://github.com/robertzhouxh")
-(setq op/site-main-title "zxh @ Home")
-(setq op/site-sub-title "Emacs, Programming, and Arch Linux")
-(setq op/personal-disqus-shortname "robertzhouxh-github-io")
+(setq op/site-domain "http://www.i1987.com/")
+(setq op/personal-github-link "https://github.com/lianghuiyuan")
+(setq op/site-main-title "Mr.L")
+(setq op/site-sub-title "hello, Mr.L")
+(setq op/personal-disqus-shortname "shmilyliang")
 
-(setq op/theme-root-directory "~/githubs/dotfiles/.emacs.d/themes/")
+(setq op/theme-root-directory "~/dotfiles/.emacs.d/themes/")
 ;(setq op/personal-avatar "https://avatars0.githubusercontent.com/u/75674?v=3&s=460")
 (setq op/personal-google-analytics-id "userid_of_google_analytics")
 
