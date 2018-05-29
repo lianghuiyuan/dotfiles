@@ -302,6 +302,16 @@
 ;                          (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
 ;                          ))
 ;; UI
+(use-package moe-theme                     ; Theme
+  :ensure t
+  :config
+  (load-theme 'moe-dark t))
+
+(use-package darktooth-theme               ; Theme
+  :ensure t
+  :disabled t
+  :config
+  (load-theme 'darktooth t))
 ;(use-package solarized-theme
 ;             :ensure t
 ;             :disabled t
@@ -312,6 +322,6 @@
 ;             :ensure t
 ;             :disabled t
 ;             :init (load-theme 'monokai 'no-confirm))
-(load-theme 'wombat t)
+;(load-theme 'wombat t)
 
 (provide 'init-pkgs)
