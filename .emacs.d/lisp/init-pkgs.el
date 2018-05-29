@@ -286,21 +286,6 @@
 ;                 (dolist (docset esk-dash-docsets)
 ;                   (esk-helm-dash-install docset))
 ;                 )))
-
-;(use-package yaml-mode
-;             :ensure t
-;             :mode ("\\.yml$" . yaml-mode)
-;             :config
-;             (use-package highlight-indentation
-;                          ;:load-path "vendor/Highlight-Indentation-for-Emacs"
-;                          :ensure t
-;                          :init
-;                          (setq highlight-indentation-offset 2)
-;                          :config
-;                          (add-hook 'yaml-mode-hook 'highlight-indentation-mode)
-;                          (set-face-background 'highlight-indentation-face "#e3e3d3")
-;                          (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-;                          ))
 ;; UI
 (use-package moe-theme                     ; Theme
   :ensure t
