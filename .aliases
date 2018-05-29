@@ -161,6 +161,7 @@ alias ssstart="sslocal -c /etc/shadowsocks.json -d start"
 alias ssstop="sslocal -c /etc/shadowsocks.json -d stop"
 alias ssr="sslocal -c /etc/shadowsocks.json -d restart"
 alias ssss="ssserver -c /etc/shadowsocks.json -d start"
+alias shadowsocks="sslocal -s xxxxxxx.site -p xxx2 -b 127.0.0.1 -l 1080 -k xxxx -m chacha20-ietf-poly1305 -q 2>&1 > /dev/null "
 
 # privoxy settings: convert the socks5 proxy into http proxy
 alias privoxy="brew services restart privoxy"

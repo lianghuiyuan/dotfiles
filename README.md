@@ -89,18 +89,7 @@ set -- -f; source bootsrap.sh
 ./vim.sh
 
 ### 常用 vim 配置快捷键
-
 leader is ","
-
-- 列出项目            leader + p
-- 列出缓冲区          leader + b
-- 列出文件            leader + f
-- 打开项目目录        leader + n
-- 打开变量列表        leader + ]
-- 删除行为空格        leader> +  space
-- 窗口切换            C-h,j,k,l>
-- 切换到上一个tab(tab last)     Leader + tl
-- sudo 写文件         w!!
 
 
 ## 安装我的emacs配置
