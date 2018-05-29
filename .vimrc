@@ -129,8 +129,8 @@ map <leader>d :Bclose<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tj :tabnext
-map <leader>tk :tabprevious
+map <leader>tj :tabnext <cr>
+map <leader>tk :tabprevious <cr>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/  " Opens a new tab with the current buffer's path, S
 
 " Go crazy!
