@@ -50,22 +50,13 @@ set wildmode=longest,list,full
 set binary
 set hlsearch                                                 " highlight search
 set noeol                                                    " no end of line at the end of the file
-set cursorcolumn
-set cursorline
-set completeopt=longest,menu
-set pastetoggle=<leader>2
-
-" Show “invisible” characters
-" set list
-" set list listchars=tab:\¦\                                   " for indentline plugin
-" set listchars=tab:▸\ ,trail:▫
-" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+"set cursorcolumn
+"set cursorline
 
 " tab
 set expandtab                                             " Use spaces instead of tabs and --------> Ctrl+V + Tab]
 set smarttab                                              " Be smart when using tabs ;)
 set shiftround                                            " Round indent to multiple of 'shiftwidth' for > and < commands
-" 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
 
@@ -117,6 +108,9 @@ nnoremap <leader>p           :CtrlP<CR>
 nnoremap <leader>b           :CtrlPBuffer<CR>
 nnoremap <leader>T           :CtrlPClearCache<CR>:CtrlP<CR>
 nnoremap <leader>n           :NERDTreeToggle<CR>
+nnoremap <leader>a           :Ag<SPACE>
+" bind K to grep word under cursor
+nnoremap K                   :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm  " Remove the Windows ^M - when the encodings gets messed up
 noremap <silent><leader>/    :nohls<CR>             " 去掉搜索高亮
 noremap <C-h>                <C-w>h
@@ -124,14 +118,18 @@ noremap <C-j>                <C-w>j
 noremap <C-k>                <C-w>k
 noremap <C-l>                <C-w>l
 
-map <leader><space>          :FixWhitespace<cr>
-map <leader>d :Bclose<cr>
+map <leader><space>  :FixWhitespace<cr>
+map <leader>d :bdelete<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tj :tabnext <cr>
 map <leader>tk :tabprevious <cr>
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/  " Opens a new tab with the current buffer's path, S
+
+
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
 
 " Go crazy!
 if filereadable(expand("~/.vimrc.local"))
