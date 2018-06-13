@@ -85,6 +85,11 @@
              :config
              (setq-default highlight-symbol-idle-delay 1.5))
 
+(use-package hl-todo                    ; Highlight TODO and similar keywords
+             :ensure nil
+             :hook ((prog-mode . hl-todo-mode)
+                    (yaml-mode . hl-todo-mode)))
+
 (use-package flycheck
              :ensure t
              :defer t

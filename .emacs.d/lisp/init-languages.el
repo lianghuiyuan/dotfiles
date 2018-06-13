@@ -348,6 +348,19 @@
 
 (setq auto-insert-alist
       (append '(
+                (("\\.go$" . "golang header")
+                 nil
+                 "//---------------------------------------------------------------------\n"
+                 "// @Copyright (c) 2016-2017 MOLMC Enterprise, Inc. (http://intoyun.com)\n"
+                 "// @Author: robertzhouxh <robertzhouxh@gmail.com>\n"
+                 "// @Date   Created: " (format-time-string "%Y-%m-%d %H:%M:%S")"\n"
+                 "//----------------------------------------------------------------------\n"
+                 _
+                 ))
+              auto-insert-alist))
+
+(setq auto-insert-alist
+      (append '(
                 (("\\.py$" . "python template")
                  nil
                  "#!/usr/bin/env python\n"
