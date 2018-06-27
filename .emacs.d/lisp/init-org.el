@@ -144,6 +144,8 @@
              :ensure t
              :defer t
              )
+(add-to-list 'load-path "~/.emacs.d/vendor/org-page")                    ;; only needed if you install org-page manually
+(require 'org-page)
 (setq op/repository-directory "~/githubs/blog.i1987.com")
 (setq op/site-domain "http://www.i1987.com/")
 (setq op/personal-github-link "https://github.com/lianghuiyuan")
