@@ -7,6 +7,7 @@
 
 (defvar vendor-dir (expand-file-name "vendor" user-emacs-directory))
 (defvar backup-dir "~/.emacs.d/backups/")
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (add-to-list 'load-path vendor-dir)
 (add-to-list 'exec-path "/usr/local/bin")
@@ -31,6 +32,7 @@
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("marmalade" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
 
 ;;; Pin some packages to specific repositories.
 ;(setq package-pinned-packages '((gtags . "marmalade")))
