@@ -292,16 +292,22 @@
 ;                   (esk-helm-dash-install docset))
 ;                 )))
 ;; UI
-(use-package moe-theme                     ; Theme
-  :ensure t
-  :config
-  (load-theme 'moe-dark t))
 
-(use-package darktooth-theme               ; Theme
+(use-package tangotango-theme
   :ensure t
-  :disabled t
   :config
-  (load-theme 'darktooth t))
+  (load-theme 'tangotango t))
+
+;(use-package moe-theme                     ; Theme
+;  :ensure t
+;  :config
+;  (load-theme 'moe-dark t))
+;
+;(use-package darktooth-theme               ; Theme
+;  :ensure t
+;  :disabled t
+;  :config
+;  (load-theme 'darktooth t))
 ;(use-package solarized-theme
 ;             :ensure t
 ;             :disabled t

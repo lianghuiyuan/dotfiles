@@ -144,7 +144,7 @@
              :ensure t
              :defer t
              )
-(setq op/repository-directory "~/githubs/myblog")
+(setq op/repository-directory "~/githubs/blog.i1987.com")
 (setq op/site-domain "http://www.i1987.com/")
 (setq op/personal-github-link "https://github.com/lianghuiyuan")
 (setq op/site-main-title "Mr.L")
