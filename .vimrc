@@ -16,6 +16,8 @@ Plug 'vim-scripts/DrawIt'
 " themes
 Plug 'tomasr/molokai'
 Plug 'cocopon/iceberg.vim'
+Plug 'dracula/vim'
+Plug 'daylerees/colour-schemes'
 
 "Load local plugins
 if filereadable(expand("~/.vim/vimrc.bundles.local"))
