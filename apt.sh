@@ -77,6 +77,7 @@ apps=(
     libappindicator3-dev
 
     # cool terminal util
+    terminater
     guake
 
     # cn input
