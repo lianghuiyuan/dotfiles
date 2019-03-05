@@ -26,7 +26,8 @@ function doIt() {
           --exclude "brew.sh" \
           --exclude "apt.sh" \
           -avh --no-perms . ~;
-	  # -a 归档模式，表示以递归方式传输文件，并保持所有文件属性 -v 详细模式输出 -h output numbers in a human-readable format --no-perms  不保留权限
+	  # -a 归档模式，表示以递归方式传输文件，并保持所有文件属性 -v 详细模式输出 -h output numbers in a human-readable format 
+	  # --no-perms  不保留权限
 	source ~/.bash_profile;
 }
 
@@ -39,6 +40,7 @@ else
 		doIt;
 	fi;
 fi;
+# unset为shell内建指令，可删除变量或函数
 unset doIt;
 
 

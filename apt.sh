@@ -32,6 +32,7 @@ else
 fi
 
 # Ask for the administrator password upfront.
+# -v 选项作用是：把缓存凭据刷新，把免密码时间重置到 timestamp_timeout 分钟
 sudo -v
 
 cecho "config the DNS" $yellow
@@ -45,6 +46,8 @@ nameserver 114.114.114.114
 EOF
 
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
+# $$ 是脚本运行的当前进程ID号
+# kill -0 pid 的作用是用来检测指定的进程PID是否存在, 存在返回0, 反之返回1
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo ""
@@ -132,8 +135,8 @@ cecho "the ensential tools already installed just continue ===>" $green
 echo ""
 echo ""
 echo -e "\033[40;32m install the z, refer: https://github.com/rupa/z/blob/master/z.sh \033[0m"
-git clone https://github.com/rupa/z ~/z
-. ~/z/z.sh
+git clone https://github.com/rupa/z ~/.z
+. ~/.z/z.sh
 
 echo ""
 echo ""
@@ -217,8 +220,8 @@ echo ""
 read -p "install the awesome tool htop2.0, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "install htop2.0";
-  git clone https://github.com/hishamhm/htop
-  cd $CURRENT_DIR/htop && ./autogen.sh && ./configure && make && sudo ln -s $CURRENT_DIR/htop/htop /usr/bin/htop
+  git clone https://github.com/hishamhm/htop $CURRENT_DIR/.htop
+  cd $CURRENT_DIR/.htop && ./autogen.sh && ./configure && make && sudo ln -s $CURRENT_DIR/.htop/htop /usr/bin/htop
   cd -
 fi;
 
