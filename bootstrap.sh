@@ -5,6 +5,11 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
+	# rsync = remote sync的简称
+	# rsnync用于从一个位置到另外一个位置同步文件和文件夹。备份的地址可以是本地也可以是remote server。
+	# 语法：$rsync options source destination
+	# source和destination可以是本地或者远程目录。对于远程的情况，需要指定login name, remote server name and location
+	# --exclude 避开同步指定的文件夹
 	rsync --exclude ".git/" \
           --exclude ".DS_Store" \
           --exclude "bootstrap.sh" \
@@ -21,6 +26,7 @@ function doIt() {
           --exclude "brew.sh" \
           --exclude "apt.sh" \
           -avh --no-perms . ~;
+	  # -a 归档模式，表示以递归方式传输文件，并保持所有文件属性 -v 详细模式输出 -h output numbers in a human-readable format --no-perms  不保留权限
 	source ~/.bash_profile;
 }
 
