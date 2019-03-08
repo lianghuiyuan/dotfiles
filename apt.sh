@@ -135,8 +135,8 @@ cecho "the ensential tools already installed just continue ===>" $green
 echo ""
 echo ""
 echo -e "\033[40;32m install the z, refer: https://github.com/rupa/z/blob/master/z.sh \033[0m"
-git clone https://github.com/rupa/z ~/.z
-. ~/.z/z.sh
+git clone https://github.com/rupa/z ~/z
+. ~/z/z.sh
 
 echo ""
 echo ""
@@ -220,8 +220,8 @@ echo ""
 read -p "install the awesome tool htop2.0, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "install htop2.0";
-  git clone https://github.com/hishamhm/htop $CURRENT_DIR/.htop
-  cd $CURRENT_DIR/.htop && ./autogen.sh && ./configure && make && sudo ln -s $CURRENT_DIR/.htop/htop /usr/bin/htop
+  git clone https://github.com/hishamhm/htop $CURRENT_DIR/htop
+  cd $CURRENT_DIR/htop && ./autogen.sh && ./configure && make && sudo ln -s $CURRENT_DIR/htop/htop /usr/bin/htop
   cd -
 fi;
 

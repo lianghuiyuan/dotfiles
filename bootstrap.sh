@@ -10,24 +10,29 @@ function doIt() {
 	# 语法：$rsync options source destination
 	# source和destination可以是本地或者远程目录。对于远程的情况，需要指定login name, remote server name and location
 	# --exclude 避开同步指定的文件夹
+	#rsync \
+	#  --exclude "bootstrap.sh" \
+        #  --exclude "brew.sh" \
+        #  --exclude "apt.sh" \
+        #  --exclude "vim.sh" \
+        #  --exclude "emacs.sh" \
+        #  --exclude "sss/" \
+        #  --exclude "emacs_client.sh" \
+        #  --exclude "README.md" \
+        #  --exclude "LICENSE-MIT.txt" \
+        #  --exclude ".git/" \
+        #  --exclude ".DS_Store" \
+        #  --exclude ".vimrc" \
+        #  --exclude ".vim" \
+        #  --exclude ".emacs.d" \
+        #  --exclude ".tmux/" \
+        #  --exclude ".curlrc" \
+        #  -avh --no-perms . ~;
 	rsync \
-	  --exclude "bootstrap.sh" \
-          --exclude "brew.sh" \
-          --exclude "apt.sh" \
-          --exclude "vim.sh" \
-          --exclude "emacs.sh" \
-          --exclude "emacs_client.sh" \
-          --exclude "README.md" \
-          --exclude "LICENSE-MIT.txt" \
-          --exclude "sss/" \
-          --exclude ".git/" \
-          --exclude ".DS_Store" \
-          --exclude ".vimrc" \
-          --exclude ".vim" \
-          --exclude ".emacs.d" \
-          --exclude ".tmux/" \
-          --exclude ".curlrc" \
+	  --include ".aliases" \
+          --exclude "*" \
           -avh --no-perms . ~;
+
 	  # -a 归档模式，表示以递归方式传输文件，并保持所有文件属性 -v 详细模式输出 -h output numbers in a human-readable format 
 	  # --no-perms  不保留权限
 	source ~/.bash_profile;
