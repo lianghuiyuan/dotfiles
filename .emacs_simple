@@ -10,8 +10,8 @@
 (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-(setq user-full-name "robert zhou")
-(setq user-mail-address "robertzhouxh@gmail.com")
+(setq user-full-name "Mr.L")
+(setq user-mail-address "lianghuiyuan@126.com")
 
 ;;; Standard package repositories
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")

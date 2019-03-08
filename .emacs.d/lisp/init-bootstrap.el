@@ -3,7 +3,7 @@
 ;;; Code:
 ;; Essential settings.
 
-(setq user-full-name "Creasy.L")
+(setq user-full-name "Mr.L")
 (setq user-mail-address "lianghuiyuan@126.com")
 
 ;; start

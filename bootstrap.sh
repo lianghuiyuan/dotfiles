@@ -30,6 +30,31 @@ function doIt() {
         #  -avh --no-perms . ~;
 	rsync \
 	  --include ".aliases" \
+	  --include ".bash_profile" \
+	  --include ".bash_prompt" \
+	  --include ".bashrc" \
+	  --include ".curlrc" \
+	  --include ".editorconfig" \
+	  --include ".emacs_simple" \
+	  --include ".eslintrc" \
+	  --include ".exports" \
+	  --include ".functions" \
+	  --include ".gdbinit" \
+	  --include ".gitattributes" \
+	  --include ".gitconfig" \
+	  --include ".globalrc" \
+	  --include ".gvimrc" \
+	  --include ".hgignore" \
+	  --include ".hushlogin" \
+	  --include ".inputrc" \
+	  --include ".osx*" \
+	  --include ".polipo" \
+	  --include ".proxychains.conf" \
+	  --include ".screenrc" \
+	  --include ".shadowsocks.json" \
+	  --include ".vimrc" \
+	  --include ".wgetrc" \
+	  --include ".zshrc" \
           --exclude "*" \
           -avh --no-perms . ~;
 

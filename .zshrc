@@ -10,7 +10,7 @@ plugins=(git colored-man-pages)
 
 # z instead of autojump
 # [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
- . `brew --prefix`/etc/profile.d/z.sh
+# . `brew --prefix`/etc/profile.d/z.sh
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
