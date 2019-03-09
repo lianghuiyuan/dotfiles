@@ -51,7 +51,7 @@ function doIt() {
 	  --include ".polipo" \
 	  --include ".proxychains.conf" \
 	  --include ".screenrc" \
-	  --include ".shadowsocks.json" \
+	  # --include ".shadowsocks.json" \
 	  --include ".vimrc" \
 	  --include ".wgetrc" \
 	  --include ".zshrc" \
