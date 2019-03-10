@@ -63,10 +63,10 @@ apps=(
     # Utilities
     libncurses5-dev
     libreadline-dev
-    #libpcre3-dev
+    libpcre3-dev
     zlib1g-dev
-    #libssl-dev
-    #libssh-dev
+    libssl-dev
+    libssh-dev
     openssl
     build-essential
     perl
@@ -140,6 +140,7 @@ select yn in "Yes" "No"; do
 done
 echo ""
 echo ""
+
 echo ""
 echo ""
 echo -e "\033[40;32m install the z, refer: https://github.com/rupa/z/blob/master/z.sh \033[0m"
@@ -150,7 +151,7 @@ echo ""
 echo ""
 echo -e "\033[40;32m install liquidprompt \033[0m"
 git clone https://github.com/nojhan/liquidprompt.git ~/.liquidprompt
-source ~/.liquidprompt/liquidprompt
+[[ $- = *i* ]] && source ~/.liquidprompt/liquidprompt
 
 echo ""
 echo ""
@@ -179,13 +180,23 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "no found shadowsocks config file, touching file: /etc/shadowsocks.json";
     sudo touch "$SS_CFG"
     sudo chmod a+w "$SS_CFG"
+#{
+#  "server":["server1","server2"],
+#  "server_port":8080,
+#  "local_address":"127.0.0.1",
+#  "local_port":1080,
+#  "password":"password",
+#  "timeout":300,
+#  "method":"chacha20-ietf-poly1305",
+#  "fast_open": false
+#}
     cat > "$SS_CFG" <<EOF
 {
-  "server":["server1","server2"],
-  "server_port":8080,
+  "server":["us3-sta34.c9b7t.pw","us2-sta34.c9b7t.pw"],
+  "server_port":43576,
   "local_address":"127.0.0.1",
   "local_port":1080,
-  "password":"password",
+  "password":"rBEyJgqYAYtgamP",
   "timeout":300,
   "method":"chacha20-ietf-poly1305",
   "fast_open": false
@@ -229,6 +240,7 @@ echo ""
 read -p "install the awesome tool htop2.0, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "install htop2.0";
+  sudo apt-get install libncursesw5-dev
   git clone https://github.com/hishamhm/htop $CURRENT_DIR/htop
   cd $CURRENT_DIR/htop && ./autogen.sh && ./configure && make && sudo ln -s $CURRENT_DIR/htop/htop /usr/bin/htop
   cd -
@@ -323,8 +335,23 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 sudo apt install software-properties-common
 sudo apt-add-repository ppa:ansible/ansible
 sudo apt update
+sudo apt-get install -y python-httplib2
+sudo apt-get install -y python-winrm
 sudo apt install ansible
 fi;
+
+echo ""
+echo ""
+read -p "install Golang-v1.12, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  #國外源
+  #wget https://dl.google.com/go/go1.12.linux-amd64.tar.gz
+  #國內源
+  wget https://studygolang.com/dl/golang/go1.12.linux-amd64.tar.gz
+  sudo tar -C /usr/local -xzf go1.12.linux-amd64.tar.gz
+
+fi;
+
 
 
 

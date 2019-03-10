@@ -41,6 +41,7 @@ GRTAGS
 .emacs.d/smex-items
 
 *.deb
+*.tar.gz
 3.26.0-2
 #Flat-Plat-Blue-3.26.0-2/
 Flat-Plat-Blue*

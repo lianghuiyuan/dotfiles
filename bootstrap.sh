@@ -55,8 +55,8 @@ function doIt() {
 	  --include ".vimrc" \
 	  --include ".wgetrc" \
 	  --include ".zshrc" \
-          --exclude "*" \
-          -avh --no-perms . ~;
+    --exclude "*" \
+    -avh --no-perms . ~;
 
 	  # -a 归档模式，表示以递归方式传输文件，并保持所有文件属性 -v 详细模式输出 -h output numbers in a human-readable format 
 	  # --no-perms  不保留权限

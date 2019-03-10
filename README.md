@@ -79,7 +79,7 @@ ubuntu 用户首先要安装依赖 gnu global, ag
 开始安装
 
 ```bash
-git clone https://github.com/robertzhouxh/dotfiles /path/to/dotfiles
+git clone https://github.com/lianghuiyuan/dotfiles.git /path/to/dotfiles
 cd dotfiles
 set -- -f; source bootsrap.sh
 ```
