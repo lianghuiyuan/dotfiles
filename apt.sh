@@ -45,6 +45,8 @@ nameserver 8.8.4.4
 nameserver 114.114.114.114
 EOF
 
+sudo /etc/init.d/networking restart
+
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 # $$ 是脚本运行的当前进程ID号
 # kill -0 pid 的作用是用来检测指定的进程PID是否存在, 存在返回0, 反之返回1
@@ -61,10 +63,10 @@ apps=(
     # Utilities
     libncurses5-dev
     libreadline-dev
-    libpcre3-dev
+    #libpcre3-dev
     zlib1g-dev
-    libssl-dev
-    libssh-dev
+    #libssl-dev
+    #libssh-dev
     openssl
     build-essential
     perl
@@ -76,11 +78,11 @@ apps=(
     wget
     curl
     openssh-server
-    libgtk-3-dev
-    libappindicator3-dev
+    #libgtk-3-dev
+    #libappindicator3-dev
 
     # cool terminal util
-    terminater
+    #terminater
     guake
 
     # cn input
@@ -123,15 +125,21 @@ echo ""
 select yn in "Yes" "No"; do
   case $yn in
     Yes )
-        cecho "Ok! installing apps, please wait ... " $yellow
-        sudo apt-get install -y ${apps[@]}
-        break;;
-    No ) break;;
+      cecho "Ok! installing apps, please wait ... " $yellow
+      cecho "if comes out 'Unable to locate package terminater' errors, please update '/etc/apt/source.list' to aliyun. see 'https://opsx.alibaba.com/guide?lang=zh-CN&document=69a2341e-801e-11e8-8b5a-00163e04cdbb'" $yellow
+      sudo apt-get -f install
+      sudo apt-get update
+      sudo apt-get upgrade
+      sudo apt-get install -y ${apps[@]}
+      cecho "the ensential tools already installed just continue ===>" $green
+      break;;
+    No )
+      cecho "not to install the ensential tools! do next step ===>" $yellow
+      break;;
   esac
 done
 echo ""
 echo ""
-cecho "the ensential tools already installed just continue ===>" $green
 echo ""
 echo ""
 echo -e "\033[40;32m install the z, refer: https://github.com/rupa/z/blob/master/z.sh \033[0m"
@@ -170,10 +178,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   if [ ! -f "$SS_CFG" ]; then
     echo "no found shadowsocks config file, touching file: /etc/shadowsocks.json";
     sudo touch "$SS_CFG"
-  fi
-  sudo chmod a+w "$SS_CFG"
-
-cat > "$SS_CFG" <<EOF
+    sudo chmod a+w "$SS_CFG"
+    cat > "$SS_CFG" <<EOF
 {
   "server":["server1","server2"],
   "server_port":8080,
@@ -185,6 +191,9 @@ cat > "$SS_CFG" <<EOF
   "fast_open": false
 }
 EOF
+
+  fi
+
 
   echo -e "\033[40;32m you can start the shadowsocks server on remote vps: sudo ssserver -c /etc/shadowsocks.json -d start \033[0m"
   echo -e "\033[40;32m you can start the shadowsocks client on your local laptop: sslocal -c /etc/shadowsocks.json \033[0m"
@@ -305,6 +314,19 @@ sudo add-apt-repository ppa:mc3man/mpv-tests
 sudo apt update
 sudo apt install mpv
 fi;
+
+
+echo ""
+echo ""
+read -p "install Ansible, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+sudo apt install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install ansible
+fi;
+
+
 
 echo ""
 echo ""

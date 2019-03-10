@@ -42,7 +42,7 @@ lnif "$CURRENT_DIR/.vim/plugged/YouCompleteMe" "$HOME/.vim/plugged/YouCompleteMe
 lnif "$CURRENT_DIR/.vim/vimrc.bundles.local" "$HOME/.vim/vimrc.bundles.local"
 
 
-echo -e "\033[40;32m Step3: update/install plugins using Vundle \033[0m"
+echo -e "\033[40;32m Step3: update/install plugins using plug.vim \033[0m"
 system_shell=$SHELL
 export SHELL="/bin/sh"
 
