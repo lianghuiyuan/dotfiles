@@ -29,8 +29,8 @@ function doIt() {
         #  --exclude ".curlrc" \
         #  -avh --no-perms . ~;
 	rsync \
-	  --include ".aliases" \
-	  --include ".bash_profile" \
+    --include ".aliases" \
+    --include ".bash_profile" \
 	  --include ".bash_prompt" \
 	  --include ".bashrc" \
 	  --include ".curlrc" \
@@ -51,7 +51,6 @@ function doIt() {
 	  --include ".polipo" \
 	  --include ".proxychains.conf" \
 	  --include ".screenrc" \
-	  # --include ".shadowsocks.json" \
 	  --include ".vimrc" \
 	  --include ".wgetrc" \
 	  --include ".zshrc" \
