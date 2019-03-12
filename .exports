@@ -70,7 +70,7 @@ fi
 export GOBIN=$GOROOT/bin
 # !!!!必须这样写, 把通用部分的路径放倒最后
 # export GOPATH=$HOME/molmc/intoyunDocker/uiot/webserver/jnu:$HOME/molmc/intoyunDocker/uiot/consummer/jnuWorker:$HOME/go-workspace
-export GOPATH=$HOME/go-workspace
+export GOPATH=$HOME/go-workspace:$HOME/work/wise2c
 export PATH=$PATH:$GOBIN:$GOPATH/bin
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:/usr/local/lib/erlang/man:$MANPATH
 

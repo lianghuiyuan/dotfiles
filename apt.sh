@@ -349,6 +349,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   #國內源
   wget https://studygolang.com/dl/golang/go1.12.linux-amd64.tar.gz
   sudo tar -C /usr/local -xzf go1.12.linux-amd64.tar.gz
+  cecho "install go-dep dependency management tool for Go" $green
+  sudo apt install go-dep
 
 fi;
 
