@@ -78,6 +78,7 @@ apps=(
     wget
     curl
     tree
+    silversearcher-ag
     openssh-server
     #libgtk-3-dev
     #libappindicator3-dev
