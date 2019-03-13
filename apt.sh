@@ -77,6 +77,7 @@ apps=(
     m4
     wget
     curl
+    tree
     openssh-server
     #libgtk-3-dev
     #libappindicator3-dev
@@ -349,8 +350,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   #國內源
   wget https://studygolang.com/dl/golang/go1.12.linux-amd64.tar.gz
   sudo tar -C /usr/local -xzf go1.12.linux-amd64.tar.gz
-  cecho "install go-dep dependency management tool for Go" $green
-  sudo apt install go-dep
+  sudo chmod -R 777 /usr/local/go/
+  #cecho "install go-dep dependency management tool for Go" $green
+  #sudo apt install go-dep
+  cecho "install govendor dependency management tool for Go" $green
+  go get -u github.com/kardianos/govendor
 
 fi;
 
