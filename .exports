@@ -91,3 +91,6 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include/"
 
 # homebrew no update
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+# gradle
+export PATH=$PATH:/opt/gradle/gradle-5.2.1/bin
