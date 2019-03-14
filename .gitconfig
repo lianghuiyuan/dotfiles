@@ -174,3 +174,10 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[user]
+	email = lianghuiyuan@126.com
+	name = Mr.L
+[url "git@gitee.com:"]
+	insteadOf = https://gitee.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
