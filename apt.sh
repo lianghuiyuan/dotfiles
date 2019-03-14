@@ -115,7 +115,7 @@ apps=(
     ##sudo apt-get update
     ##sudo apt-get install oracle-java8-installer
     ##sudo apt-get install oracle-java8-set-default
-    #openjdk-8-jdk
+    openjdk-8-jdk
 )
 
 for item in ${apps[@]}; do
