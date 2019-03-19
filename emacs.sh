@@ -2,17 +2,18 @@
 
 sudo -v
 
-echo -e "\033[40;32m install the emacs ... \033[0m"
-if [ `uname -s` = "Linux" ]; then
-  sudo add-apt-repository ppa:kelleyk/emacs
-  sudo apt update
-  sudo apt install emacs26
-elif [ `uname -s` = "Darwin" ]; then
-  brew install emacs --HEAD --use-git-head --with-cocoa --with-gnutls --with-rsvg --with-imagemagick
-else
-  echo -e "\033[40;32m unsupported system, exit \033[0m"
-fi
-echo -e "\033[40;32m emacs installed \033[0m"
+echo -e "\033[40;32m Ensure you have installed the emacs first ... \033[0m"
+# echo -e "\033[40;32m install the emacs ... \033[0m"
+# if [ `uname -s` = "Linux" ]; then
+#   sudo add-apt-repository ppa:kelleyk/emacs
+#   sudo apt update
+#   sudo apt install emacs26
+# elif [ `uname -s` = "Darwin" ]; then
+#   brew install emacs --HEAD --use-git-head --with-cocoa --with-gnutls --with-rsvg --with-imagemagick
+# else
+#   echo -e "\033[40;32m unsupported system, exit \033[0m"
+# fi
+# echo -e "\033[40;32m emacs installed \033[0m"
 
 # refer  spf13-vim bootstrap.sh`
 # BASEDIR=$(dirname $0)
