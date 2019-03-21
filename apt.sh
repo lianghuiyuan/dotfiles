@@ -267,6 +267,13 @@ fi
 
 echo ""
 echo ""
+read -p "install popcorn time - a very very cool movie player online !!!!!!!!!" -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sh -c "$(wget https://raw.githubusercontent.com/popcorn-official/popcorn-desktop/development/make_popcorn.sh -O -)"
+fi;
+
+echo ""
+echo ""
 read -p "install the awesome albert just like dash alfred in maxosx, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo add-apt-repository ppa:nilarimogard/webupd8
