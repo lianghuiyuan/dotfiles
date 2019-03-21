@@ -30,10 +30,9 @@ echo -e "\033[40;32m Ensure you have installed the cheat first ... \033[0m"
 # for i in $HOME/.emacs.d; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
 # for i in $HOME/.emacs.d; do [ -L $i ] && unlink $i ; done
 
-echo -e "\033[40;32m Step1: unlink the current cheat config folder \033[0m"
+echo -e "\033[40;32m Step1: 删除软链接 rm -rf symbolic_name 注意不是rm -rf symbolic_name/ \033[0m"
 if [ -e "$HOME/.cheat" ]; then
-  #unlink "$HOME/.cheat"
-  for i in $HOME/.cheat; do [ -L $i ] && unlink $i ; done
+  rm -rf "$HOME/.cheat"
 fi
 
 

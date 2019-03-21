@@ -265,14 +265,6 @@ fi
 
 echo ""
 echo ""
-read -p "install the Cheat, are you sure? (y/n) " -n 1;
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  sh -c $CURRENT_DIR/cheat.sh
-fi;
-
-
-echo ""
-echo ""
 read -p "install the goldendict translator software, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo apt-get install -y goldendict
@@ -404,7 +396,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo chmod +x /usr/local/bin/docker-compose
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 fi;
-
 
 echo ""
 echo ""

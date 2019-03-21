@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
+CURRENT_DIR="$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 git pull origin master;
 
@@ -78,6 +78,28 @@ unset doIt;
 echo ""
 
 echo -e "\033[40;32m start to install command line tools for your system ...\033[0m"
+echo ""
+echo ""
+read -p "install the Cheat, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sh -c $CURRENT_DIR/cheat.sh
+fi;
+
+echo ""
+echo ""
+read -p "install the Vim, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sh -c $CURRENT_DIR/vim.sh
+fi;
+
+echo ""
+echo ""
+read -p "install the Emacs, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sh -c $CURRENT_DIR/emacs.sh
+fi;
+
+
 
 sysType=`uname -s`
 
