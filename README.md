@@ -107,7 +107,7 @@ leader is ","
     ","  'other-window                             // 切换窗口
     "a=" 'my-align-single-equals                   // 对其==
     "b"   'projectile-switch-to-buffer             // 切换buffer
-    "c"  'comment-dwim                             // 注册选中的行
+    "c"  'comment-dwim                             // 给选中的行添加注释
     "d"  'kill-this-buffer                         // 关闭buffer
     "D"  'delete-window                            // 关闭window
     "e"  (lambda () (interactive) (get-erl-man))   // 获取erlang 帮助文档

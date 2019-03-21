@@ -2,7 +2,6 @@
 
 sudo -v
 
-echo -e "\033[40;32m Ensure you have installed the emacs first ... \033[0m"
 # echo -e "\033[40;32m install the emacs ... \033[0m"
 # if [ `uname -s` = "Linux" ]; then
 #   sudo add-apt-repository ppa:kelleyk/emacs
@@ -28,6 +27,7 @@ lnif() {
     fi
 }
 
+echo -e "\033[40;32m Ensure you have installed the emacs first ... \033[0m"
 echo -e "\033[40;32m Step1: Backing up current emacs config \033[0m"
 today=`date +%Y%m%d`
 # for i in $HOME/.emacs.d; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
