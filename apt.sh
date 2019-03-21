@@ -164,10 +164,9 @@ read -p "do you want to deploy your own G-F-W vps and use shadowsocks client of 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   #apt-get install build-essential
   #wget https://github.com/jedisct1/libsodium/releases/download/1.0.15/libsodium-1.0.15.tar.gz
-  #tar xf libsodium-1.0.15.tar.gz && cd libsodium-1.0.15
-  #./configure && make -j2 && make install
-  #ldconfig
-  # cd ..
+  #tar -xf libsodium-1.0.15.tar.gz
+  #cd libsodium-1.0.15 && ./configure && make -j2 && make install && ldconfig
+  #cd $CURRENT_DIR
   sudo apt-get install -y software-properties-common
   sudo bash -c "LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php"
   sudo apt-get update
@@ -245,7 +244,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo apt-get install libncursesw5-dev
   git clone https://github.com/hishamhm/htop $CURRENT_DIR/htop
   cd $CURRENT_DIR/htop && ./autogen.sh && ./configure && make && sudo ln -s $CURRENT_DIR/htop/htop /usr/bin/htop
-  cd -
+  cd $CURRENT_DIR
 fi;
 
 echo ""
@@ -266,9 +265,23 @@ fi
 
 echo ""
 echo ""
+read -p "install the Cheat, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sh -c $CURRENT_DIR/cheat.sh
+fi;
+
+
+echo ""
+echo ""
 read -p "install the goldendict translator software, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-sudo apt-get install -y goldendict
+  sudo apt-get install -y goldendict
+  sudo apt-get install -y gawk
+  # Goldendict添加谷歌翻译 https://blog.csdn.net/clksjx/article/details/86775819
+  git clone https://github.com/soimort/translate-shell.git
+  cd $CURRENT_DIR/translate-shell && make && sudo make install
+  cd $CURRENT_DIR
+  cecho "!!! now, 打开GoldenDict，在菜单编辑-词典-词典来源-程序中，点击添加，勾上已启用，在类型中选Plain Text，在名称填写google，在命令中输入===>[ trans -e google -s auto -t zh-CN -show-original y -show-original-phonetics n -show-translation y -no-ansi -show-translation-phonetics n -show-prompt-message n -show-languages n -show-original-dictionary n -show-dictionary n -show-alternatives n “%GDWORD%”],然后点击OK即可" $green
 fi;
 
 echo ""
@@ -291,35 +304,34 @@ echo ""
 echo ""
 read -p "install the awesome theme: [materia-theme, flatabulous-theme, Flat-Plat-Blue], are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-sudo apt-get install -y libxml2-utils libglib2.0-dev gtk2-engines-murrine gnome-themes-standard
-sudo apt install -y gnome-tweak-tool gnome-shell-extensions
+  sudo apt-get install -y libxml2-utils libglib2.0-dev gtk2-engines-murrine gnome-themes-standard
+  sudo apt install -y gnome-tweak-tool gnome-shell-extensions
 
-sudo add-apt-repository ppa:dyatlov-igor/materia-theme
-sudo apt update
-sudo apt install -y materia-gtk-theme
+  sudo add-apt-repository ppa:dyatlov-igor/materia-theme
+  sudo apt update
+  sudo apt install -y materia-gtk-theme
 
-sudo add-apt-repository ppa:noobslab/themes
-sudo apt-get update
-sudo apt-get install -y flatabulous-theme
+  sudo add-apt-repository ppa:noobslab/themes
+  sudo apt-get update
+  sudo apt-get install -y flatabulous-theme
 
-wget https://github.com/peterychuang/Flat-Plat-Blue/archive/3.26.0-2.tar.gz
-tar zxvf 3.26.0-2
-cd Flat-Plat-Blue-3.26.0-2/
-sudo ./install.sh
-cd ..
+  wget https://github.com/peterychuang/Flat-Plat-Blue/archive/3.26.0-2.tar.gz
+  tar zxvf 3.26.0-2
+  cd Flat-Plat-Blue-3.26.0-2/ && sudo ./install.sh
+  cd $CURRENT_DIR
 fi;
 
 echo ""
 echo ""
 read -p "install the awesome icon: [flat-remix, ultra-flat-icons], are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-sudo add-apt-repository ppa:daniruiz/flat-remix
-sudo apt-get update
-sudo apt-get install -y flat-remix
+  sudo add-apt-repository ppa:daniruiz/flat-remix
+  sudo apt-get update
+  sudo apt-get install -y flat-remix
 
-sudo add-apt-repository ppa:noobslab/icons
-sudo apt-get update
-sudo apt-get install -y ultra-flat-icons
+  sudo add-apt-repository ppa:noobslab/icons
+  sudo apt-get update
+  sudo apt-get install -y ultra-flat-icons
 fi;
 
 
@@ -391,7 +403,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-
 fi;
 
 

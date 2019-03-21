@@ -23,7 +23,7 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 lnif() {
     if [ -e "$1" ]; then
-        ln -sf "$1" "$2"
+        ln -s "$1" "$2"
     fi
 }
 
