@@ -1,3 +1,4 @@
+# docker 常用命令
 # Build an image from the Dockerfile in the current directory and tag the image
 docker build -t myapp:1.0 .
 
@@ -19,14 +20,15 @@ docker login my.registry.com:8000
 # Push an image to a registry
 docker push myrepo/myalpine:3.4
 
-docker run
---rm               # remove container automatically after it exits
--it                # connect the container to terminal
---name web         # name the container
--p 5000:80         # expose port 5000 externally and map to port 80
--v ~/dev:/code     # create a host mapped volume inside the container
-alpine:3.4         # the image from which the container is instantiated
-/bin/sh            # the command to run inside the container
+# Run
+docker run --rm -it --name web -p 5000:80 -v ~/dev:/code alpine:3.4 /bin/sh
+# [--rm]: remove container automatically after it exits
+# [-it]: connect the container to terminal
+# [--name web]: name the container
+# [-p 5000:80]: expose port 5000 externally and map to port 80
+# [-v ~/dev:/code]: create a host mapped volume inside the container
+# [alpine:3.4]: the image from which the container is instantiated
+# [/bin/sh]: the command to run inside the container
 
 # Stop a running container through SIGTERM
 docker stop web
@@ -53,7 +55,7 @@ docker exec -it web bash
 docker logs --tail 100 web
 
 
-# ORCHESTRATE - docker swarm
+# 编排 - docker swarm
 # Initialize swarm mode and listen on a specific interface
 docker swarm init --advertise-addr 10.1.0.2
 
