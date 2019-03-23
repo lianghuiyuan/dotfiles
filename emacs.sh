@@ -33,7 +33,8 @@ today=`date +%Y%m%d`
 # for i in $HOME/.emacs.d; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
 # for i in $HOME/.emacs.d; do [ -L $i ] && unlink $i ; done
 if [ -e "$HOME/.emacs.d" ]; then
-  unlink "$HOME/.emacs.d"
+  #unlink "$HOME/.emacs.d"
+  rm -rf "$HOME/.emacs.d"
 fi
 
 

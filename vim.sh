@@ -31,7 +31,9 @@ echo -e "\033[40;32m Step1: backing up current vim config \033[0m"
 today=`date +%Y%m%d`
 for i in $HOME/.gvimrc $HOME/.vimrc $HOME/.vim; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
 for i in $HOME/.gvimrc $HOME/.vimrc $HOME/.vim; do [ -L $i ] && unlink $i ; done
-
+if [ -e "$HOME/.vim" ]; then
+  rm -rf "$HOME/.vim"
+fi
 
 echo -e "\033[40;32m Step2: setting up symlinks \033[0m"
 mkdir -p $CURRENT_DIR/.vim

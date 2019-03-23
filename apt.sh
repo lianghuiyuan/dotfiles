@@ -98,6 +98,11 @@ apps=(
     python-pip
     python-dev
 
+    ## for ag ---> helm-ag
+    silversearcher-ag
+    ## for global ---> ,t
+    exuberant-ctags
+
     ## for erlang: refer: https://packages.erlang-solutions.com/erlang/
     #libwxbase3.0-0
     #libwxbase3.0-0v5
@@ -346,6 +351,16 @@ sudo apt update
 sudo apt install mpv
 fi;
 
+echo "~~~~~~~~~~~~~~~!!! Install global with ctags !!!~~~~"
+cd $CURRENT_DIR
+wget http://tamacom.com/global/global-6.6.3.tar.gz
+tar zxvf global-6.6.3.tar.gz
+cd global-6.6.3
+./configure --with-exuberant-ctags=/usr/bin/ctags
+make
+sudo make install
+cd $CURRENT_DIR
+echo "~~~~~~~~~~~~~~~!!! Install global with ctags done!!!~~~"
 
 echo ""
 echo ""

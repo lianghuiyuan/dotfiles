@@ -11,7 +11,7 @@
     "aa" 'align-regexp
     "a=" 'my-align-single-equals
     ;"b"  'helm-mini             ;; Switch to another buffer
-    "b"   'projectile-switch-to-buffer
+    "b"  'projectile-switch-to-buffer
     "B"  'magit-blame-toggle
     "c"  'comment-dwim
     "d"  'kill-this-buffer
@@ -22,8 +22,8 @@
     "E"  'sudo-edit-current-file
     "f"  'helm-imenu            ;; Jump to function in buffer
     "g"  'magit-status
-    "hb"  'fontify-and-browse    ;; HTML-ize the buffer and browse the result
-    "hs"  'helm-projectile-ag
+    "hb" 'fontify-and-browse    ;; HTML-ize the buffer and browse the result
+    "hs" 'helm-projectile-ag
     "hp" 'helm-projectile
     "hd" 'helm-dash-at-point
     "k"  'get-erl-man'
@@ -34,14 +34,16 @@
     "o"  'delete-other-windows  ;; C-w o
     "O"  'other-frame
     "p"  'helm-show-kill-ring
-    "P"   'projectile-find-file-other-window
+    "P"  'projectile-find-file-other-window
     "s"  'ag-project            ;; Ag search from project's root
     "r"  'chrome-reload
     "R"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
     "S"  'delete-trailing-whitespace
     "t"  'gtags-reindex
     "T"  'gtags-find-tag
-    "ui"  'uimage-mode
+    "ui" 'uimage-mode
+    "u"  'eshell-here
+    "U"  'eshell-x
     "w"  'save-buffer
     "x"  'helm-M-x
     "y"  'yank-to-x-clipboard

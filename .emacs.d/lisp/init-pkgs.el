@@ -217,6 +217,10 @@
              :commands (helm-projectile helm-projectile-switch-project)
              :ensure t)
 
+(use-package avy
+             :defer t
+             :ensure t)
+
 (use-package company
              :ensure t
              :diminish 'company-mode
