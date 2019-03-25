@@ -150,3 +150,5 @@ kubectl cluster-info dump --output-directory=/path/to/cluster-state   # Dump cur
 
 # If a taint with that key and effect already exists, its value is replaced as specified.
 kubectl taint nodes foo dedicated=special-user:NoSchedule
+
+# 更多请参考：https://jimmysong.io/posts/kubectl-cheatsheet/
