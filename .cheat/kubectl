@@ -1,3 +1,16 @@
+# Kubectl 上下文和配置
+$ kubectl config view # 显示合并后的 kubeconfig 配置
+# 同时使用多个 kubeconfig 文件并查看合并后的配置
+$ KUBECONFIG=~/.kube/config:~/.kube/kubconfig2 kubectl config view
+# 获取 e2e 用户的密码
+$ kubectl config view -o jsonpath='{.users[?(@.name == "e2e")].user.password}'
+$ kubectl config current-context              # 显示当前的上下文
+$ kubectl config use-context my-cluster-name  # 设置默认上下文为 my-cluster-name
+# 向 kubeconf 中增加支持基本认证的新集群
+$ kubectl config set-credentials kubeuser/foo.kubernetes.com --username=kubeuser --password=kubepassword
+# 使用指定的用户名和 namespace 设置上下文
+$ kubectl config set-context gce --user=cluster-admin --namespace=foo && kubectl config use-context gce
+
 # Resource types - 资源类型
 # List all supported resource types along with their shortnames, API group, whether they are namespaced, and Kind:
 kubectl api-resources                        # 查看所有支持的资源类型
