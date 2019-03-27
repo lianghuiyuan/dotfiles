@@ -1,0 +1,4 @@
+# For wise2c.Inc
+
+# 修改deployment中kube-dns的副本数量
+kks scale deployment kube-dns --replicas 0
