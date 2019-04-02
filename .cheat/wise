@@ -2,3 +2,9 @@
 
 # 修改deployment中kube-dns的副本数量
 kks scale deployment kube-dns --replicas 0
+
+# kubectl 无法 pull 镜像时操作(请确认deployment中镜像拉取规则imagePullPolicy: always):
+kubectl -n wisecloud-controller create secret docker-registry wise2cregkey --docker-server=registry.cn-hangzhou.aliyuncs.com  --docker-username=wise2cdev --docker-password=Wise2c2017
+kubectl -n wisecloud-controller patch serviceaccount wisecloud-controller -p '{"imagePullSecrets":[{"name": "wise2cregkey"}]}'
+kubectl -n wisecloud-controller patch serviceaccount default -p '{"imagePullSecrets":[{"name": "wise2cregkey"}]}'
+kubectl -n wisecloud-controller patch serviceaccount prometheus-operator -p '{"imagePullSecrets":[{"name": "wise2cregkey"}]}'」

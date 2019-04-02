@@ -1,0 +1,5 @@
+hash-string.o: hash-string.c /usr/include/stdc-predef.h hash-string.h
+
+/usr/include/stdc-predef.h:
+
+hash-string.h:

@@ -1,0 +1,8 @@
+列出对应分支中对应目录下的所有文件
+git ls-tree master:dirname
+
+从master分支中单独复制目录下的某一个文件
+git checkout master -- dirname/filename
+
+从master分支中复制整个目录
+git checkout master -- dirname

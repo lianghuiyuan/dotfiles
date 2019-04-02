@@ -1,0 +1,7 @@
+is_unixy.o: is_unixy.c /usr/include/stdc-predef.h ../config.h is_unixy.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:
+
+is_unixy.h:

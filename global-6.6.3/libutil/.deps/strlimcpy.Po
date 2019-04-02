@@ -1,0 +1,12 @@
+strlimcpy.o: strlimcpy.c /usr/include/stdc-predef.h ../config.h die.h \
+ /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h strlimcpy.h
+
+/usr/include/stdc-predef.h:
+
+../config.h:
+
+die.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h:
+
+strlimcpy.h:

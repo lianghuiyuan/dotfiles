@@ -351,15 +351,20 @@ sudo apt update
 sudo apt install mpv
 fi;
 
+echo ""
+echo ""
 echo "~~~~~~~~~~~~~~~!!! Install global with ctags !!!~~~~"
-cd $CURRENT_DIR
-wget http://tamacom.com/global/global-6.6.3.tar.gz
-tar zxvf global-6.6.3.tar.gz
-cd global-6.6.3
-./configure --with-exuberant-ctags=/usr/bin/ctags
-make
-sudo make install
-cd $CURRENT_DIR
+read -p "install the awesome mpv player, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  cd $CURRENT_DIR
+  wget http://tamacom.com/global/global-6.6.3.tar.gz
+  tar zxvf global-6.6.3.tar.gz
+  cd global-6.6.3
+  ./configure --with-exuberant-ctags=/usr/bin/ctags
+  make
+  sudo make install
+  cd $CURRENT_DIR
+fi;
 echo "~~~~~~~~~~~~~~~!!! Install global with ctags done!!!~~~"
 
 echo ""
@@ -411,6 +416,39 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo chmod +x /usr/local/bin/docker-compose
   sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 fi;
+
+echo ""
+echo ""
+read -p "install Teamviewer, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  sudo apt install gdebi-core
+  wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb -O teamviewer_amd64.deb
+  sudo gdebi -y teamviewer_amd64.deb
+fi;
+
+echo ""
+echo ""
+read -p "install postman, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  # Get postman app
+  wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+  sudo tar -xzf postman.tar.gz -C /opt
+  sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+  #Create a Desktop Entry
+  cat > ~/.local/share/applications/postman.desktop <<EOL
+[Desktop Entry]
+Encoding=UTF-8
+Name=Postman
+Exec=postman
+Icon=/opt/Postman/app/resources/app/assets/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+EOL
+fi;
+
+
 
 echo ""
 echo ""

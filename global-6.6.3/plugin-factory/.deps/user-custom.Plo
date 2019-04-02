@@ -1,0 +1,6 @@
+user-custom.lo: user-custom.c /usr/include/stdc-predef.h \
+ ../libparser/parser.h
+
+/usr/include/stdc-predef.h:
+
+../libparser/parser.h:
