@@ -1,0 +1,27 @@
+# 参考 https://juejin.im/entry/581afc4b5bbb500059ca6951
+# 查看可用的Node.js版本的信息
+nvm ls-remote
+
+# 安装对应版本的nodejs
+nvm install v10.15.3
+
+# 通过nvm use xxx 切换使用xxx版本的nodejs
+nvm use v10.15.3
+
+# 查看shell正在使用的版本
+node -v
+
+# 查看已安装的nodejs
+nvm ls
+
+# 将xxx版本设置为默认版本
+nvm alias default v10.15.3
+
+# 查看当前活动版本
+nvm current
+
+# 卸载已使用nvm启用的Node.js版本
+nvm uninstall node_version
+
+# 了解更多关于nvm可用的选项
+nvm help
