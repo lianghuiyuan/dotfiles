@@ -218,6 +218,16 @@ fi;
 
 echo ""
 echo ""
+read -p "install nvm, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh -o install_nvm.sh
+  bash install_nvm.sh
+  source ~/.profile
+fi;
+
+
+echo ""
+echo ""
 read -p "install the awesome fzf, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -354,7 +364,7 @@ fi;
 echo ""
 echo ""
 echo "~~~~~~~~~~~~~~~!!! Install global with ctags !!!~~~~"
-read -p "install the awesome mpv player, are you sure? (y/n) " -n 1;
+read -p "install global with ctags, are you sure? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd $CURRENT_DIR
   wget http://tamacom.com/global/global-6.6.3.tar.gz
@@ -365,6 +375,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   sudo make install
   cd $CURRENT_DIR
 fi;
+echo ""
 echo "~~~~~~~~~~~~~~~!!! Install global with ctags done!!!~~~"
 
 echo ""
@@ -447,6 +458,15 @@ Type=Application
 Categories=Development;
 EOL
 fi;
+
+echo ""
+echo ""
+read -p "install newman, are you sure? (y/n) " -n 1;
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  npm install -g newman
+
+fi;
+
 
 
 
