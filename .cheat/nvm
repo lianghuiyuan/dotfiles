@@ -20,8 +20,10 @@ nvm alias default v10.15.3
 # 查看当前活动版本
 nvm current
 
-# 卸载已使用nvm启用的Node.js版本
+# 卸载选定版本的Node.js(卸载前请确定node_version不是当前的活动版本)
 nvm uninstall node_version
+# 如果您想要删除的版本是当前的活动版本，则必须先停用nvm以启用您的更改：
+nvm deactivate
 
 # 了解更多关于nvm可用的选项
 nvm help

@@ -363,8 +363,8 @@ fi;
 
 echo ""
 echo ""
-echo "~~~~~~~~~~~~~~~!!! Install global with ctags !!!~~~~"
 read -p "install global with ctags, are you sure? (y/n) " -n 1;
+echo "~~~~~~~~~~~~~~~!!! Install global with ctags !!!~~~~"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd $CURRENT_DIR
   wget http://tamacom.com/global/global-6.6.3.tar.gz

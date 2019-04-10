@@ -1,0 +1,8 @@
+# 删除软件包并保留配置文件
+sudo apt remove nodejs
+
+# 如果您不想保存配置文件供以后使用，请运行以下命令：
+sudo apt purge nodejs
+
+# 删除随已删除软件包自动安装的任何未使用的软件包
+sudo apt autoremove

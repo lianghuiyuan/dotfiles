@@ -352,8 +352,8 @@
                 (("\\.go$" . "golang header")
                  nil
                  "//---------------------------------------------------------------------\n"
-                 "// @Copyright (c) 2019-2020 Firefly Enterprise, Inc. (http://www.lhy.me)\n"
-                 "// @Author: Mr.L <lianghuiyuan@126.com>\n"
+                 "// @Copyright © Wise2c Technology Co.,Ltd (http://www.wise2c.com/)\n"
+                 "// @Author: Mr.L <lianghy@wise2c.com>\n"
                  "// @Date   Created: " (format-time-string "%Y-%m-%d %H:%M:%S")"\n"
                  "//----------------------------------------------------------------------\n"
                  _
