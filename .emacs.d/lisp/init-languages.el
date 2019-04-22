@@ -273,6 +273,35 @@
     ad-do-it))
 
 ;;----------------------------------------------------------------------------
+;; Typescript
+;; TIDE stands for:
+;;   T ypescript
+;;   I nteractive
+;;   D evelopment
+;;   E nvironment
+;; http://redgreenrepeat.com/2018/05/04/typescript-in-emacs/
+;;----------------------------------------------------------------------------
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;;----------------------------------------------------------------------------
 ;; other programming languages
 ;;----------------------------------------------------------------------------
 (use-package markdown-mode
@@ -388,8 +417,8 @@
                 (("\\.erl$" . "erlang header")
                  nil
                  "%%%-------------------------------------------------------------------\n"
-                 "%%% @Copyright (c) 2016-2017 MOLMC Enterprise, Inc. (http://intoyun.com)\n"
-                 "%%% @Author: Creasy.L <creasy@molmc.com>\n"
+                 "%%% @Copyright (c) 2016-2017 keyumall Enterprise, Inc. (http://www.keyumall.com)\n"
+                 "%%% @Author: Creasy.L <creasy@keyumall.com>\n"
                  "%%% @Date   Created: " (format-time-string "%Y-%m-%d %H:%M:%S")"\n"
                  "%%%-------------------------------------------------------------------\n"
                  _
