@@ -1,7 +1,17 @@
 # For wise2c.Inc
 
-# 命令行登录wise2c阿里云镜像仓库:
-$sudo docker login -u="wise2cdev"  -p="Wise2c2017" registry.cn-hangzhou.aliyuncs.com
+# Aliyun镜像仓库命名空间地址：
+# 开发镜像仓库：
+registry.cn-hangzhou.aliyuncs.com/wise2c-dev
+# 测试镜像仓库：
+registry.cn-hangzhou.aliyuncs.com/wise2c-test
+# 生产镜像仓库：
+registry.cn-hangzhou.aliyuncs.com/wise2c-prd
+
+# 登录开发测试镜像仓库,用于下载部署程序的镜像：
+docker login -u="dev@wisecloud"  -p="Wise2c2019" registry.cn-hangzhou.aliyuncs.com
+# 登录生产镜像仓库，用于下载wisecloud五六十个镜像：
+docker login -u=" release@1691863300712622"  -p="  " registry.cn-hangzhou.aliyuncs.com
 
 # 修改deployment中kube-dns的副本数量
 $kks scale deployment kube-dns --replicas 0
