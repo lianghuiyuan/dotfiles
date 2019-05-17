@@ -1,0 +1,51 @@
+# 查看ProxyCommand帮助:$ man ssh_config
+ TOKENS
+      Arguments to some keywords can make use of tokens, which are expanded at runtime:
+
+            %%    A literal ‘%’.
+            %C    Shorthand for %l%h%p%r.
+            %d    Local user's home directory.
+            %h    The remote hostname.
+            %i    The local user ID.
+            %L    The local hostname.
+            %l    The local hostname, including the domain name.
+            %n    The original remote hostname, as given on the command line.
+            %p    The remote port.
+            %r    The remote username.
+            %u    The local username.
+
+      Match exec accepts the tokens %%, %h, %L, %l, %n, %p, %r, and %u.
+
+      CertificateFile accepts the tokens %%, %d, %h, %l, %r, and %u.
+
+      ControlPath accepts the tokens %%, %C, %h, %i, %L, %l, %n, %p, %r, and %u.
+
+      HostName accepts the tokens %% and %h.
+
+      IdentityAgent and IdentityFile accept the tokens %%, %d, %h, %l, %r, and %u.
+
+      LocalCommand accepts the tokens %%, %C, %d, %h, %l, %n, %p, %r, and %u.
+
+      ProxyCommand accepts the tokens %%, %h, %p, and %r.
+
+      RemoteCommand accepts the tokens %%, %C, %d, %h, %l, %n, %p, %r, and %u.
+
+# 账号/密码：root/Wise2c2017(aliyun)
+Host jumper
+    User root
+    HostName 118.21.20.25
+    ServerAliveInterval 15
+    ForwardAgent yes
+    IdentityFile ~/.ssh/id_rsa.key
+    Port 2222
+
+# 使用代理通过跳板机登录
+# nc命令：NetCat 一个简单、可靠的网络工具，可通过TCP或UDP协议传输读写数据
+# nc [-hlnruz][-g<网关...>][-G<指向器数目>][-i<延迟秒数>][-o<输出文件>][-p<通信端口>][-s<来源地址>][-v...][-w<超时秒数>][主机名称][通信端口...]
+Host prd-iy-vpc1
+    User user001
+    HostName 172.20.8.1
+    Port 22
+    ServerAliveInterval 15
+    ForwardAgent yes
+    ProxyCommand ssh %r@jumper -i ~/.ssh/id_rsa.key -p 2222 nc %h %p

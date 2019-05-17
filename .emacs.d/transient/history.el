@@ -2,9 +2,9 @@
                ("--author=Mr.L"))
  (magit-dispatch nil)
  (magit-log
+  ("--graph" "--color" "--decorate")
   ("-Gfix" "--color" "--decorate")
-  ("--color" "--decorate")
-  ("--graph" "--color" "--decorate"))
+  ("--color" "--decorate"))
  (magit-log:-G "fix")
  (magit-merge nil)
  (magit-push nil)

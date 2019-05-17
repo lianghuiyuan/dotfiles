@@ -1,0 +1,13 @@
+# 参考：使用dd命令制作USB启动盘 http://blog.topspeedsnail.com/archives/4042
+
+# 查看设备
+$sudo fdisk -l
+
+# 为了格式化我们首先需要 umount U盘
+$sudo umount /dev/sdb*(/dev/sdb是我的U盘设备)
+
+# 格式化U盘, 把U盘格式化为FAT格式
+$sudo mkfs.vfat /dev/sdb -I
+
+# 制作启动U盘, 把ISO镜像写入到U盘，等待几分钟
+$sudo dd if=~/Downloads/CentOS-7-x86_64-DVD-1810.iso of=/dev/sdb
