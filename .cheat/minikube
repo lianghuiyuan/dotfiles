@@ -1,0 +1,7 @@
+
+
+# 删除 kube-prometheus
+sudo minikube delete -p kube-prometheus
+
+# 启动 kube-prometheus
+sudo minikube start -p kube-prometheus --kubernetes-version=v1.14.2 --memory=3072 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn

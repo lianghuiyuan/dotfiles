@@ -264,7 +264,7 @@ fi;
 
 echo ""
 echo ""
-read -p "polipo privoxy (y/n) " -n 1;
+read -p "shadowsocks使用的是socks5代理, 配置 polipo http/https代理转发工具? (y/n) " -n 1;
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   if [ -f "/etc/polipo/config" ]; then
     sudo chmod a+w "/etc/polipo/config"
