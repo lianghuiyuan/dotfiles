@@ -137,6 +137,9 @@ kubectl delete pod,service baz foo                                        # Dele
 kubectl delete pods,services -l name=myLabel                              # Delete pods and services with label name=myLabel
 kubectl delete pods,services -l name=myLabel --include-uninitialized      # Delete pods and services, including uninitialized ones, with label name=myLabel
 kubectl -n my-ns delete po,svc --all                                      # Delete all pods and services, including uninitialized ones, in namespace my-ns,
+# 加参数 --force --grace-period=0，grace-period表示过渡存活期，默认30s，在删除POD之前允许POD慢慢终止其上的容器进程，从而优雅退出，0表示立即终止POD
+# 解决：kubelet delete pod之后总处于Terminating，无法移除
+kubectl delete po <your-pod-name> -n <name-space> --force --grace-period=0
 
 # Interacting with running Pods - 与运行中的Pods交互
 kubectl logs my-pod                                 # dump pod logs (stdout)
