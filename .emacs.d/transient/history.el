@@ -7,6 +7,7 @@
   ("--color" "--decorate"))
  (magit-log:-G "fix")
  (magit-merge nil)
+ (magit-pull nil)
  (magit-push nil)
  (magit-rebase nil)
  (magit:--author "Mr.L"))
