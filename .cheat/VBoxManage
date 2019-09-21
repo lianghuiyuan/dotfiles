@@ -1,0 +1,124 @@
+创建虚拟机（同时注册）
+    VBoxManage createvm --name UbuntuRDHome --register
+
+注册虚拟机
+    VBoxManage registervm <Absolute Full Path>/UbuntuRDHome.vbox
+
+仅注销虚拟机
+    VBoxManage unregistervm UbuntuRDHome
+
+删除虚拟机（！！！会删除所有虚拟硬盘，谨慎操作！！！）
+    VBoxManage unregistervm --delete UbuntuRDHome
+
+设置系统类型Ubuntu_64
+    VBoxManage modifyvm UbuntuRDHome --ostype Ubuntu_64
+
+设置内存大小4G
+    VBoxManage modifyvm UbuntuRDHome --memory 4096
+
+建立虚拟磁盘：系统盘100G
+    VBoxManage createmedium --filename UbuntuRDHome_HDD_SYS_100G.vdi --size 100000
+
+建立虚拟磁盘：HOME盘100G
+    VBoxManage createmedium --filename UbuntuRDHome_HDD_HOME_100G.vdi --size 100000
+
+创建存储控制器IDE、SATA
+    VBoxManage storagectl UbuntuRDHome --name IDE --add ide --controller PIIX4 --bootable on
+    VBoxManage storagectl UbuntuRDHome --name SATA --add sata --controller IntelAhci --bootable on
+移除控制器：
+    VBoxManage storagectl UbuntuRDHome --name IDE --remove
+    VBoxManage storagectl UbuntuRDHome --name SATA --remove
+
+关联虚拟机磁盘
+    VBoxManage storageattach UbuntuRDHome --storagectl SATA --port 0 --device 0 --type hdd --medium UbuntuRDHome_HDD_SYS_100G.vdi
+    VBoxManage storageattach UbuntuRDHome --storagectl SATA --port 1 --device 0 --type hdd --medium UbuntuRDHome_HDD_HOME_100G.vdi
+解除关联：
+    VBoxManage storageattach UbuntuRDHome --storagectl SATA --port 0 --device 0 --type hdd --medium none
+    VBoxManage storageattach UbuntuRDHome --storagectl SATA --port 1 --device 0 --type hdd --medium none
+
+关联镜像文件
+    VBoxManage storageattach UbuntuRDHome --storagectl IDE --port 0 --device 0 --type dvddrive --medium ubuntu-16.04.3-server-amd64.iso
+    VBoxManage storageattach UbuntuRDHome --storagectl IDE --port 1 --device 0 --type dvddrive --medium VBoxGuestAdditions_5.1.22.iso
+解除关联：
+    VBoxManage storageattach UbuntuRDHome --storagectl IDE --port 0 --device 0 --type dvddrive --medium none
+    VBoxManage storageattach UbuntuRDHome --storagectl IDE --port 1 --device 0 --type dvddrive --medium none
+
+设置网络为桥接（nictype和bridgeadapter要根据主机的实际情况选择）
+    VBoxManage modifyvm UbuntuRDHome --nic1 bridged --nictype1 82545EM --cableconnected1 on --bridgeadapter1 enp5s0f0
+
+设置远程桌面（可以使用VNC通过5540端口访问虚拟机桌面）
+    VBoxManage modifyvm UbuntuRDHome --vrdeport 5540 --vrdeaddress ""
+
+打开远程桌面
+    VBoxManage modifyvm UbuntuRDHome --vrde on
+
+关闭远程桌面
+    VBoxManage modifyvm UbuntuRDHome --vrde off
+
+查看虚拟机信息
+    VBoxManage -v
+    VBoxManage list vms
+    VBoxManage list runningvms
+    VBoxManage showvminfo UbuntuRDHome
+    VBoxManage list hdds
+    VBoxManage list dvds
+
+启动虚拟机
+    VBoxManage startvm UbuntuRDHome --type headless
+
+保持状态关闭虚拟机[推荐]
+    VBoxManage controlvm UbuntuRDHome savestate
+放弃已保存的状态
+    VBoxManage discardstate UbuntuRDHome
+
+断电关闭虚拟机
+    VBoxManage controlvm UbuntuRDHome poweroff
+
+正常关机[不能彻底关闭，一直处于stopping状态]
+    VBoxManage controlvm UbuntuRDHome acpipowerbutton
+
+管理虚拟机更多命令
+    VBoxManage controlvm UbuntuRDHome XXX
+
+设置CPU数量（必须打开IOAPIC）
+    VBoxManage modifyvm UbuntuRDHome  --ioapic on
+    VBoxManage modifyvm UbuntuRDHome --cpus 8
+
+使能largepages选项
+    VBoxManage modifyvm UbuntuRDHome  --largepages on
+
+设置CPU运行峰值
+    VBoxManage modifyvm UbuntuRDHome --cpuexecutioncap 80
+
+
+VirtualBox的媒体是统一管理的，可以使用list查看：
+    VBoxManage list hdds
+
+克隆媒体（克隆已有的虚拟硬盘文件，之后可以添加到虚拟机）
+    VBoxManage clonemedium hddfilename
+
+移动虚拟硬盘位置（不是简单的cp或mv）
+    VBoxManage modifymedium hddfilename --move "new dir"
+
+快照的创建和恢复（十分重要）
+这里以创建快照 snap20171204-installed 为例，进行演示。
+快照列表：
+    VBoxManage snapshot UbuntuRDHome list
+    VBoxManage snapshot UbuntuRDHome showvminfo snap20171204-installed
+
+创建快照：
+    VBoxManage snapshot UbuntuRDHome take snap20171204-installed
+删除快照：
+    VBoxManage snapshot UbuntuRDHome delete snap20171204-installed
+恢复快照：
+    VBoxManage snapshot UbuntuRDHome restore snap20171204-installed
+恢复当前快照：
+    VBoxManage snapshot UbuntuRDHome restorecurrent
+
+安装 Guest Additions（可选）
+挂载CD/DVD虚拟光驱
+    sudo mount -t auto /dev/cdrom /mnt    (这里的cdrom是cd的，有时是dvd，具体有什么光驱到 /dev目录下查看)
+    cd /mnt
+    sudo ./VBoxLinuxAdditions.run
+重启
+    sudo reboot

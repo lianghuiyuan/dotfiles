@@ -1,0 +1,26 @@
+# https://maven.apache.org/guides/mini/guide-3rd-party-jars-local.html
+# 以pom格式打包第三方JAR包
+mvn install:install-file \
+    -Dpackaging=pom \
+    -Dfile=tmp/dependency-management-1.0.0-SNAPSHOT.pom \
+    -DpomFile=tmp/dependency-management-1.0.0-SNAPSHOT.pom
+
+# 以jar格式打包第三方JAR包
+mvn install:install-file \
+    -Dpackaging=jar
+    -Dfile=D:\download\dingtalk-sdk-java\taobao-sdk-java-auto_1479188381469-20190704.jar \
+    -DgroupId=com.dingtalk \
+    -DartifactId=com-dingtalk-api \
+    -Dversion=1.0.0 \
+
+
+# 上传mvn依赖
+# -Dmaven.test.skip=true                              //跳过编译、测试
+# -Dfile=D:\MvnProject\service-mvn-1.0.0.jar          //jar包文件地址,绝对路径
+# -DgroupId=pri.roy.mvn.test                          //gruopId--pom坐标，自定义
+# -DartifactId=mvn-api                                //artifactId--pom坐标，自定义
+# -Dversion                                           //版本号
+# -Dpackaging                                         //打包方式
+# -DrepositoryId                                      //远程库服务器ID
+# -Durl                                               //远程库服务器地址
+mvn deploy:deploy-file -Dmaven.test.skip=true -Dfile=D:\MvnProject\service-mvn-1.0.0.jar -DgroupId=pri.roy.mvn.test -DartifactId=mvn-api -Dversion=1.0.0-SNAPSHOT -Dpackaging=jar -DrepositoryId=roy_privrepository_snapshots -Durl=http://10.4.71.144:9090/repository/roy_privrepository_snapshots/

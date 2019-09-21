@@ -1,0 +1,20 @@
+# xrandr命令运行之后会显示当前连接设备的屏幕信息
+$ xrandr
+
+# 设置双屏幕显示
+# 打开外接显示器，双屏幕显示相同的内容–克隆，（auto为最高分辨率）
+$ xrandr –output VGA-0 –same-as LVDS –auto
+# 若要指定外接显示器的分辨率可以使用下面的命令（1280*1024）：
+$ xrandr –output VGA-0 –same-as LVDS –mode 1280x1024
+
+# 打开外接显示器，设置为右侧扩展
+$ xrandr –output VGA-0 –right-of LVDS –auto
+
+# 关闭显示器
+$  xrandr –output VGA-0 –off
+
+# 打开VGA-0接口显示器，关闭LVDS接口显示器
+$ xrandr –output VGA-0 –auto –output LVDS –off
+
+[注意]
+需要注意的是，在使用xrangr命令设置双屏幕之前，需要先运行xrandr查看VGA，LVDS以及HDMI接口的连接方式以及接口正确的名称，如上为：VGA-0，LVDS和HDMI

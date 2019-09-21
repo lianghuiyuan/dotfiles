@@ -1,0 +1,40 @@
+# Kubernetes 排错指南
+## 查看 Pod 状态以及运行节点
+$ kubectl get pods -o wide
+$ kubectl -n kube-system get pods -o wide
+
+## 查看 Pod 事件
+$ kubectl describe pod <pod-name>
+
+## 查看 Node 状态
+$ kubectl get nodes
+$ kubectl describe node <node-name>
+
+## kube-apiserver 日志
+$ PODNAME=$(kubectl -n kube-system get pod -l component=kube-apiserver -o jsonpath='{.items[0].metadata.name}')
+$ kubectl -n kube-system logs $PODNAME --tail 100
+
+## kube-controller-manager 日志
+$ PODNAME=$(kubectl -n kube-system get pod -l component=kube-controller-manager -o jsonpath='{.items[0].metadata.name}')
+$ kubectl -n kube-system logs $PODNAME --tail 100
+
+## kube-scheduler 日志
+$ PODNAME=$(kubectl -n kube-system get pod -l component=kube-scheduler -o jsonpath='{.items[0].metadata.name}')
+$ kubectl -n kube-system logs $PODNAME --tail 100
+
+## kube-dns 日志
+$ PODNAME=$(kubectl -n kube-system get pod -l k8s-app=kube-dns -o jsonpath='{.items[0].metadata.name}')
+$ kubectl -n kube-system logs $PODNAME -c kubedns
+
+## Kubelet 日志
+## Kubelet 通常以 systemd 管理。查看 Kubelet 日志需要首先 SSH 登录到 Node 上。
+$ journalctl -l -u kubelet
+
+## Kube-proxy 日志
+## Kube-proxy 通常以 DaemonSet 的方式部署，可以直接用 kubectl 查询其日志
+$ kubectl -n kube-system get pod -l component=kube-proxy
+NAME               READY     STATUS    RESTARTS   AGE
+kube-proxy-42zpn   1/1       Running   0          1d
+kube-proxy-7gd4p   1/1       Running   0          3d
+kube-proxy-87dbs   1/1       Running   0          4d
+$ kubectl -n kube-system logs kube-proxy-42zpn

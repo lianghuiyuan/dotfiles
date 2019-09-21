@@ -5,13 +5,15 @@
 sudo minikube delete -p kube-prometheus
 
 # 启动 kube-prometheus, 使用国内aliyun镜像仓库
-sudo minikube start -p kube-prometheus --kubernetes-version=v1.14.2 --memory=3072 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn
+sudo minikube start -p kube-prometheus --kubernetes-version=v1.14.2 --memory=4096 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn
+# 设置cpu和disk
+sudo minikube start -p istio --kubernetes-version=v1.14.2 --cpus 4 --memory=10240 --disk-size 40g --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn
 
 # 删除旧集群，重新启动新集群，使用国内aliyun镜像仓库
-sudo minikube delete -p kube-prometheus && sudo minikube start -p kube-prometheus --kubernetes-version=v1.14.2 --memory=3072 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn
+sudo minikube delete -p kube-prometheus && sudo minikube start -p kube-prometheus --kubernetes-version=v1.14.2 --memory=4096 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn
 
 # 删除旧集群，重新启动新集群，且新集群中docker使用 本地proxy代理
-sudo minikube delete -p kube-prometheus && sudo minikube start -p kube-prometheus --kubernetes-version=v1.14.2 --memory=3072 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn --docker-env HTTP_PROXY=$HTTP_PROXY --docker-env HTTPS_PROXY=$HTTPS_PROXY  --docker-env NO_PROXY=$NO_PROXY
+sudo minikube delete -p kube-prometheus && sudo minikube start -p kube-prometheus --kubernetes-version=v1.14.2 --memory=4096 --bootstrapper=kubeadm --extra-config=kubelet.authentication-token-webhook=true --extra-config=kubelet.authorization-mode=Webhook --extra-config=scheduler.address=0.0.0.0 --extra-config=controller-manager.address=0.0.0.0 --image-mirror-country=cn --docker-env HTTP_PROXY=$HTTP_PROXY --docker-env HTTPS_PROXY=$HTTPS_PROXY  --docker-env NO_PROXY=$NO_PROXY
 
 # 启动 dashboard
 sudo minikube dashboard -p kube-prometheus
