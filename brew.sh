@@ -49,7 +49,7 @@ else
 fi
 
 # Homebrew Cask
-# http://caskroom.io
+# https://formulae.brew.sh/cask/
 if command brew cask 1>/dev/null; then
 	cecho "Homebrew Cask already installed, just conitnue ..." $green
 else

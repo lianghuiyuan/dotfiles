@@ -1,2 +1,5 @@
 # 验证ServiceEntry是否正常工作
 $ kubectl exec -it nginx-ingress-controller-695d4c8f76-f9d85 -n kube-system  -- curl -sL -o /dev/null -D - https://report.h3yun.com
+
+# 手动注入sidecar
+kubectl apply -f <(istioctl kube-inject -f grafana-deployment.yaml)

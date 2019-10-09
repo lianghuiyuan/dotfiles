@@ -49,3 +49,9 @@ Host prd-iy-vpc1
     ServerAliveInterval 15
     ForwardAgent yes
     ProxyCommand ssh %r@jumper -i ~/.ssh/id_rsa.key -p 2222 nc %h %p
+
+# 生成rsa密钥
+$ ssh-keygen -t rsa -C "lianghuiy@authine.com" -f authine_rsa_aliyun
+
+# 将新生成的key添加到ssh-agent中, Mac 系统内置了一个 Keychain 的服务及其管理程序, 使用以下命令将ssh key添加到keychain
+$ ssh-add -K [path/to/your/ssh-key]
