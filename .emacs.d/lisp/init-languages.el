@@ -336,6 +336,19 @@
   :init)
 
 ;;----------------------------------------------------------------------------
+;; vue-mode
+;;----------------------------------------------------------------------------
+(setq vue-mode-packages '(vue-mode))
+(setq vue-mode-excluded-packages '())
+(defun vue-mode/init-vue-mode ()
+  "Initialize my package"
+  (use-package vue-mode
+               :config
+               ;; 0, 1, or 2, representing (respectively) none, low, and high coloring
+               (setq mmm-submode-decoration-level 0)))
+
+
+;;----------------------------------------------------------------------------
 ;; auto insert
 ;;----------------------------------------------------------------------------
 ;; https://github.com/alexott/emacs-configs/blob/master/rc/emacs-rc-auto-insert.el

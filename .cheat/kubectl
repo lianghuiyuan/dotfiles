@@ -166,8 +166,17 @@ kubectl cluster-info dump --output-directory=/path/to/cluster-state   # Dump cur
 
 # If a taint with that key and effect already exists, its value is replaced as specified.
 kubectl taint nodes foo dedicated=special-user:NoSchedule
+kubectl taint node [node] key=value[effect]   
+          其中[effect] 可取值： [ NoSchedule | PreferNoSchedule | NoExecute ]
+           NoSchedule ：一定不能被调度。
+           PreferNoSchedule：尽量不要调度。
+           NoExecute：不仅不会调度，还会驱逐Node上已有的Pod。
 
+#去除指定key及其effect：
+kubectl taint nodes node_name key:[effect]-    #(这里的key不用指定value)
 
+#去除指定key所有的effect:
+kubectl taint nodes node_name key-
 
 
 # 权限检查

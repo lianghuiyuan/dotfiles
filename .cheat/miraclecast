@@ -1,0 +1,47 @@
+# 文档
+```
+Github: https://github.com/albfan/miraclecast
+PPA: https://launchpad.net/~thopiekar/+archive/ubuntu/miraclecast
+```
+
+## Steps to use it as sink
+1. shutdown wpa_supplicant and NetworkManager
+```
+$ systemctl stop NetworkManager.service
+$ systemctl stop wpa_supplicant.service
+```
+
+2. launch wifi daemon
+```
+$ sudo miracle-wifid &
+```
+
+3. launch sink control (your network card will be detected. here 3)
+```
+$ sudo miracle-sinkctl
+[ADD]  Link: 3
+```
+
+4. run WiFi Display on link:
+```
+> run 3
+```
+
+5. Pair your machine with other miracast device (mirroring)
+
+6. See your screen device on this machine
+
+## Steps to use it as peer
+1. Repeat steps 1 and 2 from "use as sink"
+
+2. launch wifi control
+```
+$ sudo miracle-wifictl
+```
+3. Enable visibility for other devices
+
+4. Locate them using scanning
+```
+> p2p-scan
+```
+5. Apart from list, or show info with peer <mac> there's nothing useful here by now. For a Q&D see Using as peer

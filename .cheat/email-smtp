@@ -1,0 +1,79 @@
+通过 SMTP 协议发送邮件的整体过程如下：
+  1. 客户端使用 telnet 命令连接到SMTP服务器，建立会话。
+  2. 客户端发送一个 HELO 或 EHLO 命令。
+  3. 客户端发送一个 AUTH 认证命令进行用户登录（使用 smtpd 方式）。
+  4. 客户端发送一个 MAIL 命令指定发件人。
+  5. 客户端发送一个 RCPT 命令指定收件人。
+  6. 客户端发送一个 DATA 命令准备输入邮件正文。
+  7. 客户端发送一个 . 命令（点命令）表示 DATA 命令结束。
+  8. 客户端发送一个 QUIT 命令结束会话。
+
+示例:
+为帮助您熟悉使用 SMTP 协议发送邮件的流程，提供以下 telnet 命令会话过程示例，来描述 SMTP 命令会话过程。
+备注：其中 S 代表服务器，C 代表客户端。可以使用 Linux 命令 echo -n Content|base64 进行 base64 编码。
+$telnet smtpdm.aliyun.com 25
+S:220 smtp.aliyun-inc.com MX AliMail Server(127.0.0.1)
+C:EHLO test.com
+S:250-smtp.aliyun-inc.com
+S:250-8BITMIME
+S:250-AUTH=PLAIN LOGIN XALIOAUTH
+S:250-AUTH PLAIN LOGIN XALIOAUTH
+S:250-PIPELINING
+S:250 DSN
+C:AUTH LOGIN
+S:334 dXNlcm5hbWU6
+C:dGVzdEB0ZXN0LmNvbQ==         备注：用户名test@test.com的base64编码
+S:334 UGFzc3dvcmQ6
+C:dGVzdA==                     备注：用户密码test的base64编码
+S:235 Authentication successful
+C:MAIL FROM: <test@test.com>   备注：注意用 <> 将发件人扩起来
+S:250 Mail Ok
+C:RCPT TO: <test@test.com>
+S:250 Rcpt Ok
+C:DATA
+S:354 End data with <CR><LF>.<CR><LF>
+C:subject: test
+C:from: <test@test.com>
+C:to: <test@test.com>
+C:
+C:test
+C:.
+S:Data Ok: queued as freedom ###envid=148316944
+C:QUIT
+S:221 Bye
+
+自己操作示例eg:
+[creasy:~/work/authine/monitor] 2m36s 1 $ telnet smtp.authine.com 25
+Trying 42.120.214.8...
+Connected to smtp.qiye.aliyun.com.
+Escape character is '^]'.
+220 smtp.aliyun-inc.com MX AliMail Server
+EHLO authine.com
+250-smtp.aliyun-inc.com
+250-STARTTLS
+250-8BITMIME
+250-AUTH=PLAIN LOGIN XALIOAUTH
+250-AUTH PLAIN LOGIN XALIOAUTH
+250-PIPELINING
+250 DSN
+AUTH LOGIN
+334 dXNlcm5hbWU6
+bGlhbmdodWl5QGF1dGhpbmUuY29t
+334 UGFzc3dvcmQ6
+TGh5MTIzNDU2
+235 Authentication successful
+MAIL FROM: <lianghuiy@authine.com>
+250 Mail Ok
+RCPT TO:<455520320@qq.com>
+250 Rcpt Ok
+DATA
+354 End data with <CR><LF>.<CR><LF>
+subject: test email smtp
+from: <lianghuiy@authine.com>
+to: <455520320@qq.com>
+
+.
+250 Data Ok: queued as freedom
+QUIT
+221 Bye
+Connection closed by foreign host.

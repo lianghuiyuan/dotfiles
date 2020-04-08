@@ -20,3 +20,14 @@ git push origin --delete <branchName>
 # 删除远程tag
 git push origin --delete tag <tagname>
 
+
+命令git config有三个级别，分别是
+1.版本库配置(默认没参数)；
+2.全局配置--global；
+3.系统配置--system；
+读配置
+查看全局用户名，git config user.name
+设置全局用户名，git congig user.name 'userName'
+删除全局用户名，git config --global --unset user.name
+查看config配置列表，git config --global --list
+
