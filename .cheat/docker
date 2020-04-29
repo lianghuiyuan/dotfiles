@@ -81,3 +81,24 @@ docker service scale web=5
 
 # List the tasks of a service
 docker service ps web
+
+
+
+-----------------------------------------------------
+# Centos install docker-ce (命令在root下执行 or 加sudo)
+# 安装依赖
+$ yum install -y yum-utils device-mapper-persistent-data lvm2
+
+# 添加yum仓库
+$ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+$ yum makecache
+
+# 安装docker-ce
+$ dnf -y  install docker-ce --nobest
+
+# docker开机自启
+$ systemctl enable --now docker
+
+# 添加当前用户到docker group
+$ usermod -aG docker $USER
+newgrp docker
