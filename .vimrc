@@ -12,6 +12,7 @@ Plug 'rking/ag.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-scripts/DrawIt'
+Plug 'posva/vim-vue'
 
 " themes
 Plug 'tomasr/molokai'
@@ -190,6 +191,8 @@ if has("autocmd")
   au BufNewFile,BufRead *.erl setf erlang
   au FileType erlang setlocal errorformat=%f:%l:\ %m
   au BufNewFile,BufRead *.yaml set filetype=yaml.ansible
+  " 配置小程序框架wepy的 .wpy 后缀名的文件使用 Vue 语法高亮
+  au BufRead,BufNewFile *.wpy setlocal filetype=vue.html.javascript.css
 
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile *.md set spell

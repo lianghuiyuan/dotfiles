@@ -60,6 +60,10 @@
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
 (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE"))
 
+(add-hook 'org-agenda-mode-hook
+          (lambda ()
+            (add-hook 'auto-save-hook 'org-save-all-org-buffers nil t)
+            (auto-save-mode)))
 
 ;; ==================== table =====================
 ; C-c |
@@ -153,7 +157,7 @@
 (setq op/site-sub-title "hello, Mr.L")
 (setq op/personal-disqus-shortname "shmilyliang")
 
-(setq op/theme-root-directory "~/dotfiles/.emacs.d/themes/")
+;(setq op/theme-root-directory "~/dotfiles/.emacs.d/themes")
 ;(setq op/personal-avatar "https://avatars0.githubusercontent.com/u/75674?v=3&s=460")
 (setq op/personal-google-analytics-id "userid_of_google_analytics")
 
